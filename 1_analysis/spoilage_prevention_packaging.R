@@ -9,6 +9,7 @@
 
 # Load packages and check whether this is being run locally or on rstudio server.
 library(tidyverse)
+library(readxl)
 library(reticulate)
 
 is_local <- dir.exists('Q:/')
