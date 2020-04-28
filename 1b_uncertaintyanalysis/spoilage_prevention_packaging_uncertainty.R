@@ -47,7 +47,7 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   # Run EEIO for the baseline, demand averted lower, and demand averted upper
   # Do separately for each food so that we can see the result for each one.
   
-  # 4 categories x (1 baseline+1averted lower+1averted upper) = 12 runs of model
+  # 4 categories x (1 baseline+1averted) = 8 runs of model
   # Already in units of dollars so don't need to multiply by any factor.
   eeio_packaging_averted <- pmap(fruitmeatdemand2012, function(sector_desc_drc, baseline_demand, demand_averted, ...) {
     demand_code <- as.list(sector_desc_drc)
@@ -77,7 +77,7 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   eeio_packaging_result <- eeio_packaging_averted_total %>%
     left_join(packaging_annual_offset %>% ungroup %>% select(category, contains('offset'))) %>%
     mutate(net_averted = averted - offset,
-           cost_per_reduction = packaging_annual_cost * net_averted)
+           cost_per_reduction = packaging_annual_cost / net_averted)
   
   cost_result <- data.frame(initial_cost = initial_cost,
                             material_cost = material_cost,

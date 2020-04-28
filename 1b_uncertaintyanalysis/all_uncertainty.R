@@ -13,6 +13,7 @@ library(mc2d)
 is_local <- dir.exists('Q:/')
 fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
 fp_github <- file.path(ifelse(is_local, '~/Documents/GitHub/foodwaste', '~'))
+fp_out <- file.path(fp, 'scenario_results/intervention_uncertainty')
 
 # Load the BEA code data (erroneously called NAICS) to get the codes
 bea_codes <- read_csv(file.path(fp, 'crossreference_tables/naics_crosswalk_final.csv'))
@@ -82,6 +83,7 @@ datelabel_pars <- intervention_params %>%
 # Replace initial costs with the exact numbers
 datelabel_pars[datelabel_pars$Parameter == 'initial_cost', c('minimum','mode','maximum')] <- as.list(datelabel_costs_coord)
 
+set.seed(111)
 datelabel_par_draws <- map_dfr(1:n_iter, function(i) {
   vals <- with(datelabel_pars, rpert(nrow(datelabel_pars), min = minimum, mode = mode, max = maximum, shape = 4))
   vals %>% setNames(datelabel_pars$Parameter) %>% t %>% as.data.frame
@@ -90,9 +92,7 @@ datelabel_par_draws <- map_dfr(1:n_iter, function(i) {
 # Do the actual model fitting 1000 times
 datelabel_results <- pmap(datelabel_par_draws, standardized_date_labeling)
 
-# Combine results and calculate quantiles
-
-
+save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
 
 # Spoilage prevention packaging -------------------------------------------
 
@@ -148,6 +148,7 @@ packaging_pars <- intervention_params %>%
 packaging_pars[packaging_pars$Parameter == 'initial_cost', c('minimum','mode','maximum')] <- as.list(packaging_initial_costs)
 packaging_pars[packaging_pars$Parameter == 'material_cost', c('minimum','mode','maximum')] <- as.list(packaging_annual_equipment_costs)
 
+set.seed(222)
 packaging_par_draws <- map_dfr(1:n_iter, function(i) {
   vals <- with(packaging_pars, rpert(nrow(packaging_pars), min = minimum, mode = mode, max = maximum, shape = 4))
   vals %>% setNames(packaging_pars$Parameter) %>% t %>% as.data.frame
@@ -156,9 +157,7 @@ packaging_par_draws <- map_dfr(1:n_iter, function(i) {
 # Do the actual model fitting 1000 times
 packaging_results <- pmap(packaging_par_draws, spoilage_prevention_packaging)
 
-# Combine results and calculate quantiles
-
-
+save(packaging_results, file = file.path(fp_out, 'packaging_uncertainty.RData'))
 
 # Consumer education campaigns --------------------------------------------
 
@@ -188,6 +187,7 @@ consumer_ed_offset_eeio <- map2_dfr(consumer_ed_offset_eeio, media_codes_long, ~
 consumered_pars <- intervention_params %>%
   filter(Intervention %in% c('all', 'consumer education campaigns'), !is.na(Parameter), !is.na(minimum), !Parameter %in% c('annuity_years', 'annuity_rate'))
 
+set.seed(333)
 consumered_par_draws <- map_dfr(1:n_iter, function(i) {
   vals <- with(consumered_pars, rpert(nrow(consumered_pars), min = minimum, mode = mode, max = maximum, shape = 4))
   vals %>% setNames(consumered_pars$Parameter) %>% t %>% as.data.frame
@@ -196,9 +196,7 @@ consumered_par_draws <- map_dfr(1:n_iter, function(i) {
 # Do the actual model fitting 1000 times
 consumered_results <- pmap(consumered_par_draws, consumer_education_campaigns)
 
-# Combine results and calculate quantiles
-
-
+save(consumered_results, file = file.path(fp_out, 'consumered_uncertainty.RData'))
 
 # Waste tracking and analytics --------------------------------------------
 
@@ -316,9 +314,7 @@ lm_water <- lm(log(receipts_per_firm) ~ log(empl_per_firm), data = recbyestb, su
 
 # We will use the number from scenic transportation (700) which seems fairly conservative
 # This number can be sampled from in an uncertainty analysis too.
-recbyestb %>% filter(BEA_Title == 'Water transportation') %>% mutate(empl_per_firm = if_else(`Size class` == 'more than 500', 700, empl_per_firm)) %>% select(empl_per_firm)
 predicted_water <- exp(predict(lm_water, newdata = recbyestb %>% filter(BEA_Title == 'Water transportation') %>% mutate(empl_per_firm = if_else(`Size class` == 'more than 500', 700, empl_per_firm)) %>% select(empl_per_firm)))
-exp(predict(lm_water))
 
 # Create new imputed dataset.
 susb_bea_food_sums[susb_bea_food_sums$BEA_Code %in% c('481000', '483000') & susb_bea_food_sums$use & susb_bea_food_sums$`Size class` %in% 'more than 500', "Total receipts"] <- c(predicted_air[4], predicted_water[4])
@@ -461,6 +457,7 @@ eeio_offsets_wta <- data.frame(category = row.names(eeio_offsets_wta[[1]]),
 wta_pars <- intervention_params %>%
   filter(Intervention %in% c('all', 'waste tracking and analytics'), !is.na(Parameter), !Parameter %in% 'baseline_beverage_rate')
 
+set.seed(444)
 wta_par_draws <- map_dfr(1:n_iter, function(i) {
   vals <- with(wta_pars, rpert(nrow(wta_pars), min = minimum, mode = mode, max = maximum, shape = 4))
   vals %>% setNames(wta_pars$Parameter) %>% t %>% as.data.frame
@@ -469,4 +466,4 @@ wta_par_draws <- map_dfr(1:n_iter, function(i) {
 # Do the actual model fitting 1000 times
 wta_results <- pmap(wta_par_draws, waste_tracking_analytics)
 
-# Combine results and calculate quantiles
+save(wta_results, file = file.path(fp_out, 'wta_uncertainty.RData'))
