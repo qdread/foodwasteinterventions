@@ -2,6 +2,8 @@
 # Wrapped into a function that takes parameters as arguments (to do as uncertainty)
 # QDR / foodwasteinterventions / 27 April 2020
 
+# Edit 29 Apr 2020: Also add some code to calculate average across the 3 industries, so a single value can be used for the main results.
+
 # In this new version, instead of using proportions of receipts, use the # of foodservice contractors as the establishments
 # But use the total amounts of food purchased by "eligible" industries, as identified by Steve, as the potential food that can be affected
 
@@ -157,6 +159,19 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
   cost_result <- equipment_cost_bygroup %>%
     mutate(total_cost_annual = annual_cost * establishments)
   
-  return(list(impact = eeio_dat_bygroup_withoffset, cost = cost_result))
+  # Calculate total impact, total cost, and average cost-effectiveness across the 3 industries
+  
+  eeio_result_sums <- eeio_dat_bygroup_withoffset %>%
+    group_by(category) %>%
+    summarize_at(vars(baseline, impact_averted, establishments, equipment_cost_annual, computers, peripherals, scales, offset, net_impact_averted, total_cost), sum)
+  eeio_result_averages <- eeio_dat_bygroup_withoffset %>%
+    group_by(category) %>%
+    summarize_at(vars(percent_averted, net_percent_averted, cost_per_reduction), ~ weighted.mean(x = ., w = net_impact_averted))
+  
+  eeio_result_total <- cbind(group = 'total', eeio_result_sums, eeio_result_averages)
+  
+  cost_result_total <- cost_result %>% summarize_if(is.numeric, sum) %>% mutate(group = 'total')
+  
+  return(list(impact = bind_rows(eeio_dat_bygroup_withoffset, eeio_result_total), cost = bind_rows(cost_result, cost_result_total)))
   
 }
