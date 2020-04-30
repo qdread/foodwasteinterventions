@@ -104,6 +104,6 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   
   cost_result_bytype <- proportion_packaging_byfoodtype %>% select(-n, -p)
   
-  return(list(impact = eeio_packaging_result, cost = cost_result, impact_byfoodtype = eeio_packaging_averted, cost_byfoodtype = cost_result_bytype))
+  return(list(impact = eeio_packaging_result, cost = cost_result, impact_byfoodtype = eeio_packaging_result_bytype, cost_byfoodtype = cost_result_bytype))
 
 }

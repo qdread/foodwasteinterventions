@@ -63,7 +63,7 @@ fp_github <- file.path(ifelse(is_local, '~/Documents/GitHub/foodwaste', '~'))
 fp_out <- file.path(fp, 'scenario_results/intervention_uncertainty')
 
 # Load all RData files in results directory
-sapply(dir(fp_out, pattern = '*.RData', full.names = TRUE), load, .GlobalEnv)
+walk(dir(fp_out, pattern = '*.RData', full.names = TRUE), load, .GlobalEnv)
 
 datelabel_qs <- uncertainty_quantiles(datelabel_results)
 packaging_qs <- uncertainty_quantiles(packaging_results)
@@ -81,7 +81,7 @@ write_csv(all_qs, file.path(fp_out, 'intervention_quantiles.csv'))
 
 # Get separate results for packaging by food type -------------------------
 
-packaging_qs_byfoodtype <- imap_dfr(packaging_results, ~ data.frame(iter = .y, .x$impact_byfoodtype)) %>%
+packaging_impact_qs_byfoodtype <- imap_dfr(packaging_results, ~ data.frame(iter = .y, .x$impact_byfoodtype)) %>%
   select(-iter) %>% 
   pivot_longer(-c(category, food)) %>% 
   group_by(food, category, name) %>% 
@@ -90,5 +90,16 @@ packaging_qs_byfoodtype <- imap_dfr(packaging_results, ~ data.frame(iter = .y, .
             q50 = quantile(value, probs =  0.5),
             q95 = quantile(value, probs = 0.95),
             q975 = quantile(value, probs = 0.975)) 
+packaging_cost_qs_byfoodtype <- imap_dfr(packaging_results, ~ data.frame(iter = .y, .x$cost_byfoodtype)) %>%
+  select(-iter) %>% 
+  pivot_longer(-c(food)) %>% 
+  group_by(food, name) %>% 
+  summarize(q025 = quantile(value, probs = 0.025),
+            q05 = quantile(value, probs = 0.05),
+            q50 = quantile(value, probs =  0.5),
+            q95 = quantile(value, probs = 0.95),
+            q975 = quantile(value, probs = 0.975)) 
 
-write_csv(all_qs, file.path(fp_out, 'packaging_quantiles_byfoodtype.csv'))
+packaging_all_qs_byfoodtype <- bind_rows(packaging_impact_qs_byfoodtype, packaging_cost_qs_byfoodtype)
+
+write_csv(packaging_all_qs_byfoodtype, file.path(fp_out, 'packaging_quantiles_byfoodtype.csv'))
