@@ -4,7 +4,13 @@
 spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, initial_cost, material_cost, annuity_years, annuity_rate) {
   
   # Annualize initial cost with pmt function, and add to annual material costs.
-  packaging_annual_cost <- material_cost + pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0)
+  annualized_initial_cost <- pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0)
+  packaging_annual_cost <- material_cost + annualized_initial_cost
+  
+  proportion_packaging_byfoodtype <- proportion_packaging_byfoodtype %>%
+    mutate(annualized_initial_cost = p * annualized_initial_cost,
+           material_cost = p * material_cost) %>%
+    mutate(annualized_total_cost = annualized_initial_cost + material_cost)
 
   ### Get the baseline consumer demand for fresh fruit, red meat, and poultry in 2012.
   # Do not include processed and frozen products, only fresh.
@@ -79,10 +85,25 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
     mutate(net_averted = averted - offset,
            cost_per_reduction = packaging_annual_cost / net_averted)
   
+  # also include results for cost for each of the food types separately
+  packaging_annual_offset_bytype <- outer(eeio_packaging_offsetting_impacts$impact, proportion_packaging_byfoodtype$material_cost) %>%
+    as.data.frame %>%
+    setNames(proportion_packaging_byfoodtype$food) %>%
+    mutate(category = eeio_packaging_offsetting_impacts$category) %>%
+    pivot_longer(-category, names_to = 'food', values_to = 'offset')
+  
+  eeio_packaging_result_bytype <- eeio_packaging_averted %>%
+    left_join(packaging_annual_offset_bytype) %>%
+    left_join(proportion_packaging_byfoodtype %>% select(-n, -p)) %>%
+    mutate(net_averted = averted - offset,
+           cost_per_reduction = annualized_total_cost / net_averted)
+  
   cost_result <- data.frame(initial_cost = initial_cost,
                             material_cost = material_cost,
                             annualized_total_cost = packaging_annual_cost)
   
-  return(list(impact = eeio_packaging_result, cost = cost_result))
+  cost_result_bytype <- proportion_packaging_byfoodtype %>% select(-n, -p)
+  
+  return(list(impact = eeio_packaging_result, cost = cost_result, impact_byfoodtype = eeio_packaging_averted, cost_byfoodtype = cost_result_bytype))
 
 }

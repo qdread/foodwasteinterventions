@@ -1,4 +1,7 @@
 # All uncertainty analysis
+# QDR / foodwasteinterventions
+
+# Modified 29 April 2020: parallelize with furrr
 
 n_iter <- 1000 # Number of MC iterations in uncertainty analysis
 
@@ -9,6 +12,10 @@ library(readxl)
 library(zoo)
 library(reticulate)
 library(mc2d)
+library(furrr)
+
+options(mc.cores = 8) # Use all cores on a single node.
+plan(multicore)
 
 is_local <- dir.exists('Q:/')
 fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
@@ -90,7 +97,7 @@ datelabel_par_draws <- map_dfr(1:n_iter, function(i) {
 })
 
 # Do the actual model fitting 1000 times
-datelabel_results <- pmap(datelabel_par_draws, standardized_date_labeling)
+datelabel_results <- future_pmap(datelabel_par_draws, standardized_date_labeling)
 
 save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
 
@@ -101,6 +108,8 @@ packaging_costs <- read_xlsx(file.path(fp, 'scenario_inputdata/intervention_cost
 packaging_annual_equipment_costs <- packaging_costs[packaging_costs$cost_type_2012_dollars %in% 'Total annual costs', 2:4]
 #packaging_total_costs <- packaging_costs[packaging_costs$cost_type_2012_dollars %in% 'Total annualized and annual costs', 2:4]
 packaging_initial_costs <- packaging_costs[packaging_costs$cost_type_2012_dollars %in% 'Total initial costs', 2:4]
+
+proportion_packaging_byfoodtype <- read_csv(file.path(fp, 'scenario_inputdata/proportion_packaging_byfoodtype.csv'))
 
 ##########
 # LAFA rate conversion for the fruit and meat codes in LAFA.
@@ -155,7 +164,7 @@ packaging_par_draws <- map_dfr(1:n_iter, function(i) {
 })
 
 # Do the actual model fitting 1000 times
-packaging_results <- pmap(packaging_par_draws, spoilage_prevention_packaging)
+packaging_results <- future_pmap(packaging_par_draws, spoilage_prevention_packaging)
 
 save(packaging_results, file = file.path(fp_out, 'packaging_uncertainty.RData'))
 
@@ -194,7 +203,7 @@ consumered_par_draws <- map_dfr(1:n_iter, function(i) {
 })
 
 # Do the actual model fitting 1000 times
-consumered_results <- pmap(consumered_par_draws, consumer_education_campaigns)
+consumered_results <- future_pmap(consumered_par_draws, consumer_education_campaigns)
 
 save(consumered_results, file = file.path(fp_out, 'consumered_uncertainty.RData'))
 
@@ -464,6 +473,6 @@ wta_par_draws <- map_dfr(1:n_iter, function(i) {
 })
 
 # Do the actual model fitting 1000 times
-wta_results <- pmap(wta_par_draws, waste_tracking_analytics)
+wta_results <- future_pmap(wta_par_draws, waste_tracking_analytics)
 
 save(wta_results, file = file.path(fp_out, 'wta_uncertainty.RData'))

@@ -77,3 +77,18 @@ all_qs <- map2_dfr(list(datelabel_qs, packaging_qs, consumered_qs, wta_qs),
   mutate(name = gsub('_coordination', '', name)) # clean up the names in standardized date labeling part
 
 write_csv(all_qs, file.path(fp_out, 'intervention_quantiles.csv'))
+
+
+# Get separate results for packaging by food type -------------------------
+
+packaging_qs_byfoodtype <- imap_dfr(packaging_results, ~ data.frame(iter = .y, .x$impact_byfoodtype)) %>%
+  select(-iter) %>% 
+  pivot_longer(-c(category, food)) %>% 
+  group_by(food, category, name) %>% 
+  summarize(q025 = quantile(value, probs = 0.025),
+            q05 = quantile(value, probs = 0.05),
+            q50 = quantile(value, probs =  0.5),
+            q95 = quantile(value, probs = 0.95),
+            q975 = quantile(value, probs = 0.975)) 
+
+write_csv(all_qs, file.path(fp_out, 'packaging_quantiles_byfoodtype.csv'))
