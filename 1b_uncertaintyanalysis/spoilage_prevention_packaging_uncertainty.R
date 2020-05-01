@@ -100,7 +100,8 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   
   cost_result <- data.frame(initial_cost = initial_cost,
                             material_cost = material_cost,
-                            annualized_total_cost = packaging_annual_cost)
+                            annualized_initial_cost = annualized_initial_cost,
+                            annual_cost = packaging_annual_cost)
   
   cost_result_bytype <- proportion_packaging_byfoodtype %>% select(-n, -p)
   

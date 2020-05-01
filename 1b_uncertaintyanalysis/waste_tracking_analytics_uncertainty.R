@@ -151,22 +151,22 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
     left_join(equipment_cost_bygroup) %>%
     left_join(eeio_offsets_bygroup_combined) %>%
     mutate(percent_averted = signif(100 * impact_averted/baseline, 2),
-           net_impact_averted = impact_averted - offset,
-           net_percent_averted = 100 * net_impact_averted/baseline,
+           net_averted = impact_averted - offset,
+           net_percent_averted = 100 * net_averted/baseline,
            total_cost = annual_cost * establishments,
-           cost_per_reduction = total_cost / net_impact_averted)
+           cost_per_reduction = total_cost / net_averted)
   
   cost_result <- equipment_cost_bygroup %>%
-    mutate(total_cost_annual = annual_cost * establishments)
+    mutate(annual_cost = annual_cost * establishments)
   
   # Calculate total impact, total cost, and average cost-effectiveness across the 3 industries
   
   eeio_result_sums <- eeio_dat_bygroup_withoffset %>%
     group_by(category) %>%
-    summarize_at(vars(baseline, impact_averted, establishments, equipment_cost_annual, computers, peripherals, scales, offset, net_impact_averted, total_cost), sum)
+    summarize_at(vars(baseline, impact_averted, establishments, equipment_cost_annual, computers, peripherals, scales, offset, net_averted, total_cost), sum)
   eeio_result_averages <- eeio_dat_bygroup_withoffset %>%
     group_by(category) %>%
-    summarize_at(vars(percent_averted, net_percent_averted, cost_per_reduction), ~ weighted.mean(x = ., w = net_impact_averted))
+    summarize_at(vars(percent_averted, net_percent_averted, cost_per_reduction), ~ weighted.mean(x = ., w = net_averted))
   
   eeio_result_total <- cbind(group = 'total', eeio_result_sums, eeio_result_averages)
   
