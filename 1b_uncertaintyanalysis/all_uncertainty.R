@@ -1,82 +1,19 @@
 # All uncertainty analysis
 # QDR / foodwasteinterventions
 
+# Modified 5 May 2020: implement new approach to calculating packaging costs, also modularize script
 # Modified 29 April 2020: parallelize with furrr
 
 n_iter <- 1000 # Number of MC iterations in uncertainty analysis
 
 # Load data for all interventions -----------------------------------------
 
-library(tidyverse)
-library(readxl)
-library(zoo)
-library(reticulate)
-library(mc2d)
-library(furrr)
-
-options(mc.cores = 8) # Use all cores on a single node.
-plan(multicore)
-
 is_local <- dir.exists('Q:/')
 fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
 fp_github <- file.path(ifelse(is_local, '~/Documents/GitHub/foodwaste', '~'))
 fp_out <- file.path(fp, 'scenario_results/intervention_uncertainty')
 
-# Load the BEA code data (erroneously called NAICS) to get the codes
-bea_codes <- read_csv(file.path(fp, 'crossreference_tables/naics_crosswalk_final.csv'))
-
-# Demand codes table to convert 6 digit codes to the ones used by USEEIO
-all_codes <- read_csv(file.path(fp, 'crossreference_tables/all_codes.csv'))
-
-# Read 2012 final demand vector from built USEEIO model
-finaldemand2012 <- read_csv(file.path(fp_github, 'USEEIO/useeiopy/Model Builds/USEEIO2012/USEEIO2012_FinalDemand.csv'))
-
-# Load waste rates for the BEA codes, calculated in lafa_rate_conversion.R
-bea_waste_rates <- read_csv(file.path(fp, 'crossreference_tables/waste_rates_bea.csv'))
-
-# BEA levels 1+3 to 4+6+7+8 is already subsetted from an older analysis I did.
-food_U <- read.csv(file.path(fp, 'crossreference_tables/level13_to_level4678_inputs.csv'), row.names = 1, check.names = FALSE)
-
-# Load LAFA
-source(file.path(fp_github, 'fwe/read_data/read_lafa.r'))
-
-# Read the description of LAFA's nested category structure in.
-lafa_struct <- read_csv(file.path(fp, 'crossreference_tables/lafa_category_structure.csv'))
-
-# Load numbers of establishments by NAICS
-susb_naics <- read_csv(file.path(fp, 'csv_exports/SUSB_NAICS_allvariables.csv'))
-
-# Load NAICS BEA crosswalks
-load(file.path(fp, 'crossreference_tables/NAICS_BEA_SCTG_crosswalk.RData'))
-bea_naics <- read_csv(file.path(fp, 'crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv'))
-
-# Load data for waste rate calculations
-# Mapping will need to go bea --> qfahpd --> lafa
-# Load the two necessary crosswalks.
-bea2qfahpd <- read_csv(file.path(fp, 'crossreference_tables/bea_qfahpd_crosswalk.csv'))
-qfahpd2lafa <- read_csv(file.path(fp, 'crossreference_tables/qfahpd_lafa_crosswalk.csv'))
-
-# Also load the QFAHPD data so that we can get the prices.
-qfahpd2 <- read_csv(file.path(fp, 'raw_data/USDA/QFAHPD/tidy_data/qfahpd2.csv'))
-
-# Parameters for the interventions
-intervention_params <- read_csv(file.path(fp, 'scenario_inputdata/intervention_parameters.csv'))
-
-# Annuity function as implemented in excel, f and t are zero.
-pmt <- function(p, r, n, f, t) (p * r * (1+r)^n  - f) / (((1+r)^n - 1) * (1 + r * t))
-
-# Function to calculate demand change given baseline waste rate, waste reduction rate, and proportion of demand that is food
-demand_change_fn <- function(W0, r, p) p * ((1 - W0) / (1 - (1 - r) * W0) - 1) + 1
-
-# Source EEIO python function
-if (!is_local) use_python('/usr/bin/python3')
-source_python(file.path(fp_github, 'fwe/USEEIO/eeio_lcia.py'))
-
-# Source functions for each intervention
-source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/standardized_date_labeling_uncertainty.R'))
-source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/spoilage_prevention_packaging_uncertainty.R'))
-source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/consumer_education_campaigns_uncertainty.R'))
-source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/waste_tracking_analytics_uncertainty.R'))
+source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/all_uncertainty_setup.R'))
 
 # Standardized date labeling ---------------------------------------
 
@@ -103,13 +40,7 @@ save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
 
 # Spoilage prevention packaging -------------------------------------------
 
-packaging_costs <- read_xlsx(file.path(fp, 'scenario_inputdata/intervention_costs_26mar2020/costs for intelligent packaging_3-26-2020.xlsx'), skip = 10, col_names = c('cost_type_2012_dollars', 'low', 'mean', 'high', 'notes')) 
-
-packaging_annual_equipment_costs <- packaging_costs[packaging_costs$cost_type_2012_dollars %in% 'Total annual costs', 2:4]
-#packaging_total_costs <- packaging_costs[packaging_costs$cost_type_2012_dollars %in% 'Total annualized and annual costs', 2:4]
-packaging_initial_costs <- packaging_costs[packaging_costs$cost_type_2012_dollars %in% 'Total initial costs', 2:4]
-
-proportion_packaging_byfoodtype <- read_csv(file.path(fp, 'scenario_inputdata/proportion_packaging_byfoodtype.csv'))
+packaging_costs_proportions <- read_csv(file.path(fp, 'scenario_inputdata/packaging_costs_proportions_byproduct.csv'))
 
 ##########
 # LAFA rate conversion for the fruit and meat codes in LAFA.
@@ -133,7 +64,7 @@ lafa_df <- lafa %>%
 lafa_df <- lafa_df %>% 
   ungroup %>%
   left_join(lafa_struct) %>%
-  filter(subgroup2 == 'Fresh fruit' | subgroup1 %in% c('Fresh vegetables', 'Red meat', 'Poultry')) %>%
+  filter(subgroup2 == 'Fresh fruit' | subgroup1 %in% c('Fresh vegetables', 'Red meat', 'Poultry', 'Total Fresh and Frozen Fish')) %>%
   mutate(group_final = if_else(Group == 'fruit', subgroup2, subgroup1)) %>%
   select(group_final, Food:avoidable_consumer_loss)
 
@@ -150,12 +81,34 @@ eeio_packaging_offsetting_impacts <- eeio_lcia('USEEIO2012', list(1), list(plast
 eeio_packaging_offsetting_impacts <- data.frame(category = row.names(eeio_packaging_offsetting_impacts),
                                                 impact = eeio_packaging_offsetting_impacts$Total)
 
+
+# Sum up packaging costs and proportions by the appropriate categories
+packaging_proportion_by_BEA <- packaging_costs_proportions %>%
+  group_by(BEA_Code) %>%
+  summarize(proportion = min(1, sum(proportion_final)))
+
+# Convert percentiles to PERT parameters for packaging costs for each food item
+packaging_costs_by_food <- packaging_costs_proportions %>%
+  group_by(food) %>%
+  summarize_at(vars(Units:`95th Percentile`), sum) %>%
+  mutate(unit_cost_q05 = `5th Percentile`/Units, unit_cost_mean = Mean/Units, unit_cost_q95 = `95th Percentile`/Units)
+
+packaging_pert_pars <- pmap_dfr(packaging_costs_by_food, function(unit_cost_q05, unit_cost_mean, unit_cost_q95, ...) get_pert(p = c(0.05, 0.5, 0.95), q = c(unit_cost_q05, unit_cost_mean, unit_cost_q95)))
+
+# The initial costs per unit for each food type.
+packaging_costs_by_food <- cbind(packaging_costs_by_food, packaging_pert_pars)
+
+#### run eeio for $1 per food type so it can be multiplied later by the costs within each iteration
+packaging_food_eeio_codes <- with(all_codes, sector_desc_drc[match(packaging_proportion_by_BEA$BEA_Code, sector_code_uppercase)])
+
+eeio_packaging_averted <- map(packaging_food_eeio_codes, ~ eeio_lcia('USEEIO2012', list(1), list(.)))
+
+eeio_packaging_averted <- map2_dfr(packaging_proportion_by_BEA$BEA_Code, eeio_packaging_averted, 
+                                   ~ data.frame(BEA_Code = .x, category = row.names(.y), impact = .y$Total))
+
 # Set up PERT distributions for each parameter and draw from them.
 packaging_pars <- intervention_params %>%
   filter(Intervention %in% c('all', 'spoilage prevention packaging'), !is.na(Parameter), !Parameter %in% 'baseline_beverage_rate')
-# Replace initial costs with the exact numbers
-packaging_pars[packaging_pars$Parameter == 'initial_cost', c('minimum','mode','maximum')] <- as.list(packaging_initial_costs)
-packaging_pars[packaging_pars$Parameter == 'material_cost', c('minimum','mode','maximum')] <- as.list(packaging_annual_equipment_costs)
 
 set.seed(222)
 packaging_par_draws <- map_dfr(1:n_iter, function(i) {
@@ -163,8 +116,13 @@ packaging_par_draws <- map_dfr(1:n_iter, function(i) {
   vals %>% setNames(packaging_pars$Parameter) %>% t %>% as.data.frame
 })
 
+packaging_par_draws_byfood <- map_dfr(1:n_iter, function(i) {
+  vals <- with(packaging_costs_by_food, rpert(nrow(packaging_costs_by_food), min = min, mode = mode, max = max, shape = 4))
+  vals %>% setNames(paste0('unitcost_', packaging_costs_by_food$food)) %>% t %>% as.data.frame
+})
+
 # Do the actual model fitting 1000 times
-packaging_results <- future_pmap(packaging_par_draws, spoilage_prevention_packaging)
+packaging_results <- future_pmap(cbind(packaging_par_draws, packaging_par_draws_byfood), spoilage_prevention_packaging)
 
 save(packaging_results, file = file.path(fp_out, 'packaging_uncertainty.RData'))
 

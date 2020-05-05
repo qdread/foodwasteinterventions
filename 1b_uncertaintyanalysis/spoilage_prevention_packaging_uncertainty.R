@@ -1,32 +1,41 @@
 # Spoilage prevention packaging uncertainty analysis function
 # QDR / foodwasteinterventions / 24 April 2020
 
-spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, initial_cost, material_cost, annuity_years, annuity_rate) {
+# Modified 05 May 2020: implement new cost approach
+
+spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, p_seafood, cost_per_package, annuity_years, annuity_rate, unitcost_fruit, unitcost_meat, unitcost_misc, unitcost_poultry, unitcost_seafood, unitcost_vegetables) {
   
-  # Annualize initial cost with pmt function, and add to annual material costs.
-  annualized_initial_cost <- pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0)
+  param_table <- data.frame(food = c('fruit','vegetables','meat','poultry','seafood','misc'),
+                            wr_retail = rep(c(wr_retail_fv, wr_retail_meat), c(2,4)),
+                            wr_household = rep(c(wr_household_fv, wr_household_meat), c(2,4)),
+                            proportion_affected = c(p_fruit, p_veg, rep(p_meat, 4)),
+                            unitcost = c(unitcost_fruit, unitcost_vegetables, unitcost_meat, unitcost_poultry, unitcost_seafood, unitcost_misc))
+  
+  # Multiply the units sold for each food type by the proportion affected by the intervention
+  param_table <- packaging_costs_by_food %>%
+    left_join(param_table) %>%
+    mutate(units_affected = proportion_affected * Units,
+           material_cost = units_affected * cost_per_package,
+           initial_cost = units_affected * unitcost,
+           annualized_initial_cost = pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0),
+           annualized_total_cost = annualized_initial_cost + material_cost)
+  
+  # Annualize initial cost with pmt function, and add to annual material costs. (summed across food types)
+  initial_cost <- sum(param_table$initial_cost)
+  annualized_initial_cost <- sum(param_table$annualized_initial_cost)
+  material_cost <- sum(param_table$material_cost)
   packaging_annual_cost <- material_cost + annualized_initial_cost
   
-  proportion_packaging_byfoodtype <- proportion_packaging_byfoodtype %>%
-    mutate(annualized_initial_cost = p * annualized_initial_cost,
-           material_cost = p * material_cost) %>%
-    mutate(annualized_total_cost = annualized_initial_cost + material_cost)
-
-  ### Get the baseline consumer demand for fresh fruit, red meat, and poultry in 2012.
-  # Do not include processed and frozen products, only fresh.
-  fruit_meat_codes <- c('111200', '111300', '311615', '31161A')
-  fruit_meat_proportions <- rep(1, 4)
-  
-  fruitmeatdemand2012 <- data.frame(BEA_389_code = fruit_meat_codes,
-                                    proportion = fruit_meat_proportions) %>%
+  ### Get the baseline consumer demand for fruit, vegetables, red meat, poultry, seafood, and misc. meat-containing products in 2012.
+  fruitmeatdemand2012 <- packaging_proportion_by_BEA %>%
+    rename(BEA_389_code = BEA_Code) %>%
     left_join(finaldemand2012)
   
   # Recreate packaging reduction rate data frame
-  packaging_reduction_rates <- data.frame(food = c('fruit','fruit','veg','veg','meat','meat'),
-                                          level = c('retail','household'),
-                                          proportion_affected = c(p_fruit, p_fruit, p_veg, p_veg, p_meat, p_meat),
-                                          waste_reduction = c(wr_retail_fv, wr_household_fv, wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat))
-  
+  packaging_reduction_rates <- param_table %>% select(food, wr_retail, wr_household, proportion_affected) %>%
+    pivot_longer(c(wr_retail, wr_household), names_to = 'level', values_to = 'waste_reduction') %>%
+    mutate(level = gsub('wr_', '', level))
+
   # Post intervention demand under different scenarios
   packaging_reduction_rates_wide <- packaging_reduction_rates %>%
     pivot_wider(id_cols = food, names_from = level, values_from = -c(food,level))
@@ -35,7 +44,7 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   # and reduction rates of retail and household demand (lower and upper bounds)
   # from this get the averted demand after the intervention for each food
   fruitmeatdemand2012 <- fruitmeatdemand2012 %>%
-    mutate(food = c('veg','fruit','meat','meat'), group_final = c('Fresh vegetables', 'Fresh fruit', 'Poultry', 'Red meat')) %>%
+    mutate(food = c('vegetables','fruit','misc','poultry','meat','seafood','misc','misc'), group_final = c('Fresh vegetables', 'Fresh fruit', 'Red meat', 'Poultry', 'Red meat', 'Total Fresh and Frozen Fish', 'Red meat', 'Red meat')) %>%
     left_join(fruitmeat_wtdavg_rates) %>%
     left_join(packaging_reduction_rates_wide) %>%
     mutate(baseline_demand = `2012_US_Consumption` * proportion,
@@ -44,31 +53,12 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
            demand_reduction = retail_reduction * household_reduction,
            demand_averted = baseline_demand * (1 - demand_reduction))
   
-  # Get full codes that will be recognized by USEEIO.
-  fruitmeatdemand2012 <- all_codes %>%
-    select(sector_desc_drc, sector_code_uppercase) %>%
-    right_join(fruitmeatdemand2012, by = c('sector_code_uppercase' = 'BEA_389_code'))
+  # Multiply EEIO per-dollar results times the baseline and averted demand for each BEA code
+  eeio_packaging_averted <- fruitmeatdemand2012 %>% 
+    full_join(eeio_packaging_averted, by = c('BEA_389_code' = 'BEA_Code')) %>%
+    mutate(baseline = impact * baseline_demand,
+           averted = impact * demand_averted)
   
-  ### 
-  # Run EEIO for the baseline, demand averted lower, and demand averted upper
-  # Do separately for each food so that we can see the result for each one.
-  
-  # 4 categories x (1 baseline+1averted) = 8 runs of model
-  # Already in units of dollars so don't need to multiply by any factor.
-  eeio_packaging_averted <- pmap(fruitmeatdemand2012, function(sector_desc_drc, baseline_demand, demand_averted, ...) {
-    demand_code <- as.list(sector_desc_drc)
-    list(baseline = eeio_lcia('USEEIO2012', as.list(baseline_demand), demand_code),
-         averted = eeio_lcia('USEEIO2012', as.list(demand_averted), demand_code))
-  })
-  
-  # Put this into a data frame
-  eeio_packaging_averted <- map2_dfr(c('fresh vegetables', 'fresh fruit', 'poultry', 'meat'), eeio_packaging_averted, function(x, y) {
-    impacts <- do.call(cbind, y) %>% setNames(names(y))
-    data.frame(food = x, category = row.names(impacts), impacts)
-  })
-  
-  
-
   #### cost estimates
   # use the annual costs to get the annual impacts, using plastic packaging materials as the industry.
   packaging_annual_offset <- eeio_packaging_offsetting_impacts %>%
@@ -86,15 +76,15 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
            cost_per_reduction = packaging_annual_cost / net_averted)
   
   # also include results for cost for each of the food types separately
-  packaging_annual_offset_bytype <- outer(eeio_packaging_offsetting_impacts$impact, proportion_packaging_byfoodtype$material_cost) %>%
+  packaging_annual_offset_bytype <- outer(eeio_packaging_offsetting_impacts$impact, param_table$material_cost) %>%
     as.data.frame %>%
-    setNames(proportion_packaging_byfoodtype$food) %>%
+    setNames(param_table$food) %>%
     mutate(category = eeio_packaging_offsetting_impacts$category) %>%
     pivot_longer(-category, names_to = 'food', values_to = 'offset')
   
   eeio_packaging_result_bytype <- eeio_packaging_averted %>%
     left_join(packaging_annual_offset_bytype) %>%
-    left_join(proportion_packaging_byfoodtype %>% select(-n, -p)) %>%
+    left_join(param_table %>% select(food, contains("cost"))) %>%
     mutate(net_averted = averted - offset,
            cost_per_reduction = annualized_total_cost / net_averted)
   
@@ -103,7 +93,7 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
                             annualized_initial_cost = annualized_initial_cost,
                             annual_cost = packaging_annual_cost)
   
-  cost_result_bytype <- proportion_packaging_byfoodtype %>% select(-n, -p)
+  cost_result_bytype <- param_table %>% select(food, material_cost:annualized_total_cost)
   
   return(list(impact = eeio_packaging_result, cost = cost_result, impact_byfoodtype = eeio_packaging_result_bytype, cost_byfoodtype = cost_result_bytype))
 
