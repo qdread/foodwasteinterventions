@@ -13,3 +13,16 @@ get_pert <- function(p, q, fit.weights = NULL) {
   result <- optim(par = start_value, minimize, method = 'BFGS')
   return(data.frame(min = result$par[1], mode = result$par[2], max = result$par[3]))
 }
+
+# Function to estimate only the lower and upper bound parameters, with mode known
+get_pert_bounds <- function(p = c(0.05, 0.95), q, mode) {
+  minimize <- function(theta) {
+    summand <- suppressWarnings(mc2d::ppert(q = q, min = theta[1], 
+                                            mode = mode, max = theta[2], shape = 4) - 
+                                  p)
+    sum(summand^2)
+  }
+  start_value <- q * c(0.9, 1.1)
+  result <- optim(par = start_value, minimize, method = 'BFGS')
+  return(data.frame(min = result$par[1], mode = mode, max = result$par[2]))
+}

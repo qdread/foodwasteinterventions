@@ -24,8 +24,9 @@ datelabel_costs_coord <- datelabel_costs[which(datelabel_costs[,1] == "Total cos
 # Set up PERT distributions for each parameter and draw from them.
 datelabel_pars <- intervention_params %>%
   filter(Intervention %in% c('all', 'standardized date labeling'), !is.na(Parameter))
-# Replace initial costs with the exact numbers
-datelabel_pars[datelabel_pars$Parameter == 'initial_cost', c('minimum','mode','maximum')] <- as.list(datelabel_costs_coord)
+# Replace initial costs with the exact numbers (using PERT bounds)
+datelabel_cost_pert_pars <- get_pert_bounds(p = c(0.05, 0.95), q = datelabel_costs_coord[c(1,3)], mode = datelabel_costs_coord[2])
+datelabel_pars[datelabel_pars$Parameter == 'initial_cost', c('minimum','mode','maximum')] <- as.list(datelabel_cost_pert_pars)
 
 set.seed(111)
 datelabel_par_draws <- map_dfr(1:n_iter, function(i) {
@@ -93,7 +94,7 @@ packaging_costs_by_food <- packaging_costs_proportions %>%
   summarize_at(vars(Units:`95th Percentile`), sum) %>%
   mutate(unit_cost_q05 = `5th Percentile`/Units, unit_cost_mean = Mean/Units, unit_cost_q95 = `95th Percentile`/Units)
 
-packaging_pert_pars <- pmap_dfr(packaging_costs_by_food, function(unit_cost_q05, unit_cost_mean, unit_cost_q95, ...) get_pert(p = c(0.05, 0.5, 0.95), q = c(unit_cost_q05, unit_cost_mean, unit_cost_q95)))
+packaging_pert_pars <- pmap_dfr(packaging_costs_by_food, function(unit_cost_q05, unit_cost_mean, unit_cost_q95, ...) get_pert_bounds(p = c(0.05, 0.95), q = c(unit_cost_q05, unit_cost_q95), mode = unit_cost_mean))
 
 # The initial costs per unit for each food type.
 packaging_costs_by_food <- cbind(packaging_costs_by_food, packaging_pert_pars)
@@ -423,6 +424,10 @@ eeio_offsets_wta <- data.frame(category = row.names(eeio_offsets_wta[[1]]),
 # Set up PERT distributions for each parameter and draw from them.
 wta_pars <- intervention_params %>%
   filter(Intervention %in% c('all', 'waste tracking and analytics'), !is.na(Parameter), !Parameter %in% 'baseline_beverage_rate')
+
+# Convert wages from 10th and 90th percentiles to the min and max of PERT distribution
+wta_wages_pert_pars <- get_pert_bounds(p = c(0.1, 0.9), q = as.numeric(wta_pars[wta_pars$Parameter == 'annual_cost_wages', c('minimum','maximum')]), mode = as.numeric(wta_pars[wta_pars$Parameter == 'annual_cost_wages', c('mode')]))
+wta_pars[wta_pars$Parameter == 'annual_cost_wages', c('minimum','mode','maximum')] <- as.list(wta_wages_pert_pars)
 
 set.seed(444)
 wta_par_draws <- map_dfr(1:n_iter, function(i) {

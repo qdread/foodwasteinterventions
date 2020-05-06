@@ -2,12 +2,13 @@
 # Wrapped into a function that takes parameters as arguments (to do as uncertainty)
 # QDR / foodwasteinterventions / 27 April 2020
 
+# Edit 06 May 2020: Split annual cost into wage and fee components
 # Edit 29 Apr 2020: Also add some code to calculate average across the 3 industries, so a single value can be used for the main results.
 
 # In this new version, instead of using proportions of receipts, use the # of foodservice contractors as the establishments
 # But use the total amounts of food purchased by "eligible" industries, as identified by Steve, as the potential food that can be affected
 
-waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_waste, material_cost, annual_cost, p_scales, annuity_years, annuity_rate) {
+waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_waste, material_cost, annual_cost_wages, annual_cost_fees, p_scales, annuity_years, annuity_rate) {
   
   overall_waste_reduction <- proportion_kitchen_waste * wta_waste_reduction
   
@@ -153,11 +154,12 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
     mutate(percent_averted = signif(100 * impact_averted/baseline, 2),
            net_averted = impact_averted - offset,
            net_percent_averted = 100 * net_averted/baseline,
-           total_cost = annual_cost * establishments,
+           total_cost = equipment_cost_annual + (annual_cost_wages + annual_cost_fees) * establishments,
            cost_per_reduction = total_cost / net_averted)
   
   cost_result <- equipment_cost_bygroup %>%
-    mutate(annual_cost = annual_cost * establishments)
+    mutate(annual_cost_wages = annual_cost_wages * establishments,
+           annual_cost_fees = annual_cost_fees * establishments)
   
   # Calculate total impact, total cost, and average cost-effectiveness across the 3 industries
   
