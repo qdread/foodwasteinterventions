@@ -81,8 +81,10 @@ write_csv(all_qs, file.path(fp_out, 'intervention_quantiles.csv'))
 
 # Get separate results for packaging by food type -------------------------
 
+# Modified 06 May 2020: Do this with all food types
+
 packaging_impact_qs_byfoodtype <- imap_dfr(packaging_results, ~ data.frame(iter = .y, .x$impact_byfoodtype)) %>%
-  select(-iter) %>% 
+  select(-(iter:X2012_US_Production), -group_final) %>% 
   pivot_longer(-c(category, food)) %>% 
   group_by(food, category, name) %>% 
   summarize(q025 = quantile(value, probs = 0.025),

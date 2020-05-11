@@ -159,7 +159,8 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
   
   cost_result <- equipment_cost_bygroup %>%
     mutate(annual_cost_wages = annual_cost_wages * establishments,
-           annual_cost_fees = annual_cost_fees * establishments)
+           annual_cost_fees = annual_cost_fees * establishments,
+           initial_cost = material_cost * establishments)
   
   # Calculate total impact, total cost, and average cost-effectiveness across the 3 industries
   
