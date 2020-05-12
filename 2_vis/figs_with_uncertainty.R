@@ -54,8 +54,43 @@ p_totalcost <- ggplot(dat_totalcost, aes(y = q50/1e6, ymin = q025/1e6, ymax = q9
 # SPP: initial costs (testing) and recurring cost (also can break down by type of food)
 # CEC: all recurring, no initial (the campaigns are redone every year)
 # WTA: initial costs (purchase equipment) and recurring cost (licenses and fees, costs to employers in wages & benefits)
+
+# For each one, show
+# initial cost (raw)
+# initial cost (annualized)
+# recurring annual cost
+
+# assign a cost type column 
+
 dat_costbreakdown <- dat_cost %>%
-  filter()
+  filter(is.na(group) | group %in% 'total') %>%
+  mutate(cost_type = case_when(grepl('^initial', name) ~ 'initial_raw',
+                               grepl('annual_', name) ~ 'annual',
+                               grepl('annualized|equipment_cost', name) ~ 'initial_annualized',
+                               TRUE ~ 'other')) %>%
+  filter(!cost_type %in% 'other') %>%
+  group_by(intervention, cost_type) %>%
+  summarize_if(is.numeric, ~ sum(.)/1e6)
+  
+# Make a figure as well as a table
+ggplot(dat_costbreakdown %>% filter(!cost_type %in% 'initial_raw'), aes(x = intervention, y = q50)) +
+  geom_col(aes(fill = intervention, alpha = cost_type), position = 'stack') +
+  interv_colors +
+  scale_alpha_manual(values = c(0.6, 0.9), labels = c('recurring annual cost', 'annualized initial capital investment')) +
+  scale_y_continuous(name = 'Annual cost (million $)', expand = expansion(mult = c(0, 0.05)))
+  
+# Reformat for table
+dat_costbreakdown %>%
+  ungroup %>%
+  bind_rows(dat_totalcost %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
+  mutate_if(is.numeric, round) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, ',', q95, ')')) %>%
+  select(intervention, cost_type, cost_with_quantiles) %>%
+  pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "0")) %>%
+  select(intervention, initial_raw, initial_annualized, annual, total) %>%
+  knitr::kable('pandoc')
+
+
 
 # Total impact reduced ----------------------------------------------------
 
