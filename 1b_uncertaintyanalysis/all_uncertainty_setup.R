@@ -5,6 +5,10 @@ library(readxl)
 library(zoo)
 library(reticulate)
 library(mc2d)
+library(furrr)
+
+options(mc.cores = 8) # Use all cores on a single node.
+plan(multicore)
 
 # Load the BEA code data (erroneously called NAICS) to get the codes
 bea_codes <- read_csv(file.path(fp, 'crossreference_tables/naics_crosswalk_final.csv'))

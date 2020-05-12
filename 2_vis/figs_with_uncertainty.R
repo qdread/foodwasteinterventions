@@ -38,7 +38,7 @@ dat_cost <- all_qs %>%
 # For date labeling, use annualized cost, for spoilage prevention usd annualized total cost, for cons ed, use sum of 3 components
 # for WTA use total cost annualized (names are inconsistent)
 dat_totalcost <- dat_cost %>%
-  filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('equipment', name), is.na(group) | group == 'total') %>%
+  filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('content|media', name), is.na(group) | group == 'total') %>%
   group_by(intervention) %>%
   summarize_if(is.numeric, sum)
 
@@ -86,7 +86,7 @@ dat_costbreakdown %>%
   mutate_if(is.numeric, round) %>%
   mutate(cost_with_quantiles = paste0(q50, ' (', q05, ',', q95, ')')) %>%
   select(intervention, cost_type, cost_with_quantiles) %>%
-  pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "0")) %>%
+  pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
   select(intervention, initial_raw, initial_annualized, annual, total) %>%
   knitr::kable('pandoc')
 
