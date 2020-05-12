@@ -54,6 +54,7 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
            demand_averted = baseline_demand * (1 - demand_reduction))
   
   # Multiply EEIO per-dollar results times the baseline and averted demand for each BEA code
+  eeio_packaging_averted <- eeio_packaging_averted %>% mutate(BEA_Code = toupper(substr(BEA_Code, 1, 6)))
   eeio_packaging_averted <- fruitmeatdemand2012 %>% 
     full_join(eeio_packaging_averted, by = c('BEA_389_code' = 'BEA_Code')) %>%
     mutate(baseline = impact * baseline_demand,
