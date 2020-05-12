@@ -40,24 +40,20 @@ standardized_date_labeling <- function(consumer_response_rate, proportion_confus
   datelabelingdemand <- datelabelingdemand %>%
     left_join(all_codes[,c(1,3)], by = c('BEA_389_code' = 'sector_code_uppercase'))
   
-  # Run EEIO for the baseline, averted mean, averted lower, and averted upper values
+  # Extract precalculated EEIO for the baseline, averted mean, averted lower, and averted upper values
   # For now, just sum everything up across food types (not that important which is which)
   
-  datelabeling_baseline_eeio <- with(datelabelingdemand, eeio_lcia('USEEIO2012', as.list(baseline_demand), as.list(sector_desc_drc)))
-  datelabeling_averted_eeio <- with(datelabelingdemand, eeio_lcia('USEEIO2012', as.list(averted_demand), as.list(sector_desc_drc)))
-  
-  # Convert EEIO output into a single data frame
-  
-  eeio_datelabeling <- map2_dfr(list(datelabeling_baseline_eeio, datelabeling_averted_eeio),
-                                c('impact_baseline', 'impact_averted'),
-                                ~ data.frame(category = row.names(.x),
-                                             scenario = .y,
-                                             impact = .x[,'Total']))
-  
+  eeio_datelabeling <- eeio_df %>%
+    filter(sector_desc_drc %in% datelabelingdemand$sector_desc_drc) %>%
+    full_join(datelabelingdemand) %>%
+    mutate(impact_baseline = impact * baseline_demand,
+           impact_averted = impact * averted_demand) %>%
+    group_by(category) %>%
+    summarize(impact_baseline = sum(impact_baseline),
+              impact_averted = sum(impact_averted))
   
   # Combine results into data frame.
   eeio_datelabeling_result <- eeio_datelabeling %>% 
-    pivot_wider(names_from = scenario, values_from = impact) %>%
     mutate(net_averted_coordination = impact_averted,
            net_percent_averted_coordination = 100 * net_averted_coordination / impact_baseline,
            cost_per_reduction_coordination = datelabel_costs_coord_annual / net_averted_coordination)

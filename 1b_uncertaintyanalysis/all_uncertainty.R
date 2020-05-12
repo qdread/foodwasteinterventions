@@ -4,7 +4,7 @@
 # Modified 5 May 2020: implement new approach to calculating packaging costs, also modularize script
 # Modified 29 April 2020: parallelize with furrr
 
-n_iter <- 1000 # Number of MC iterations in uncertainty analysis
+n_iter <- 10000 # Number of MC iterations in uncertainty analysis (can now be a lot more since I sped up the code by taking EEIO out of the loop)
 
 # Load data for all interventions -----------------------------------------
 
@@ -34,7 +34,7 @@ datelabel_par_draws <- map_dfr(1:n_iter, function(i) {
   vals %>% setNames(datelabel_pars$Parameter) %>% t %>% as.data.frame
 })
 
-# Do the actual model fitting 1000 times
+# Do the actual model run 10000 times
 datelabel_results <- future_pmap(datelabel_par_draws, standardized_date_labeling)
 
 save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
@@ -75,13 +75,12 @@ fruitmeat_wtdavg_rates <- lafa_df %>%
             avoidable_consumer_loss = weighted.mean(avoidable_consumer_loss, consumer_weight))
 
 ##### offsetting impacts for the plastic packaging materials code
-# do this as per $1 spent on each category so it can be multiplied by the different costs.
+# do this as per $1 spent on each category so it can be multiplied by the different costs. (extract from precalculated eeio)
 
 plastic_packaging_code <- "326110/plastic bags, films, and sheets/us"
-eeio_packaging_offsetting_impacts <- eeio_lcia('USEEIO2012', list(1), list(plastic_packaging_code))
-eeio_packaging_offsetting_impacts <- data.frame(category = row.names(eeio_packaging_offsetting_impacts),
-                                                impact = eeio_packaging_offsetting_impacts$Total)
-
+eeio_packaging_offsetting_impacts <- eeio_df %>%
+  filter(sector_desc_drc %in% plastic_packaging_code) %>%
+  select(category, impact)
 
 # Sum up packaging costs and proportions by the appropriate categories
 packaging_proportion_by_BEA <- packaging_costs_proportions %>%
@@ -99,13 +98,12 @@ packaging_pert_pars <- pmap_dfr(packaging_costs_by_food, function(unit_cost_q05,
 # The initial costs per unit for each food type.
 packaging_costs_by_food <- cbind(packaging_costs_by_food, packaging_pert_pars)
 
-#### run eeio for $1 per food type so it can be multiplied later by the costs within each iteration
+#### get pre-calculated eeio for $1 per food type so it can be multiplied later by the costs within each iteration
 packaging_food_eeio_codes <- with(all_codes, sector_desc_drc[match(packaging_proportion_by_BEA$BEA_Code, sector_code_uppercase)])
 
-eeio_packaging_averted <- map(packaging_food_eeio_codes, ~ eeio_lcia('USEEIO2012', list(1), list(.)))
-
-eeio_packaging_averted <- map2_dfr(packaging_proportion_by_BEA$BEA_Code, eeio_packaging_averted, 
-                                   ~ data.frame(BEA_Code = .x, category = row.names(.y), impact = .y$Total))
+eeio_packaging_averted <- eeio_df %>%
+  filter(sector_desc_drc %in% packaging_food_eeio_codes) %>%
+  rename(BEA_Code = sector_desc_drc)
 
 # Set up PERT distributions for each parameter and draw from them.
 packaging_pars <- intervention_params %>%
@@ -122,7 +120,7 @@ packaging_par_draws_byfood <- map_dfr(1:n_iter, function(i) {
   vals %>% setNames(paste0('unitcost_', packaging_costs_by_food$food)) %>% t %>% as.data.frame
 })
 
-# Do the actual model fitting 1000 times
+# Do the actual model run 10000 times
 packaging_results <- future_pmap(cbind(packaging_par_draws, packaging_par_draws_byfood), spoilage_prevention_packaging)
 
 save(packaging_results, file = file.path(fp_out, 'packaging_uncertainty.RData'))
@@ -144,12 +142,9 @@ media_codes <- c('541400', '541800', '511120', '515100', '519130')
 
 media_codes_long <- all_codes$sector_desc_drc[match(media_codes, all_codes$sector_code_uppercase)]
 
-consumer_ed_offset_eeio <- map(media_codes_long, ~ eeio_lcia('USEEIO2012', list(1), list(.))) # offset per dollar on each media industry
-
-consumer_ed_offset_eeio <- map2_dfr(consumer_ed_offset_eeio, media_codes_long, ~ data.frame(BEA_code = .y,
-                                                                                            category = row.names(.x),
-                                                                                            impact = .x[,'Total']))
-
+consumer_ed_offset_eeio <- eeio_df %>%
+  filter(sector_desc_drc %in% media_codes_long) %>%
+  rename(BEA_code = sector_desc_drc)
 
 # Set up PERT distributions for each parameter and draw from them.
 consumered_pars <- intervention_params %>%
@@ -161,7 +156,7 @@ consumered_par_draws <- map_dfr(1:n_iter, function(i) {
   vals %>% setNames(consumered_pars$Parameter) %>% t %>% as.data.frame
 })
 
-# Do the actual model fitting 1000 times
+# Do the actual model run 10000 times
 consumered_results <- future_pmap(consumered_par_draws, consumer_education_campaigns)
 
 save(consumered_results, file = file.path(fp_out, 'consumered_uncertainty.RData'))
@@ -413,13 +408,11 @@ industries_offset <- c('334111', '33411A', '33399A')
 # Find the full names of the codes for the offsetting industries
 industries_offset_codes <- all_codes$sector_desc_drc[match(industries_offset, all_codes$sector_code_uppercase)]
 
-# Run EEIO for the industries
-eeio_offsets_wta <- map(industries_offset_codes, ~ eeio_lcia('USEEIO2012', list(1), list(.)))
-
-eeio_offsets_wta <- data.frame(category = row.names(eeio_offsets_wta[[1]]),
-                               computers = eeio_offsets_wta[[1]]$Total,
-                               peripherals = eeio_offsets_wta[[2]]$Total,
-                               scales = eeio_offsets_wta[[3]]$Total)
+# Extract EEIO results for the information
+eeio_offsets_wta <- eeio_df %>%
+  filter(sector_desc_drc %in% industries_offset_codes) %>%
+  mutate(sector_desc_drc = c('computers', 'peripherals', 'scales')[match(sector_desc_drc, industries_offset_codes)]) %>%
+  pivot_wider(names_from = sector_desc_drc, values_from = impact)
 
 # Set up PERT distributions for each parameter and draw from them.
 wta_pars <- intervention_params %>%
@@ -435,7 +428,7 @@ wta_par_draws <- map_dfr(1:n_iter, function(i) {
   vals %>% setNames(wta_pars$Parameter) %>% t %>% as.data.frame
 })
 
-# Do the actual model fitting 1000 times
+# Do the actual model run 10000 times
 wta_results <- future_pmap(wta_par_draws, waste_tracking_analytics)
 
 save(wta_results, file = file.path(fp_out, 'wta_uncertainty.RData'))

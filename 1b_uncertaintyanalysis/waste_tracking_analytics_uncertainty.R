@@ -104,30 +104,50 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
   
   # Run EEIO ----------------------------------------------------------------
   
+  # (Edited 12 May: extract precalculated EEIO results instead)
   # Simply enough, just run it on the difference in the two rowSums for pre and post intervention
   # This represents final operating costs of the industries, as if it were final consumer demand
   
   # Match row names of food_U with longer codes that eeio_lcia() will recognize
-  demand_codes <- as.list(all_codes$sector_desc_drc[match(rownames(food_U), all_codes$sector_code_uppercase)])
+  demand_codes <- all_codes$sector_desc_drc[match(rownames(food_U), all_codes$sector_code_uppercase)]
   
   # The model is already built so we don't need to build it again. 
   # All we need to do is match the demand vector 6 digit codes with the codes that include the full names
   # then run eeio_lcia on it.
   # Do for each of the 3 groups separately
   
-  eeio_wta_baseline_bygroup <- map(food_U_bygroup, ~ eeio_lcia('USEEIO2012', as.list(. * 1e6), demand_codes)) 
-  eeio_wta_averted_bygroup <- map(food_U_bygroup - food_U_bygroup_postintervention, ~ eeio_lcia('USEEIO2012', as.list(. * 1e6), demand_codes)) 
+  eeio_wta <- eeio_df %>%
+    filter(sector_desc_drc %in% demand_codes) %>%
+    left_join(all_codes)
   
-  # Combine into a data frame
-  eeio_dat_bygroup <- data.frame(group = c('full-service restaurants',
-                                           'limited-service restaurants, mobile foodservice, and bars',
-                                           'contracted foodservice operations')) %>%
-    mutate(category = map(eeio_wta_baseline_bygroup, row.names),
-           baseline = map(eeio_wta_baseline_bygroup, 1),
-           impact_averted = map(eeio_wta_averted_bygroup, 1)) %>%
-    unnest(cols = c(category, baseline, impact_averted))
+  group_vars <- vars(full_service_restaurants, limited_mobile_and_bars, contracted_foodservice)
   
+  eeio_wta_baseline_bygroup <- food_U_bygroup %>%
+    mutate(sector_desc_drc = demand_codes) %>%
+    full_join(eeio_wta) %>%
+    mutate_at(group_vars, ~ . * impact * 1e6) %>%
+    group_by(category) %>%
+    summarize_at(group_vars, sum) %>%
+    mutate(scenario = 'baseline') %>%
+    select(category, scenario, full_service_restaurants, limited_mobile_and_bars, contracted_foodservice)
   
+  eeio_wta_averted_bygroup <- (food_U_bygroup - food_U_bygroup_postintervention) %>%
+    mutate(sector_desc_drc = demand_codes) %>%
+    full_join(eeio_wta) %>%
+    mutate_at(group_vars, ~ . * impact * 1e6) %>%
+    group_by(category) %>%
+    summarize_at(group_vars, sum) %>%
+    mutate(scenario = 'impact_averted') %>%
+    select(category, scenario, full_service_restaurants, limited_mobile_and_bars, contracted_foodservice)
+  
+  eeio_dat_bygroup <- bind_rows(eeio_wta_baseline_bygroup, eeio_wta_averted_bygroup) %>%
+    pivot_longer(-c(category, scenario), names_to = 'group') %>%
+    pivot_wider(names_from = scenario, values_from = value) %>%
+    select(group, category, baseline, impact_averted) %>%
+    mutate(group = c('contracted foodservice operations',
+                     'full-service restaurants',
+                     'limited-service restaurants, mobile foodservice, and bars')[as.numeric(factor(group))])
+
   # Deduct offsetting impacts from benefit ----------------------------------
   
   equipment_cost_bygroup <- establishments_implementing_total %>%

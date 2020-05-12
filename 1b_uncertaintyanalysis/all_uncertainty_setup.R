@@ -5,10 +5,6 @@ library(readxl)
 library(zoo)
 library(reticulate)
 library(mc2d)
-library(furrr)
-
-options(mc.cores = 8) # Use all cores on a single node.
-plan(multicore)
 
 # Load the BEA code data (erroneously called NAICS) to get the codes
 bea_codes <- read_csv(file.path(fp, 'crossreference_tables/naics_crosswalk_final.csv'))
@@ -50,15 +46,14 @@ qfahpd2 <- read_csv(file.path(fp, 'raw_data/USDA/QFAHPD/tidy_data/qfahpd2.csv'))
 # Parameters for the interventions
 intervention_params <- read_csv(file.path(fp, 'scenario_inputdata/intervention_parameters.csv'))
 
+# Read pre-calculated EEIO
+eeio_df <- read_csv(file.path(fp_out, 'eeio_all_industries.csv'))
+
 # Annuity function as implemented in excel, f and t are zero.
 pmt <- function(p, r, n, f, t) (p * r * (1+r)^n  - f) / (((1+r)^n - 1) * (1 + r * t))
 
 # Function to calculate demand change given baseline waste rate, waste reduction rate, and proportion of demand that is food
 demand_change_fn <- function(W0, r, p) p * ((1 - W0) / (1 - (1 - r) * W0) - 1) + 1
-
-# Source EEIO python function
-if (!is_local) use_python('/usr/bin/python3')
-source_python(file.path(fp_github, 'fwe/USEEIO/eeio_lcia.py'))
 
 # Source PERT function
 source(file.path(fp_github, 'foodwasteinterventions/get_pert.R'))

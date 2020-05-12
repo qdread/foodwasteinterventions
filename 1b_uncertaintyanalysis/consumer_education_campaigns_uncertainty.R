@@ -37,17 +37,16 @@ consumer_education_campaigns <- function(consumer_ed_waste_reduction, cost_conte
   consumer_ed_demand <- consumer_ed_demand %>%
     left_join(all_codes[,c(1,3)], by = c('BEA_389_code' = 'sector_code_uppercase'))
   
-  # Run EEIO for the baseline and averted demand values
-  consumer_ed_baseline_eeio <- with(consumer_ed_demand, eeio_lcia('USEEIO2012', as.list(baseline_demand), as.list(sector_desc_drc)))
-  consumer_ed_averted_eeio <- with(consumer_ed_demand, eeio_lcia('USEEIO2012', as.list(averted_demand), as.list(sector_desc_drc)))
+  # Extract precalculated EEIO for the baseline and averted demand values
+  eeio_consumer_ed <- eeio_df %>%
+    filter(sector_desc_drc %in% consumer_ed_demand$sector_desc_drc) %>%
+    full_join(consumer_ed_demand) %>%
+    mutate(impact_baseline = impact * baseline_demand,
+           impact_averted = impact * averted_demand) %>%
+    group_by(category) %>%
+    summarize(impact_baseline = sum(impact_baseline),
+              impact_averted = sum(impact_averted))
 
-  # Convert EEIO output into a single data frame
-  eeio_consumer_ed <- map2_dfr(list(consumer_ed_baseline_eeio, consumer_ed_averted_eeio),
-                               c('impact_baseline', 'impact_averted'),
-                               ~ data.frame(category = row.names(.x),
-                                            scenario = .y,
-                                            impact = .x[,'Total']))
-  
    # Use proportions of each type of advertising to get the media impacts
   consumer_ed_impacts_bytype <- consumer_ed_offset_eeio %>%
     pivot_wider(names_from = BEA_code, values_from = impact) %>%
@@ -63,7 +62,6 @@ consumer_education_campaigns <- function(consumer_ed_waste_reduction, cost_conte
   
   # Combine impact and offset to get net impact reduced
   eeio_consumer_ed_result <- eeio_consumer_ed %>% 
-    pivot_wider(names_from = scenario, values_from = impact) %>%
     left_join(consumer_ed_offset_df) %>%
     mutate(net_averted = impact_averted - offset,
            net_percent_averted = 100 * net_averted / impact_baseline,
