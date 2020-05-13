@@ -64,19 +64,30 @@ write_csv(costmodel_bycosttype, file.path(fp, 'scenario_inputdata/intervention_c
 write_csv(costmodel_allcosts, file.path(fp, 'scenario_inputdata/intervention_costs_04may2020', 'costmodel_allcosts.csv'))
 
 
-# Summary stats by product ------------------------------------------------
-
-costmodel_byproduct_summary <- costmodel_byproduct %>%
-  group_by(company_size, product_category, product_subcategory, NAICS, NAICS_description) %>%
-  summarize_if(is.numeric, sum) %>%
-  filter(company_size %in% 'Total') %>%
-  ungroup %>%
-  mutate(food = c('misc', 'misc', 'misc', 'misc', 'fruit', 'fruit', 'vegetables', 'vegetables', 'vegetables', 'vegetables', 'meat', 'poultry', 'seafood', 'vegetables'))
-
-write_csv(costmodel_byproduct_summary, file.path(fp, 'scenario_inputdata/packaging_costs_byproduct.csv'))
-
 # 311421, 311911: subsets of NAICS code, representing misc dips and such
 # 311991, 311999: refrigerated meals and sandwiches, subset of NAICS code
 # 111339: fruit - use the refed proportions.
 # 111219: veggies: use the refed proportions
-# 
+
+
+# Stats by product including relevant steps -------------------------------
+
+# The only steps we are considering are steps 4-6 (related to packaging)
+
+costmodel_byproduct_summary <- costmodel_allcosts %>%
+  filter(grepl('4|5|6', reformulation_activity), company_size %in% 'Total', cost_type %in% 'Total Costs') %>%
+  group_by(product_category, product_subcategory, NAICS, NAICS_description) %>%
+  summarize_if(is.numeric, sum) %>%
+  ungroup %>%
+  mutate(food = c('misc', 'misc', 'misc', 'misc', 'fruit', 'fruit', 'vegetables', 'vegetables', 'vegetables', 'vegetables', 'meat', 'poultry', 'seafood', 'vegetables'))
+
+# Also use costmodel_byproduct to get number of units
+units_byproduct <- costmodel_byproduct %>%
+  filter(company_size %in% 'Total') %>%
+  group_by(product_category, product_subcategory, NAICS, NAICS_description) %>%
+  summarize_if(is.numeric, sum) %>%
+  select(Units)
+
+costmodel_byproduct_summary %>%
+  left_join(units_byproduct) %>%
+  write_csv(file.path(fp, 'scenario_inputdata/packaging_costs_byproduct.csv'))

@@ -41,7 +41,9 @@ save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
 
 # Spoilage prevention packaging -------------------------------------------
 
-packaging_costs_proportions <- read_csv(file.path(fp, 'scenario_inputdata/packaging_costs_proportions_byproduct.csv'))
+# Edit 13 May: change (simplify) the way the number of units are summed up by broader food category
+
+packaging_costs <- read_csv(file.path(fp, 'scenario_inputdata/packaging_costs_byproduct.csv'))
 
 ##########
 # LAFA rate conversion for the fruit and meat codes in LAFA.
@@ -82,15 +84,11 @@ eeio_packaging_offsetting_impacts <- eeio_df %>%
   filter(sector_desc_drc %in% plastic_packaging_code) %>%
   select(category, impact)
 
-# Sum up packaging costs and proportions by the appropriate categories
-packaging_proportion_by_BEA <- packaging_costs_proportions %>%
-  group_by(BEA_Code) %>%
-  summarize(proportion = min(1, sum(proportion_final)))
-
 # Convert percentiles to PERT parameters for packaging costs for each food item
-packaging_costs_by_food <- packaging_costs_proportions %>%
+packaging_costs_by_food <- packaging_costs %>%
+  mutate(food = if_else(food == 'misc', 'meat', food)) %>% # assign the misc groups to meat
   group_by(food) %>%
-  summarize_at(vars(Units:`95th Percentile`), sum) %>%
+  summarize_at(vars(Units, `5th Percentile`, Mean, `95th Percentile`), sum) %>%
   mutate(unit_cost_q05 = `5th Percentile`/Units, unit_cost_mean = Mean/Units, unit_cost_q95 = `95th Percentile`/Units)
 
 packaging_pert_pars <- pmap_dfr(packaging_costs_by_food, function(unit_cost_q05, unit_cost_mean, unit_cost_q95, ...) get_pert_bounds(p = c(0.05, 0.95), q = c(unit_cost_q05, unit_cost_q95), mode = unit_cost_mean))
@@ -99,7 +97,7 @@ packaging_pert_pars <- pmap_dfr(packaging_costs_by_food, function(unit_cost_q05,
 packaging_costs_by_food <- cbind(packaging_costs_by_food, packaging_pert_pars)
 
 #### get pre-calculated eeio for $1 per food type so it can be multiplied later by the costs within each iteration
-packaging_food_eeio_codes <- with(all_codes, sector_desc_drc[match(packaging_proportion_by_BEA$BEA_Code, sector_code_uppercase)])
+packaging_food_eeio_codes <- with(all_codes, sector_desc_drc[match(c('111200', '111300', '31161A', '311615', '311700'), sector_code_uppercase)])
 
 eeio_packaging_averted <- eeio_df %>%
   filter(sector_desc_drc %in% packaging_food_eeio_codes) %>%

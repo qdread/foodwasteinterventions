@@ -3,13 +3,13 @@
 
 # Modified 05 May 2020: implement new cost approach
 
-spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, p_seafood, cost_per_package, annuity_years, annuity_rate, unitcost_fruit, unitcost_meat, unitcost_misc, unitcost_poultry, unitcost_seafood, unitcost_vegetables) {
+spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, p_seafood, cost_per_package, annuity_years, annuity_rate, unitcost_fruit, unitcost_meat, unitcost_poultry, unitcost_seafood, unitcost_vegetables) {
   
-  param_table <- data.frame(food = c('fruit','vegetables','meat','poultry','seafood','misc'),
-                            wr_retail = rep(c(wr_retail_fv, wr_retail_meat), c(2,4)),
-                            wr_household = rep(c(wr_household_fv, wr_household_meat), c(2,4)),
-                            proportion_affected = c(p_fruit, p_veg, rep(p_meat, 4)),
-                            unitcost = c(unitcost_fruit, unitcost_vegetables, unitcost_meat, unitcost_poultry, unitcost_seafood, unitcost_misc))
+  param_table <- data.frame(food = c('fruit','vegetables','meat','poultry','seafood'),
+                            wr_retail = rep(c(wr_retail_fv, wr_retail_meat), c(2,3)),
+                            wr_household = rep(c(wr_household_fv, wr_household_meat), c(2,3)),
+                            proportion_affected = c(p_fruit, p_veg, rep(p_meat, 3)),
+                            unitcost = c(unitcost_fruit, unitcost_vegetables, unitcost_meat, unitcost_poultry, unitcost_seafood))
   
   # Multiply the units sold for each food type by the proportion affected by the intervention
   param_table <- packaging_costs_by_food %>%
@@ -27,9 +27,9 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   packaging_annual_cost <- material_cost + annualized_initial_cost
   
   ### Get the baseline consumer demand for fruit, vegetables, red meat, poultry, seafood, and misc. meat-containing products in 2012.
-  fruitmeatdemand2012 <- packaging_proportion_by_BEA %>%
-    rename(BEA_389_code = BEA_Code) %>%
-    left_join(finaldemand2012)
+  fruitmeat_bea_codes <- c('111200', '111300', '31161A', '311615', '311700')
+  fruitmeatdemand2012 <- finaldemand2012 %>%
+    filter(BEA_389_code %in% fruitmeat_bea_codes)
   
   # Recreate packaging reduction rate data frame
   packaging_reduction_rates <- param_table %>% select(food, wr_retail, wr_household, proportion_affected) %>%
@@ -44,10 +44,10 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
   # and reduction rates of retail and household demand (lower and upper bounds)
   # from this get the averted demand after the intervention for each food
   fruitmeatdemand2012 <- fruitmeatdemand2012 %>%
-    mutate(food = c('vegetables','fruit','misc','poultry','meat','seafood','misc','misc'), group_final = c('Fresh vegetables', 'Fresh fruit', 'Red meat', 'Poultry', 'Red meat', 'Total Fresh and Frozen Fish', 'Red meat', 'Red meat')) %>%
+    mutate(food = c('vegetables','fruit','poultry','meat','seafood'), group_final = c('Fresh vegetables', 'Fresh fruit', 'Poultry', 'Red meat', 'Total Fresh and Frozen Fish')) %>%
     left_join(fruitmeat_wtdavg_rates) %>%
     left_join(packaging_reduction_rates_wide) %>%
-    mutate(baseline_demand = `2012_US_Consumption` * proportion,
+    mutate(baseline_demand = `2012_US_Consumption`, # Now uses all baseline demand from the five categories.
            retail_reduction = demand_change_fn(W0 = retail_loss/100, r = waste_reduction_retail, p = proportion_affected_retail),
            household_reduction = demand_change_fn(W0 = avoidable_consumer_loss/100, r = waste_reduction_household, p = proportion_affected_household),
            demand_reduction = retail_reduction * household_reduction,
