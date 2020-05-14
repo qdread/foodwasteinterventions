@@ -48,3 +48,6 @@ slurm*.out
 # Compiled Stan files
 *.rds
 *.rda
+
+# rendered pdf in Rmd folder
+Rmd/*.pdf

@@ -1,0 +1,118 @@
+---
+title: "Intervention results"
+author: "Quentin D. Read"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Abbreviations used in document
+
+* CEC: consumer education campaigns
+* SDL: standardized date labeling
+* SPP: spoilage prevention packaging
+* WTA: waste tracking and analytics
+
+# Description
+
+The following are the figures that could appear in the main-text results and supplements for the intervention manuscript in preparation for *Journal of Cleaner Production*, including draft captions.
+
+I prepared two alternative versions of all the figures that show results for the WTA intervention. One shows only the portion of the result representing contracted foodservice operations, and the other shows all three industries combined (contracted foodservice, full-service restaurants, and limited-service restaurants, i.e. fast food). This is because the cost and cost-effectiveness of applying the intervention across all three industry groups is very variable. Due to the smaller size of the average establishment in the two restaurant industries compared to contracted institutional operations, and the much higher number of restaurants, the cost of implementation is much higher for the two restaurant groups. Excluding them seems to make the WTA intervention compare more favorably to the other interventions. We will have to consider which of the two alternatives we present.
+
+The results of the Monte Carlo uncertainty analysis are shown in the same way on all figures. The point estimate is surrounded by a thick error bar representing the central 90% of the uncertainty distribution, and a thin error bar representing the central 95% of the distribution.
+
+# Main-text figures
+
+## Total cost
+
+Figures 1 and 2 show the total annual cost of implementation for each intervention, summing up recurring annual costs and annualized initial costs. Figure 1 shows the total cost for WTA, while Figure 2 shows only the contracted institutional foodservice operations portion of the WTA cost.
+
+CEC, SDL, and SPP are in the same range of annual cost, while WTA implemented across all three industry groups costs several times more than the other three interventions (Figure 1). Implementing WTA in institutional foodservice only is more comparable in cost to the other three interventions (Figure 2).
+
+![Total annual cost of implementation, showing total WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\total_cost_v1.png){ width=50% }
+
+![Total annual cost of implementation, showing only institutional WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\total_cost_v2.png){ width=50% }
+
+## Cost breakdown
+
+Table 1 includes the information in Figure 1 with additional detail: it is split into the annually recurring and annualized initial components.
+
+|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost      |Total (annualized + annual) cost |
+|:-----------------------------|:--------------------|:-----------------------|:----------------|:--------------------------------|
+|consumer education campaigns  |--                   |--                      |364 (203,559)    |364 (203,559)                    |
+|spoilage prevention packaging |508 (334,699)        |110 (65,177)            |112 (88,137)     |222 (170,295)                    |
+|standardized date labeling    |554 (251,946)        |119 (52,230)            |--               |119 (52,230)                     |
+|waste tracking and analytics  |742 (545,941)        |160 (103,247)           |3082 (2234,3974) |3242 (2336,4221)                 |         
+We model all the costs for consumer education campaigns as being annually recurring &mdash; new content is developed annually as well as new media time being bought. Spoilage prevention packaging includes the initial costs we estimated through the reformulation cost model, as well as the recurring annual cost of the additional packaging material required per unit of packaged food. Standardized date labeling is only modeled as having an up-front cost with no recurring costs. Waste tracking and analytics has a modest up-front cost and a high annual cost, most of which goes to paying additional wages for the time required to train employees and track waste at every transaction. (The cost is especially high when considering all three WTA industries, as in Figure 5.)
+
+Table 2 is an alternative version of Table 1 with only the contracted institutional component of WTA.
+
+|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost   |Total (annualized + annual) cost |
+|:-----------------------------|:--------------------|:-----------------------|:-------------|:--------------------------------|
+|consumer education campaigns  |--                   |--                      |364 (203,559) |364 (203,559)                    |
+|spoilage prevention packaging |508 (334,699)        |110 (65,177)            |112 (88,137)  |222 (170,295)                    |
+|standardized date labeling    |554 (251,946)        |119 (52,230)            |--            |119 (52,230)                     |
+|waste tracking and analytics  |105 (77,133)         |23 (15,35)              |436 (316,562) |459 (330,597)                    |
+
+\newpage
+
+## Net environmental impact averted
+
+Figures 3 (total WTA) and 4 (institutional foodservice only for WTA) show the net environmental impact averted (gross impact averted from avoiding food waste - added impact from the intervention itself) for each of the four interventions. SDL is a smaller-scale intervention than the other three, but all are roughly in the same neighborhood.
+
+![Net impact averted, showing combined WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\total_impact_averted_v1.png){ width=70% }
+
+![Net impact averted, showing only institutional WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\total_impact_averted_v2.png){ width=70% }
+
+## Cost per unit reduction
+
+Figures 5 and 6 show the cost per unit reduction of each environmental impact category; Figure 5 shows the average cost across the three industries for WTA, and Figure 6 shows only the contracted institutional foodservice portion. Note that the costs are considered separately for each environmental good. For example if the intervention costs \$10 million to implement and averts 100 million kg of GHG emissions and 10 million square meters of land use, it would be shown as costing \$0.10 per kg of GHG emissions averted, and \$1 per square meter of land. Later, it would be useful to find a way to combine all the relevant environmental goods to get an overall cost-effectiveness for each intervention. However, this may be problematic because of the issues around environmental valuation.
+
+CEC, SPP, and SDL all have fairly similar costs per unit reduction. WTA is more expensive if considering all three industry groups (Figure 5) but is roughly comparable to the other three if considering only contracted institutional foodservice (Figure 6).
+
+![Cost per unit reduction, showing combined WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\cost_per_unit_reduction_v1.png){ width=70% }
+
+![Cost per unit reduction, showing only institutional WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\cost_per_unit_reduction_v2.png){ width=70% }
+
+## Cost-effectiveness
+
+Figures 7 and 8 are simply the reciprocal of Figures 5 and 6. Here, the units are impact reduced per $1 spent on the intervention.
+
+![Cost-effectiveness, showing combined WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\cost_effectiveness_v1.png){ width=70% }
+
+![Cost-effectiveness, showing only institutional WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\cost_effectiveness_v2.png){ width=70% }
+
+\newpage
+
+# Supplemental Figures
+
+It is probably not necessary to include the breakdown of packaging results by food type, and the breakdown of waste tracking results by industry group, in the main text. So the following figures will likely be in the supplemental section.
+
+## Breakdown of packaging results by food type
+
+Note that the results here for total cost (Figure 9), total impact averted (Figure 10), and cost per unit reduction (Figure 11) and its reciprocal cost-effectiveness (Figure 12), are based on the numbers of units for each food type we input to the reformulation cost model. The food types are aggregated at the level of BEA codes from the input-output table: fruit, vegetables, meat, poultry, and seafood.
+
+![Total cost of implementing SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_total_cost_by_food_type.png){ width=50% }
+
+![Net environmental impact averted by SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_impact_averted_by_food_type.png){ width=70% }
+
+![Cost per unit impact reduction for SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_cost_per_reduction_by_food_type.png){ width=70% }
+
+![Cost-effectiveness for SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_cost_effectiveness_by_food_type.png){ width=70% }
+
+\newpage
+
+## Breakdown of waste tracking results by industry group
+
+Figures 13-16 show the total cost of implementation, the impact averted, the cost per unit reduction, and the cost-effectiveness for WTA for the three industry groups (contracted institutional foodservice, limited-service restaurants, and full-service restaurants). It is clear from Figure 13 that the total costs vary due to the different sizes of the industries, but also that the vast majority of the costs is to pay employee wages. Contracted foodservice has both the lowest overall cost and highest overall impact averted, leading to superior cost-effectiveness compared to the other two.
+
+![Total cost of implementing WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_total_cost_by_industry.png){ width=50% }
+
+![Net environmental impact averted by WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_impact_averted_by_industry.png){ width=70% }
+
+![Cost per unit impact reduction for WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_cost_per_reduction_by_industry.png){ width=70% }
+
+![Cost-effectiveness for WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_cost_effectiveness_by_industry.png){ width=70% }
