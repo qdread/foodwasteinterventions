@@ -89,7 +89,7 @@ Figures 7 and 8 are simply the reciprocal of Figures 5 and 6. Here, the units ar
 
 # Supplemental Figures
 
-It is probably not necessary to include the breakdown of packaging results by food type, and the breakdown of waste tracking results by industry group, in the main text. So the following figures will likely be in the supplemental section.
+It is probably not necessary to include the breakdown of packaging results by food type, the breakdown of waste tracking results by industry group, and the comparison of our results with ReFED's results, in the main text. So the following figures will likely be in the supplemental section.
 
 ## Breakdown of packaging results by food type
 
@@ -116,3 +116,19 @@ Figures 13-16 show the total cost of implementation, the impact averted, the cos
 ![Cost per unit impact reduction for WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_cost_per_reduction_by_industry.png){ width=70% }
 
 ![Cost-effectiveness for WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_cost_effectiveness_by_industry.png){ width=70% }
+
+## Comparison of our results with ReFED's results
+
+ReFED's analysis (2016) includes total cost of each intervention and the total amount of greenhouse gas emissions and water use averted by the intervention, allowing an estimate of cost-effectiveness of greenhouse gas and water use reduction. Figures 17-21 show comparisons of our results with ReFED's results. In all figures, hollow circles represent the ReFED estimate. 
+
+Figure 17 shows the comparison between our total cost estimate and ReFED's. ReFED uniformly estimates that interventions will be much cheaper compared to our estimates. This is likely due to ReFED incompletely considering costs such as paying additional wages to employees that are spending additional time implementing the intervention (especially apparent in the case of WTA). Figure 18 shows the total amount of GHG estimated to be reduced by the interventions. Although ReFED's cost estimates are overly optimistic, their estimates for potential GHG reduction are lower in the cases of WTA and WPP, and fairly closely in agreement with ours in the cases of CEC and SDL. Figure 19 shows the difference in estimates of potential water use reduction; in this case ReFED's estiamtes disagree significantly with ours, being higher in the case of CEC, SDL, and WTA, but lower in the case of SPP. This may be due to differing methodology. The resulting cost-effectiveness numbers for GHG (Figure 20) and water (Figure 21) show similar discrepancies.
+
+![Comparison of total cost estimates between our work and ReFED 2016](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\four_interventions_vsrefed_total_annual_cost.png){ width=50% }
+
+![Comparison of potential GHG emission reduction between our work and ReFED 2016](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\four_interventions_vsrefed_ghg_reduced.png){ width=50% }
+
+![Comparison of potential water use reduction between our work and ReFED 2016](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\four_interventions_vsrefed_water_reduced.png){ width=50% }
+
+![Comparison of estimated GHG cost-effectiveness between our work and ReFED 2016](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\four_interventions_vsrefed_ghg_costeff.png){ width=50% }
+
+![Comparison of estimated water cost-effectiveness between our work and ReFED 2016](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\four_interventions_vsrefed_ghg_reduced.png){ width=50% }
