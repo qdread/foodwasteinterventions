@@ -1,6 +1,7 @@
 # Spoilage prevention packaging uncertainty analysis function
 # QDR / foodwasteinterventions / 24 April 2020
 
+# Modified 20 May 2020: no longer incorporate proportion affected into the unit cost.
 # Modified 05 May 2020: implement new cost approach
 
 spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, p_seafood, cost_per_package, annuity_years, annuity_rate, unitcost_fruit, unitcost_meat, unitcost_poultry, unitcost_seafood, unitcost_vegetables) {
@@ -11,10 +12,10 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
                             proportion_affected = c(p_fruit, p_veg, rep(p_meat, 3)),
                             unitcost = c(unitcost_fruit, unitcost_vegetables, unitcost_meat, unitcost_poultry, unitcost_seafood))
   
-  # Multiply the units sold for each food type by the proportion affected by the intervention
+  # Use the original number from the spreadsheet for units sold.
   param_table <- packaging_costs_by_food %>%
     left_join(param_table) %>%
-    mutate(units_affected = proportion_affected * Units,
+    mutate(units_affected = Units,
            material_cost = units_affected * cost_per_package,
            initial_cost = units_affected * unitcost,
            annualized_initial_cost = pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0),

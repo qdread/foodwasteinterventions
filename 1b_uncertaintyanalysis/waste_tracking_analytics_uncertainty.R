@@ -2,18 +2,16 @@
 # Wrapped into a function that takes parameters as arguments (to do as uncertainty)
 # QDR / foodwasteinterventions / 27 April 2020
 
+# Edit 20 May 2020: Equipment cost is a lease rate rather than an annualized cost
 # Edit 06 May 2020: Split annual cost into wage and fee components
 # Edit 29 Apr 2020: Also add some code to calculate average across the 3 industries, so a single value can be used for the main results.
 
 # In this new version, instead of using proportions of receipts, use the # of foodservice contractors as the establishments
 # But use the total amounts of food purchased by "eligible" industries, as identified by Steve, as the potential food that can be affected
 
-waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_waste, material_cost, annual_cost_wages, annual_cost_fees, p_scales, annuity_years, annuity_rate) {
+waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_waste, annual_cost_equipment_lease, annual_cost_wages, annual_cost_fees, p_scales, annuity_years, annuity_rate) {
   
   overall_waste_reduction <- proportion_kitchen_waste * wta_waste_reduction
-  
-  # Annualize the upfront material costs
-  equipment_cost <- pmt(p = material_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0)
   
   # Join baseline waste rates with waste reduction rates
   
@@ -156,7 +154,7 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
     mutate(group = c('contracted foodservice operations', 'full-service restaurants', rep('limited-service restaurants, mobile foodservice, and bars', 2))) %>%
     group_by(group) %>%
     summarize(establishments = sum(n_estab)) %>%
-    mutate(equipment_cost_annual = establishments * equipment_cost,
+    mutate(equipment_cost_annual = establishments * annual_cost_equipment_lease,
            computers = equipment_cost_annual * (1 - p_scales)/2,
            peripherals = equipment_cost_annual * (1 - p_scales)/2,
            scales = equipment_cost_annual * p_scales)
