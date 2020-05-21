@@ -40,22 +40,22 @@ CEC, SDL, and SPP are in the same range of annual cost, while WTA implemented ac
 
 Table 1 includes the information in Figure 1 with additional detail: it is split into the annually recurring and annualized initial components.
 
-|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost      |Total (annualized + annual) cost |
-|:-----------------------------|:--------------------|:-----------------------|:----------------|:--------------------------------|
-|consumer education campaigns  |--                   |--                      |364 (203,559)    |364 (203,559)                    |
-|spoilage prevention packaging |508 (334,699)        |110 (65,177)            |112 (88,137)     |222 (170,295)                    |
-|standardized date labeling    |554 (251,946)        |119 (52,230)            |--               |119 (52,230)                     |
-|waste tracking and analytics  |742 (545,941)        |160 (103,247)           |3082 (2234,3974) |3242 (2336,4221)                 |         
+|Intervention                  |Initial capital<br>cost |Annualized<br>initial cost |Annual cost       |Total (annualized +<br>annual) cost |
+|:-----------------------------|:--------------------|:-----------------------|:-----------------|:--------------------------------|
+|consumer education campaigns  |--                   |--                      |197 (143; 277)    |197 (143; 277)                   |
+|spoilage prevention packaging |1298 (856; 1770)     |280 (168; 453)          |314 (249; 379)    |596 (465; 778)                   |
+|standardized date labeling    |554 (251; 946)       |119 (52; 230)           |--                |119 (52; 230)                    |
+|waste tracking and analytics  |--                   |--                      |4147 (3231; 5195) |4147 (3231; 5195)                |         
 We model all the costs for consumer education campaigns as being annually recurring &mdash; new content is developed annually as well as new media time being bought. Spoilage prevention packaging includes the initial costs we estimated through the reformulation cost model, as well as the recurring annual cost of the additional packaging material required per unit of packaged food. Standardized date labeling is only modeled as having an up-front cost with no recurring costs. Waste tracking and analytics has a modest up-front cost and a high annual cost, most of which goes to paying additional wages for the time required to train employees and track waste at every transaction. (The cost is especially high when considering all three WTA industries, as in Figure 5.)
 
 Table 2 is an alternative version of Table 1 with only the contracted institutional component of WTA.
 
-|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost   |Total (annualized + annual) cost |
-|:-----------------------------|:--------------------|:-----------------------|:-------------|:--------------------------------|
-|consumer education campaigns  |--                   |--                      |364 (203,559) |364 (203,559)                    |
-|spoilage prevention packaging |508 (334,699)        |110 (65,177)            |112 (88,137)  |222 (170,295)                    |
-|standardized date labeling    |554 (251,946)        |119 (52,230)            |--            |119 (52,230)                     |
-|waste tracking and analytics  |105 (77,133)         |23 (15,35)              |436 (316,562) |459 (330,597)                    |
+|Intervention                  |Initial capital<br>cost |Annualized<br>initial cost |Annual cost       |Total (annualized +<br>annual) cost |
+|:-----------------------------|:--------------------|:-----------------------|:--------------|:--------------------------------|
+|consumer education campaigns  |--                   |--                      |197 (143; 277) |197 (143; 277)                   |
+|spoilage prevention packaging |1298 (856; 1770)     |280 (168; 453)          |314 (249; 379) |596 (465; 778)                   |
+|standardized date labeling    |554 (251; 946)       |119 (52; 230)           |--             |119 (52; 230)                    |
+|waste tracking and analytics  |--                   |--                      |586 (457; 735) |586 (457; 735)                   |
 
 \newpage
 

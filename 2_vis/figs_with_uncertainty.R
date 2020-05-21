@@ -32,7 +32,8 @@ dummy_dat <- data.frame(q025 = 0, q50 = 0, q975 = 0, category_labels = c('energy
 # Total cost --------------------------------------------------------------
 
 dat_cost <- all_qs %>%
-  filter(grepl('cost', name), is.na(category))
+  filter(grepl('cost', name), is.na(category)) %>%
+  filter(!grepl('equipment_cost_annual', name))
 
 # One figure for total costs, one figure for breakdowns.
 # For date labeling, use annualized cost, for spoilage prevention use annualized total cost, for cons ed, use sum of 3 components
@@ -47,7 +48,7 @@ p_totalcost <- ggplot(dat_totalcost, aes(y = q50/1e6, ymin = q025/1e6, ymax = q9
   geom_point(size = 2) +
   geom_errorbar(width = 0.05) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
-  scale_y_continuous(name = 'Total annual cost (million $)', limits = c(0, 4500), expand = c(0,0)) +
+  scale_y_continuous(name = 'Total annual cost (million $)', limits = c(0, 5500), expand = c(0,0)) +
   interv_colors +
   theme(axis.text.x = element_text(size = 6), legend.position = 'none')
 
@@ -62,7 +63,7 @@ p_totalcost_alternate <- ggplot(dat_totalcost_alternate, aes(y = q50/1e6, ymin =
   geom_point(size = 2) +
   geom_errorbar(width = 0.05) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
-  scale_y_continuous(name = 'Total annual cost (million $)', limits = c(0, 650), expand = c(0,0)) +
+  scale_y_continuous(name = 'Total annual cost (million $)', limits = c(0, 850), expand = c(0,0)) +
   interv_colors +
   theme(axis.text.x = element_text(size = 6), legend.position = 'none')
 
@@ -83,9 +84,9 @@ dat_costbreakdown <- dat_cost %>%
   filter(is.na(group) | group %in% 'total') %>%
   mutate(cost_type = case_when( intervention == 'spoilage prevention packaging' & name == 'total_annual_cost' ~ 'other',
                                 grepl('^initial', name) ~ 'initial_raw',
-                               grepl('annual_|material', name) ~ 'annual',
+                               grepl('annual_|material|_annual', name) ~ 'annual',
                               
-                               grepl('annualized|equipment_cost', name) ~ 'initial_annualized',
+                               grepl('annualized', name) ~ 'initial_annualized',
                                TRUE ~ 'other')) %>%
   filter(!cost_type %in% 'other') %>%
   group_by(intervention, cost_type) %>%
@@ -108,7 +109,7 @@ table_costbreakdown <- dat_costbreakdown %>%
   ungroup %>%
   bind_rows(dat_totalcost %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
   mutate_if(is.numeric, round) %>%
-  mutate(cost_with_quantiles = paste0(q50, ' (', q05, ',', q95, ')')) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, cost_type, cost_with_quantiles) %>%
   pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
   select(intervention, initial_raw, initial_annualized, annual, total) %>%
@@ -120,13 +121,14 @@ dat_costbreakdown_alternate <- dat_cost %>%
   filter(is.na(group) | group %in% 'contracted foodservice operations') %>%
   mutate(cost_type = case_when( intervention == 'spoilage prevention packaging' & name == 'total_annual_cost' ~ 'other',
                                 grepl('^initial', name) ~ 'initial_raw',
-                                grepl('annual_|material', name) ~ 'annual',
+                                grepl('annual_|material|_annual', name) ~ 'annual',
                                 
-                                grepl('annualized|equipment_cost', name) ~ 'initial_annualized',
+                                grepl('annualized', name) ~ 'initial_annualized',
                                 TRUE ~ 'other')) %>%
   filter(!cost_type %in% 'other') %>%
   group_by(intervention, cost_type) %>%
   summarize_if(is.numeric, ~ sum(.)/1e6)
+
 
 # Make a figure as well as a table
 p_costbreakdown_alternate <- ggplot(dat_costbreakdown_alternate %>% 
@@ -145,7 +147,7 @@ table_costbreakdown_alternate <- dat_costbreakdown_alternate %>%
   ungroup %>%
   bind_rows(dat_totalcost_alternate %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
   mutate_if(is.numeric, round) %>%
-  mutate(cost_with_quantiles = paste0(q50, ' (', q05, ',', q95, ')')) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, cost_type, cost_with_quantiles) %>%
   pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
   select(intervention, initial_raw, initial_annualized, annual, total) %>%
@@ -319,7 +321,7 @@ p_pkgtotalcostbyfood <- ggplot(pkg_totalcost_byfood %>% filter(name %in% c('annu
   geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pos_dodge) +
   geom_point(size = 2, position = pos_dodge) +
   geom_errorbar(width = 0.05, position = pos_dodge) +
-  scale_y_continuous(name = 'Cost (million $)', expand = expansion(mult = c(0, 0.05))) +
+  scale_y_continuous(name = 'Cost (million $)', limits = c(0, 255), expand = c(0,0)) +
   ggsci::scale_color_startrek(name = 'Cost type', labels = c('Annualized initial cost', 'Annual material cost')) + 
   theme_withxaxis
 
@@ -347,7 +349,7 @@ p_pkgcostbyfood <- ggplot(pkg_cost_byfood %>% filter(!food %in% 'misc'), aes(x =
   geom_segment(aes(xend = food, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
   geom_errorbar(width = 0.05) +
-  scale_y_continuous(name = 'Cost per unit reduction', expand = expansion(mult = c(0, 0.05))) +
+  scale_y_continuous(name = 'Cost per unit reduction') +
   theme_withxaxis +
   food_colors
 
@@ -377,7 +379,7 @@ p_wta_cost_byindustry <- ggplot(dat_cost_wta, aes(x = group, y = q50, ymin = q02
   geom_point(size = 2, position = pos_dodge) +
   geom_errorbar(width = 0.05, position = pos_dodge) +
   scale_y_continuous(name = 'Cost (million $)', expand = expansion(mult = c(0, 0.05))) +
-  ggsci::scale_color_jco(name = 'Cost type', labels = c('Fees', 'Wages', 'Equipment (annualized)')) +
+  ggsci::scale_color_jco(name = 'Cost type', labels = c('Equipment', 'Fees', 'Wages')) +
   theme_withxaxis +
   theme(legend.position = c(0.25, 0.8), legend.background = element_rect(fill = 'transparent'))
 
@@ -391,7 +393,7 @@ p_wta_impact_byindustry <- ggplot(dat_netaverted_wta, aes(x = group, color = gro
   facet_wrap(~ category_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = group, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
- # geom_blank(data = dummy_dat) +
+  geom_blank(data = cbind(dummy_dat, group = unique(dat_netaverted_wta$group))) +
   geom_errorbar(width = 0.05) +
   scale_y_continuous(name = 'Net impact averted', expand = expansion(mult = c(0, 0.05))) +
   ggsci::scale_color_futurama() +
@@ -407,6 +409,7 @@ p_wta_unitcost_byindustry <- ggplot(dat_unitcost_wta, aes(x = group, color = gro
   facet_wrap(~ cost_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = group, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
+  geom_blank(data = cbind(dummy_dat, cost_labels = dat_unitcost_wta$cost_labels, group = unique(dat_netaverted_wta$group))) +
   geom_errorbar(width = 0.05) +
   scale_y_continuous(name = 'Cost per unit reduction ($)', labels = scales::dollar, expand = expansion(mult = c(0, 0.05))) +
   ggsci::scale_color_futurama() +
@@ -416,6 +419,7 @@ p_wta_costeff_byindustry <- ggplot(dat_unitcost_wta, aes(x = group, color = grou
   facet_wrap(~ costeff_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = group, y = 1/q05, yend = 1/q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
+  geom_blank(data = cbind(dummy_dat, costeff_labels = dat_unitcost_wta$costeff_labels, group = unique(dat_netaverted_wta$group)), aes(ymin = q025)) +
   geom_errorbar(width = 0.05) +
   scale_y_continuous(name = 'Reduction per $1 spent',expand = expansion(mult = c(0, 0.05))) +
   ggsci::scale_color_futurama() +
