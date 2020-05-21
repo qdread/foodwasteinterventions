@@ -3,6 +3,8 @@
 
 # Using local copy of output
 
+# Modified 21 May 2020: Include net cost or savings
+
 library(tidyverse)
 library(directlabels)
 
@@ -33,7 +35,7 @@ dummy_dat <- data.frame(q025 = 0, q50 = 0, q975 = 0, category_labels = c('energy
 
 dat_cost <- all_qs %>%
   filter(grepl('cost', name), is.na(category)) %>%
-  filter(!grepl('equipment_cost_annual', name))
+  filter(!grepl('net_cost', name))
 
 # One figure for total costs, one figure for breakdowns.
 # For date labeling, use annualized cost, for spoilage prevention use annualized total cost, for cons ed, use sum of 3 components
@@ -154,6 +156,65 @@ table_costbreakdown_alternate <- dat_costbreakdown_alternate %>%
   setNames(c('Intervention', 'Initial capital cost', 'Annualized initial cost', 'Annual cost', 'Total (annualized + annual) cost')) %>%
   knitr::kable('markdown')
 
+
+# Averted food purchase and net cost --------------------------------------
+
+dat_netcost <- all_qs %>%
+  filter(name %in% c('averted_food_purchase', 'net_cost')) %>%
+  filter(is.na(group) | group == 'total') %>%
+  bind_rows(dat_totalcost %>% mutate(name = 'total_cost')) %>%
+  mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
+
+dat_netcost_alternate <- all_qs %>%
+  filter(name %in% c('averted_food_purchase', 'net_cost')) %>%
+  filter(is.na(group) | group == 'contracted foodservice operations') %>%
+  bind_rows(dat_totalcost_alternate %>% mutate(name = 'total_cost')) %>%
+  mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
+
+pd <- position_dodge(width = 0.1)
+
+p_netcost <- ggplot(dat_netcost %>% mutate_if(is.numeric, ~ ./1e6), aes(x = intervention, y = q50, color = name)) +
+  geom_hline(yintercept = 0, linetype = 'dotted') +
+  geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pd) +
+  geom_point(size = 2, position = pd) +
+  geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pd) +
+  scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
+  scale_y_continuous(name = 'Total annual cost (million $)', expand = expansion(mult = 0.01)) +
+  ggsci::scale_color_nejm(labels = c('Averted food purchases', 'Net cost or savings', 'Cost of implementation')) +
+  theme(axis.text.x = element_text(size = 6), legend.position = 'bottom', legend.title = element_blank(),
+        axis.text.y = element_text(color = c('forestgreen','black','darkred')))
+
+p_netcost_alternate <- ggplot(dat_netcost_alternate %>% mutate_if(is.numeric, ~ ./1e6), aes(x = intervention, y = q50, color = name)) +
+  geom_hline(yintercept = 0, linetype = 'dotted') +
+  geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pd) +
+  geom_point(size = 2, position = pd) +
+  geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pd) +
+  scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
+  scale_y_continuous(name = 'Total annual cost (million $)', expand = expansion(mult = 0.01)) +
+  ggsci::scale_color_nejm(labels = c('Averted food purchases', 'Net cost or savings', 'Cost of implementation')) +
+  theme(axis.text.x = element_text(size = 6), legend.position = 'bottom', legend.title = element_blank(),
+        axis.text.y = element_text(color = c(rep('forestgreen',3),'black')))
+
+# Tables with total cost, averted food purchase, and net cost or savings
+table_netcost <- dat_netcost %>%
+  mutate_if(is.numeric, ~ round(./1e6)) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
+  select(intervention, name, cost_with_quantiles) %>%
+  pivot_wider(names_from = name, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
+  select(intervention, total_cost, averted_food_purchase, net_cost) %>%
+  arrange(intervention) %>%
+  setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net cost or savings')) %>%
+  knitr::kable('markdown')
+
+table_netcost_alternate <- dat_netcost_alternate %>%
+  mutate_if(is.numeric, ~ round(./1e6)) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
+  select(intervention, name, cost_with_quantiles) %>%
+  pivot_wider(names_from = name, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
+  select(intervention, total_cost, averted_food_purchase, net_cost) %>%
+  arrange(intervention) %>%
+  setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net cost or savings')) %>%
+  knitr::kable('markdown')
 
 # Total impact reduced ----------------------------------------------------
 
@@ -325,6 +386,26 @@ p_pkgtotalcostbyfood <- ggplot(pkg_totalcost_byfood %>% filter(name %in% c('annu
   ggsci::scale_color_startrek(name = 'Cost type', labels = c('Annualized initial cost', 'Annual material cost')) + 
   theme_withxaxis
 
+# Cost, averted food purchase, and net cost or savings for each food
+pkg_netcost_byfood <- pkg_result %>% filter(name %in% c('annualized_total_cost', 'averted_food_purchase', 'net_cost')) %>%
+  group_by(food, name) %>%
+  slice(1) %>%
+  ungroup %>%
+  select(-category) %>%
+  mutate_if(is.numeric, ~ ./1e6) %>%
+  mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
+
+p_pkgnetcostbyfood <- ggplot(pkg_netcost_byfood %>% mutate(name = if_else(name == 'annualized_total_cost', 'total_cost', name)), aes(x = food, y = q50, color = name)) +
+  geom_hline(yintercept = 0, linetype = 'dotted') +
+  geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pos_dodge) +
+  geom_point(size = 2, position = pos_dodge) +
+  geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pos_dodge) +
+  scale_y_continuous(name = 'Cost (million $)', expand = expansion(mult = 0.01)) +
+  ggsci::scale_color_nejm(labels = c('Averted food purchases', 'Net cost or savings', 'Cost of implementation')) +
+  theme_withxaxis +
+  theme(legend.position = 'bottom', legend.title = element_blank(),
+        axis.text.y = element_text(color = c('forestgreen','forestgreen','black')))
+
 # Averted impacts for each food
 pkg_averted_byfood <- pkg_result %>% filter(name %in% 'net_averted', grepl('enrg|gcc|land|watr', category)) %>%
   left_join(conv_factors) %>%
@@ -383,6 +464,31 @@ p_wta_cost_byindustry <- ggplot(dat_cost_wta, aes(x = group, y = q50, ymin = q02
   theme_withxaxis +
   theme(legend.position = c(0.25, 0.8), legend.background = element_rect(fill = 'transparent'))
 
+dat_totalcost_wta <- dat_cost_wta %>%
+  group_by(group) %>%
+  summarize_if(is.numeric, sum) %>%
+  mutate(name = 'total_cost') 
+
+dat_netcost_wta <- all_qs %>%
+  filter(name %in% c('averted_food_purchase', 'net_cost'), grepl('waste', intervention), !group %in% 'total')  %>%
+  mutate_if(is.numeric, ~ ./1e6) %>%
+  mutate(group = group_names_short[as.numeric(factor(group))]) %>%
+  bind_rows(dat_totalcost_wta) %>%
+  mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
+
+  
+p_wta_netcost_byindustry <- ggplot(dat_netcost_wta, aes(x = group, y = q50, color = name)) +
+  geom_hline(yintercept = 0, linetype = 'dotted') +
+  geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pos_dodge) +
+  geom_point(size = 2, position = pos_dodge) +
+  geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pos_dodge) +
+  scale_y_continuous(name = 'Cost (million $)', expand = expansion(mult = 0.01)) +
+  ggsci::scale_color_nejm(labels = c('Averted food purchases', 'Net cost or savings', 'Cost of implementation')) +
+  theme_withxaxis +
+  theme(legend.position = 'bottom', legend.title = element_blank(),
+        axis.text.y = element_text(color = c(rep('forestgreen',2), 'black',rep('darkred',2))))
+
+
 dat_netaverted_wta <- all_qs %>%
   filter(grepl('enrg|gcc|land|watr', category), name %in%  c('net_averted', 'net_impact_averted'), !is.na(group)) %>%
   left_join(conv_factors) %>%
@@ -431,12 +537,16 @@ p_wta_costeff_byindustry <- ggplot(dat_unitcost_wta, aes(x = group, color = grou
 figs <- list(
   p_totalcost,
   p_totalcost_alternate,
+  p_netcost,
+  p_netcost_alternate,
   p_costbreakdown,
   p_costbreakdown_alternate,
   p_costbytotal,
   p_costbytotal_alternate,
   p_pkgtotalcostbyfood,
-  p_wta_cost_byindustry
+  p_pkgnetcostbyfood,
+  p_wta_cost_byindustry,
+  p_wta_netcost_byindustry
 )
 
 figs_multipanel <- list(
@@ -457,12 +567,16 @@ figs_multipanel <- list(
 fig_names <- c(
   'total_cost_v1',
   'total_cost_v2',
+  'net_cost_v1',
+  'net_cost_v2',
   'total_cost_breakdown_v1',
   'total_cost_breakdown_v2',
   'mckinsey_plot_v1',
   'mckinsey_plot_v2',
   'packaging_total_cost_by_food_type',
-  'wta_total_cost_by_industry'
+  'packaging_net_cost_by_food_type',
+  'wta_total_cost_by_industry',
+  'wta_net_cost_by_industry'
 )
 
 fig_multipanel_names <- c(
