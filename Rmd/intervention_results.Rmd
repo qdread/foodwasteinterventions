@@ -38,9 +38,9 @@ CEC, SDL, and SPP are in the same range of annual cost, while WTA implemented ac
 
 ## Cost breakdown
 
-Table 1 includes the information in Figure 1 with additional detail: it is split into the annually recurring and annualized initial components.
+Table 1 includes the information in Figure 1 with additional detail: it is split into the annually recurring and annualized initial components. All costs are shown in millions of dollars per year; the median point estimate is shown first, followed by the 5th and 95th percentile in parentheses.
 
-|Intervention                  |Initial capital<br>cost |Annualized<br>initial cost |Annual cost       |Total (annualized +<br>annual) cost |
+|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost       |Total (annualized + annual) cost |
 |:-----------------------------|:--------------------|:-----------------------|:-----------------|:--------------------------------|
 |consumer education campaigns  |--                   |--                      |197 (143; 277)    |197 (143; 277)                   |
 |spoilage prevention packaging |1298 (856; 1770)     |280 (168; 453)          |314 (249; 379)    |596 (465; 778)                   |
@@ -50,7 +50,7 @@ We model all the costs for consumer education campaigns as being annually recurr
 
 Table 2 is an alternative version of Table 1 with only the contracted institutional component of WTA.
 
-|Intervention                  |Initial capital<br>cost |Annualized<br>initial cost |Annual cost       |Total (annualized +<br>annual) cost |
+|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost       |Total (annualized + annual) cost |
 |:-----------------------------|:--------------------|:-----------------------|:--------------|:--------------------------------|
 |consumer education campaigns  |--                   |--                      |197 (143; 277) |197 (143; 277)                   |
 |spoilage prevention packaging |1298 (856; 1770)     |280 (168; 453)          |314 (249; 379) |596 (465; 778)                   |
@@ -59,9 +59,37 @@ Table 2 is an alternative version of Table 1 with only the contracted institutio
 
 \newpage
 
+## Averted food purchase and net savings
+
+Figures 3 and 4 show the total cost numbers (the same as in Figures 1 and 2) for the four interventions, and additionally show the amount of food purchases expected to be averted by the intervention due to waste reduction. The net cost (or net savings) of the intervention is the annual cost - annual savings due to food purchases averted. The number is negative if there is a net savings. Similarly to the previous figures, Figure 3 shows the total result for all three WTA industries, while Figure 4 only shows contracted foodservice.
+
+![Net cost savings of each intervention, showing total WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\net_cost_v1.png){ width=50% }
+
+![Net cost savings of each intervention, showing only institutional WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\net_cost_v2.png){ width=50% }
+
+Tables 3 and 4 show the same values as Figures 3 and 4, in tabular form.
+
+Table 3. Net cost, with all three industries totaled for WTA.
+
+|Intervention                  |Cost              |Averted food purchase |Net cost or savings  |
+|:-----------------------------|:-----------------|:---------------------|:--------------------|
+|consumer education campaigns  |197 (143; 277)    |-2419 (-1667; -3156)  |-2219 (-2958; -1468) |
+|spoilage prevention packaging |596 (465; 778)    |-2430 (-2050; -2847)  |-1825 (-2268; -1408) |
+|standardized date labeling    |119 (52; 230)     |-1133 (-825; -1499)   |-1006 (-1381; -684)  |
+|waste tracking and analytics  |4147 (3231; 5195) |-3655 (-2225; -5358)  |513 (-1375; 2178)    |
+
+Table 4. Net cost, with only contracted foodservice included for WTA.
+
+|Intervention                  |Cost           |Averted food purchase |Net cost or savings  |
+|:-----------------------------|:--------------|:---------------------|:--------------------|
+|consumer education campaigns  |197 (143; 277) |-2419 (-1667; -3156)  |-2219 (-2958; -1468) |
+|spoilage prevention packaging |596 (465; 778) |-2430 (-2050; -2847)  |-1825 (-2268; -1408) |
+|standardized date labeling    |119 (52; 230)  |-1133 (-825; -1499)   |-1006 (-1381; -684)  |
+|waste tracking and analytics  |586 (457; 735) |-815 (-497; -1190)    |-224 (-622; 115)     |
+
 ## Net environmental impact averted
 
-Figures 3 (total WTA) and 4 (institutional foodservice only for WTA) show the net environmental impact averted (gross impact averted from avoiding food waste - added impact from the intervention itself) for each of the four interventions. SDL is a smaller-scale intervention than the other three, but all are roughly in the same neighborhood.
+Figures 5 (total WTA) and 6 (institutional foodservice only for WTA) show the net environmental impact averted (gross impact averted from avoiding food waste - added impact from the intervention itself) for each of the four interventions. SDL is a smaller-scale intervention than the other three, but all are roughly in the same neighborhood.
 
 ![Net impact averted, showing combined WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\total_impact_averted_v1.png){ width=70% }
 
@@ -69,9 +97,9 @@ Figures 3 (total WTA) and 4 (institutional foodservice only for WTA) show the ne
 
 ## Cost per unit reduction
 
-Figures 5 and 6 show the cost per unit reduction of each environmental impact category; Figure 5 shows the average cost across the three industries for WTA, and Figure 6 shows only the contracted institutional foodservice portion. Note that the costs are considered separately for each environmental good. For example if the intervention costs \$10 million to implement and averts 100 million kg of GHG emissions and 10 million square meters of land use, it would be shown as costing \$0.10 per kg of GHG emissions averted, and \$1 per square meter of land. Later, it would be useful to find a way to combine all the relevant environmental goods to get an overall cost-effectiveness for each intervention. However, this may be problematic because of the issues around environmental valuation.
+Figures 7 and 8 show the cost per unit reduction of each environmental impact category; Figure 5 shows the average cost across the three industries for WTA, and Figure 6 shows only the contracted institutional foodservice portion. Note that the costs are considered separately for each environmental good. For example if the intervention costs \$10 million to implement and averts 100 million kg of GHG emissions and 10 million square meters of land use, it would be shown as costing \$0.10 per kg of GHG emissions averted, and \$1 per square meter of land. Later, it would be useful to find a way to combine all the relevant environmental goods to get an overall cost-effectiveness for each intervention. However, this may be problematic because of the issues around environmental valuation.
 
-CEC, SPP, and SDL all have fairly similar costs per unit reduction. WTA is more expensive if considering all three industry groups (Figure 5) but is roughly comparable to the other three if considering only contracted institutional foodservice (Figure 6).
+CEC, SPP, and SDL all have fairly similar costs per unit reduction. WTA is more expensive if considering all three industry groups (Figure 7) but is roughly comparable to the other three if considering only contracted institutional foodservice (Figure 8).
 
 ![Cost per unit reduction, showing combined WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\cost_per_unit_reduction_v1.png){ width=70% }
 
@@ -79,7 +107,7 @@ CEC, SPP, and SDL all have fairly similar costs per unit reduction. WTA is more 
 
 ## Cost-effectiveness
 
-Figures 7 and 8 are simply the reciprocal of Figures 5 and 6. Here, the units are impact reduced per $1 spent on the intervention.
+Figures 9 and 10 are simply the reciprocal of Figures 7 and 8. Here, the units are impact reduced per $1 spent on the intervention.
 
 ![Cost-effectiveness, showing combined WTA](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\cost_effectiveness_v1.png){ width=70% }
 
@@ -93,9 +121,11 @@ It is probably not necessary to include the breakdown of packaging results by fo
 
 ## Breakdown of packaging results by food type
 
-Note that the results here for total cost (Figure 9), total impact averted (Figure 10), and cost per unit reduction (Figure 11) and its reciprocal cost-effectiveness (Figure 12), are based on the numbers of units for each food type we input to the reformulation cost model. The food types are aggregated at the level of BEA codes from the input-output table: fruit, vegetables, meat, poultry, and seafood.
+Note that the results here for total cost (Figure 11), net cost (Figure 12), total impact averted (Figure 13), and cost per unit reduction (Figure 14) and its reciprocal cost-effectiveness (Figure 15), are based on the numbers of units for each food type we input to the reformulation cost model. The food types are aggregated at the level of BEA codes from the input-output table: fruit, vegetables, meat, poultry, and seafood.
 
 ![Total cost of implementing SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_total_cost_by_food_type.png){ width=50% }
+
+![Net cost of implementing SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_net_cost_by_food_type.png){ width=50% }
 
 ![Net environmental impact averted by SPP for each food type](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\packaging_impact_averted_by_food_type.png){ width=70% }
 
@@ -107,7 +137,9 @@ Note that the results here for total cost (Figure 9), total impact averted (Figu
 
 ## Breakdown of waste tracking results by industry group
 
-Figures 13-16 show the total cost of implementation, the impact averted, the cost per unit reduction, and the cost-effectiveness for WTA for the three industry groups (contracted institutional foodservice, limited-service restaurants, and full-service restaurants). It is clear from Figure 13 that the total costs vary due to the different sizes of the industries, but also that the vast majority of the costs is to pay employee wages. Contracted foodservice has both the lowest overall cost and highest overall impact averted, leading to superior cost-effectiveness compared to the other two.
+Figures 16-20 show the total cost of implementation, the net cost, the impact averted, the cost per unit reduction, and the cost-effectiveness for WTA for the three industry groups (contracted institutional foodservice, limited-service restaurants, and full-service restaurants). It is clear from Figure 16 that the total costs vary due to the different sizes of the industries, but also that the vast majority of the costs is to pay employee wages. Contracted foodservice has both the lowest overall cost and highest overall impact averted, leading to superior cost-effectiveness compared to the other two.
+
+![Total cost of implementing WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_total_cost_by_industry.png){ width=50% }
 
 ![Total cost of implementing WTA for each industry](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\wta_total_cost_by_industry.png){ width=50% }
 
@@ -119,9 +151,9 @@ Figures 13-16 show the total cost of implementation, the impact averted, the cos
 
 ## Comparison of our results with ReFED's results
 
-ReFED's analysis (2016) includes total cost of each intervention and the total amount of greenhouse gas emissions and water use averted by the intervention, allowing an estimate of cost-effectiveness of greenhouse gas and water use reduction. Figures 17-21 show comparisons of our results with ReFED's results. In all figures, hollow circles represent the ReFED estimate. 
+ReFED's analysis (2016) includes total cost of each intervention and the total amount of greenhouse gas emissions and water use averted by the intervention, allowing an estimate of cost-effectiveness of greenhouse gas and water use reduction. Figures 21-25 show comparisons of our results with ReFED's results. In all figures, hollow circles represent the ReFED estimate. 
 
-Figure 17 shows the comparison between our total cost estimate and ReFED's. ReFED uniformly estimates that interventions will be much cheaper compared to our estimates. This is likely due to ReFED incompletely considering costs such as paying additional wages to employees that are spending additional time implementing the intervention (especially apparent in the case of WTA). Figure 18 shows the total amount of GHG estimated to be reduced by the interventions. Although ReFED's cost estimates are overly optimistic, their estimates for potential GHG reduction are lower in the cases of WTA and WPP, and fairly closely in agreement with ours in the cases of CEC and SDL. Figure 19 shows the difference in estimates of potential water use reduction; in this case ReFED's estiamtes disagree significantly with ours, being higher in the case of CEC, SDL, and WTA, but lower in the case of SPP. This may be due to differing methodology. The resulting cost-effectiveness numbers for GHG (Figure 20) and water (Figure 21) show similar discrepancies.
+Figure 21 shows the comparison between our total cost estimate and ReFED's. ReFED uniformly estimates that interventions will be much cheaper compared to our estimates. This is likely due to ReFED incompletely considering costs such as paying additional wages to employees that are spending additional time implementing the intervention (especially apparent in the case of WTA). Figure 22 shows the total amount of GHG estimated to be reduced by the interventions. Although ReFED's cost estimates are overly optimistic, their estimates for potential GHG reduction are lower in the cases of WTA and WPP, and fairly closely in agreement with ours in the cases of CEC and SDL. Figure 23 shows the difference in estimates of potential water use reduction; in this case ReFED's estiamtes disagree significantly with ours, being higher in the case of CEC, SDL, and WTA, but lower in the case of SPP. This may be due to differing methodology. The resulting cost-effectiveness numbers for GHG (Figure 24) and water (Figure 25) show similar discrepancies.
 
 ![Comparison of total cost estimates between our work and ReFED 2016](C:\Users\qread\google_drive\SESYNC Food Waste\MS3_Interventions\figs\four_interventions_vsrefed_total_annual_cost.png){ width=50% }
 
