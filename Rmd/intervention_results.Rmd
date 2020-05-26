@@ -24,6 +24,105 @@ I prepared two alternative versions of all the figures that show results for the
 
 The results of the Monte Carlo uncertainty analysis are shown in the same way on all figures. The point estimate is surrounded by a thick error bar representing the central 90% of the uncertainty distribution, and a thin error bar representing the central 95% of the distribution.
 
+```{r load data for tables}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+all_qs <- read_csv('~/Dropbox/Q/projects/foodwaste/Data/intervention_uncertainty/intervention_quantiles.csv')
+
+dat_cost <- all_qs %>%
+  filter(grepl('cost', name), is.na(category)) %>%
+  filter(!grepl('net_cost', name))
+
+dat_costbreakdown <- dat_cost %>%
+  filter(is.na(group) | group %in% 'total') %>%
+  mutate(cost_type = case_when( intervention == 'spoilage prevention packaging' & name == 'total_annual_cost' ~ 'other',
+                                grepl('^initial', name) ~ 'initial_raw',
+                               grepl('annual_|material|_annual', name) ~ 'annual',
+                              
+                               grepl('annualized', name) ~ 'initial_annualized',
+                               TRUE ~ 'other')) %>%
+  filter(!cost_type %in% 'other') %>%
+  group_by(intervention, cost_type) %>%
+  summarize_if(is.numeric, ~ sum(.)/1e6)
+
+dat_totalcost <- dat_cost %>%
+  filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('content|media', name), name != 'annualized_initial_cost', is.na(group) | group == 'total') %>%
+  group_by(intervention) %>%
+  summarize_if(is.numeric, sum)
+
+dat_totalcost_alternate <- dat_cost %>%
+  filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('content|media', name), name != 'annualized_initial_cost', is.na(group) | group == 'contracted foodservice operations') %>%
+  group_by(intervention) %>%
+  summarize_if(is.numeric, sum)
+
+table_costbreakdown <- dat_costbreakdown %>%
+  ungroup %>%
+  bind_rows(dat_totalcost %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
+  mutate_if(is.numeric, round) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
+  select(intervention, cost_type, cost_with_quantiles) %>%
+  pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
+  select(intervention, initial_raw, initial_annualized, annual, total) %>%
+  setNames(c('Intervention', 'Initial capital cost', 'Annualized initial cost', 'Annual cost', 'Total (annualized + annual) cost')) 
+
+dat_costbreakdown_alternate <- dat_cost %>%
+  filter(is.na(group) | group %in% 'contracted foodservice operations') %>%
+  mutate(cost_type = case_when( intervention == 'spoilage prevention packaging' & name == 'total_annual_cost' ~ 'other',
+                                grepl('^initial', name) ~ 'initial_raw',
+                                grepl('annual_|material|_annual', name) ~ 'annual',
+                                
+                                grepl('annualized', name) ~ 'initial_annualized',
+                                TRUE ~ 'other')) %>%
+  filter(!cost_type %in% 'other') %>%
+  group_by(intervention, cost_type) %>%
+  summarize_if(is.numeric, ~ sum(.)/1e6)
+
+table_costbreakdown_alternate <- dat_costbreakdown_alternate %>%
+  ungroup %>%
+  bind_rows(dat_totalcost_alternate %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
+  mutate_if(is.numeric, round) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
+  select(intervention, cost_type, cost_with_quantiles) %>%
+  pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
+  select(intervention, initial_raw, initial_annualized, annual, total) %>%
+  setNames(c('Intervention', 'Initial capital cost', 'Annualized initial cost', 'Annual cost', 'Total (annualized + annual) cost')) 
+
+dat_netcost <- all_qs %>%
+  filter(name %in% c('averted_food_purchase', 'net_cost')) %>%
+  filter(is.na(group) | group == 'total') %>%
+  bind_rows(dat_totalcost %>% mutate(name = 'total_cost')) %>%
+  mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
+
+dat_netcost_alternate <- all_qs %>%
+  filter(name %in% c('averted_food_purchase', 'net_cost')) %>%
+  filter(is.na(group) | group == 'contracted foodservice operations') %>%
+  bind_rows(dat_totalcost_alternate %>% mutate(name = 'total_cost')) %>%
+  mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
+
+# Tables with total cost, averted food purchase, and net cost or savings
+table_netcost <- dat_netcost %>%
+  mutate_if(is.numeric, ~ round(./1e6)) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
+  select(intervention, name, cost_with_quantiles) %>%
+  pivot_wider(names_from = name, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
+  select(intervention, total_cost, averted_food_purchase, net_cost) %>%
+  arrange(intervention) %>%
+  setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net cost or savings')) 
+
+table_netcost_alternate <- dat_netcost_alternate %>%
+  mutate_if(is.numeric, ~ round(./1e6)) %>%
+  mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
+  select(intervention, name, cost_with_quantiles) %>%
+  pivot_wider(names_from = name, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
+  select(intervention, total_cost, averted_food_purchase, net_cost) %>%
+  arrange(intervention) %>%
+  setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net cost or savings')) 
+
+```
+
+
 # Main-text figures
 
 ## Total cost
@@ -40,22 +139,19 @@ CEC, SDL, and SPP are in the same range of annual cost, while WTA implemented ac
 
 Table 1 includes the information in Figure 1 with additional detail: it is split into the annually recurring and annualized initial components. All costs are shown in millions of dollars per year; the median point estimate is shown first, followed by the 5th and 95th percentile in parentheses.
 
-|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost       |Total (annualized + annual) cost |
-|:-----------------------------|:--------------------|:-----------------------|:-----------------|:--------------------------------|
-|consumer education campaigns  |--                   |--                      |197 (143; 277)    |197 (143; 277)                   |
-|spoilage prevention packaging |1298 (856; 1770)     |280 (168; 453)          |314 (249; 379)    |596 (465; 778)                   |
-|standardized date labeling    |554 (251; 946)       |119 (52; 230)           |--                |119 (52; 230)                    |
-|waste tracking and analytics  |--                   |--                      |4147 (3231; 5195) |4147 (3231; 5195)                |         
+```{r table1}
+kable(table_costbreakdown, "latex", booktabs = T) %>%
+  kable_styling(font_size = 7)
+```
+
 We model all the costs for consumer education campaigns as being annually recurring &mdash; new content is developed annually as well as new media time being bought. Spoilage prevention packaging includes the initial costs we estimated through the reformulation cost model, as well as the recurring annual cost of the additional packaging material required per unit of packaged food. Standardized date labeling is only modeled as having an up-front cost with no recurring costs. Waste tracking and analytics has a modest up-front cost and a high annual cost, most of which goes to paying additional wages for the time required to train employees and track waste at every transaction. (The cost is especially high when considering all three WTA industries, as in Figure 5.)
 
 Table 2 is an alternative version of Table 1 with only the contracted institutional component of WTA.
 
-|Intervention                  |Initial capital cost |Annualized initial cost |Annual cost       |Total (annualized + annual) cost |
-|:-----------------------------|:--------------------|:-----------------------|:--------------|:--------------------------------|
-|consumer education campaigns  |--                   |--                      |197 (143; 277) |197 (143; 277)                   |
-|spoilage prevention packaging |1298 (856; 1770)     |280 (168; 453)          |314 (249; 379) |596 (465; 778)                   |
-|standardized date labeling    |554 (251; 946)       |119 (52; 230)           |--             |119 (52; 230)                    |
-|waste tracking and analytics  |--                   |--                      |586 (457; 735) |586 (457; 735)                   |
+```{r table2}
+kable(table_costbreakdown_alternate, "latex", booktabs = T) %>%
+  kable_styling(font_size = 7)
+```
 
 \newpage
 
@@ -71,21 +167,17 @@ Tables 3 and 4 show the same values as Figures 3 and 4, in tabular form.
 
 Table 3. Net cost, with all three industries totaled for WTA.
 
-|Intervention                  |Cost              |Averted food purchase |Net cost or savings  |
-|:-----------------------------|:-----------------|:---------------------|:--------------------|
-|consumer education campaigns  |197 (143; 277)    |-2419 (-1667; -3156)  |-2219 (-2958; -1468) |
-|spoilage prevention packaging |596 (465; 778)    |-2430 (-2050; -2847)  |-1825 (-2268; -1408) |
-|standardized date labeling    |119 (52; 230)     |-1133 (-825; -1499)   |-1006 (-1381; -684)  |
-|waste tracking and analytics  |4147 (3231; 5195) |-3655 (-2225; -5358)  |513 (-1375; 2178)    |
+```{r table3}
+kable(table_netcost, "latex", booktabs = T) %>%
+  kable_styling(font_size = 7)
+```
 
 Table 4. Net cost, with only contracted foodservice included for WTA.
 
-|Intervention                  |Cost           |Averted food purchase |Net cost or savings  |
-|:-----------------------------|:--------------|:---------------------|:--------------------|
-|consumer education campaigns  |197 (143; 277) |-2419 (-1667; -3156)  |-2219 (-2958; -1468) |
-|spoilage prevention packaging |596 (465; 778) |-2430 (-2050; -2847)  |-1825 (-2268; -1408) |
-|standardized date labeling    |119 (52; 230)  |-1133 (-825; -1499)   |-1006 (-1381; -684)  |
-|waste tracking and analytics  |586 (457; 735) |-815 (-497; -1190)    |-224 (-622; 115)     |
+```{r table4}
+kable(table_netcost_alternate, "latex", booktabs = T) %>%
+  kable_styling(font_size = 7)
+```
 
 ## Net environmental impact averted
 
