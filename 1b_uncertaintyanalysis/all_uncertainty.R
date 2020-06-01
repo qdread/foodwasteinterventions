@@ -17,9 +17,7 @@ source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/all_u
 
 # Standardized date labeling ---------------------------------------
 
-datelabel_costs <- read_xlsx(file.path(fp, 'scenario_inputdata/intervention_costs_26mar2020/costs for date labeling change_3-26-2020.xlsx'), skip = 9)
-
-datelabel_costs_coord <- datelabel_costs[which(datelabel_costs[,1] == "Total costs for date labeling (with coordination)"), 2:4] %>% t %>% c %>% setNames(c('lower','mean','upper'))
+datelabel_costs_coord <- intervention_params %>% filter(Parameter == 'initial_cost', Intervention == 'standardized date labeling') %>% select(minimum, mode, maximum) %>% as.numeric %>% setNames(c('lower','mean','upper'))
 
 # Set up PERT distributions for each parameter and draw from them.
 datelabel_pars <- intervention_params %>%
