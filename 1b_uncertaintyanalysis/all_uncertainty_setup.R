@@ -35,7 +35,6 @@ lafa_struct <- read_csv(file.path(fp, 'crossreference_tables/lafa_category_struc
 susb_naics <- read_csv(file.path(fp, 'csv_exports/SUSB_NAICS_allvariables.csv'))
 
 # Load NAICS BEA crosswalks
-load(file.path(fp, 'crossreference_tables/NAICS_BEA_SCTG_crosswalk.RData'))
 bea_naics <- read_csv(file.path(fp, 'crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv'))
 
 # Load data for waste rate calculations
