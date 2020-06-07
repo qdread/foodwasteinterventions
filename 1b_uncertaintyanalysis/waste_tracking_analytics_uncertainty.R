@@ -192,7 +192,7 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
     group_by(category) %>%
     summarize_at(vars(percent_averted, net_percent_averted, cost_per_reduction), ~ weighted.mean(x = ., w = net_averted))
   
-  eeio_result_total <- cbind(group = 'total', eeio_result_sums, eeio_result_averages)
+  eeio_result_total <- cbind(group = 'total', eeio_result_sums, eeio_result_averages %>% select(-category))
   
   cost_result_total <- cost_result %>% summarize_if(is.numeric, sum) %>% mutate(group = 'total')
 
