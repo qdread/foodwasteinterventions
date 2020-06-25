@@ -2,6 +2,7 @@
 # Wrapped into a function that takes parameters as arguments (to do as uncertainty)
 # QDR / foodwasteinterventions / 27 April 2020
 
+# Edit 25 May 2020: Equipment cost is now a percentage of total equipment+fees cost
 # Edit 20 May 2020: Equipment cost is a lease rate rather than an annualized cost
 # Edit 06 May 2020: Split annual cost into wage and fee components
 # Edit 29 Apr 2020: Also add some code to calculate average across the 3 industries, so a single value can be used for the main results.
@@ -9,9 +10,11 @@
 # In this new version, instead of using proportions of receipts, use the # of foodservice contractors as the establishments
 # But use the total amounts of food purchased by "eligible" industries, as identified by Steve, as the potential food that can be affected
 
-waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_waste, annual_cost_equipment_lease, annual_cost_wages, annual_cost_fees, p_scales, annuity_years, annuity_rate) {
+waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_waste, p_equipment, annual_cost_wages, annual_cost_fees_equipment, p_scales, annuity_years, annuity_rate) {
   
   overall_waste_reduction <- proportion_kitchen_waste * wta_waste_reduction
+  annual_cost_equipment_lease <- annual_cost_fees_equipment * p_equipment
+  annual_cost_fees <- annual_cost_fees_equipment - annual_cost_equipment_lease
   
   # Join baseline waste rates with waste reduction rates
   
