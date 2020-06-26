@@ -2,6 +2,8 @@
 # QDR / FWE / 15 May 2020
 # (updated from previous version, using new values with uncertainty)
 
+# Edit 25 Jun 2020: create versions without restaurants (only contracted foodservice)
+
 library(tidyverse)
 library(readxl)
 library(units)
@@ -35,8 +37,10 @@ refed <- refed %>%
 
 
 # Compare GHG emissions averted. Use only the total for waste tracking
+# all_ghg <- all_qs %>%
+#   filter(grepl('gcc',category), !grepl('waste tracking', intervention) | group == 'total')
 all_ghg <- all_qs %>%
-  filter(grepl('gcc',category), !grepl('waste tracking', intervention) | group == 'total')
+  filter(grepl('gcc',category), !grepl('waste tracking', intervention) | group == 'contracted foodservice operations')
 
 all_ghg %>% 
   filter(name == 'net_averted') %>%
@@ -53,8 +57,11 @@ all_ghg_table <- all_ghg %>%
   mutate_at(vars(starts_with('q')), ~ ./1e9)
 
 # Compare water saved in the same way.
+# all_h2o <- all_qs %>%
+#   filter(grepl('watr',category), !grepl('waste tracking', intervention) | group == 'total')
 all_h2o <- all_qs %>%
-  filter(grepl('watr',category), !grepl('waste tracking', intervention) | group == 'total')
+  filter(grepl('watr',category), !grepl('waste tracking', intervention) | group == 'contracted foodservice operations')
+
 
 # km^3 for our estimate, billion gallons for refed, must convert
 all_h2o_table <- all_h2o %>%
@@ -75,7 +82,8 @@ dat_cost <- all_qs %>%
   filter(grepl('cost', name), is.na(category))
 
 dat_totalcost <- dat_cost %>%
-  filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('content|media', name), name != 'annualized_initial_cost', is.na(group) | group == 'total') %>%
+  # filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('content|media', name), name != 'annualized_initial_cost', is.na(group) | group == 'total') %>%
+  filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('net_cost', name), !grepl('content|media', name), name != 'annualized_initial_cost', is.na(group) | group == 'contracted foodservice operations') %>%
   group_by(intervention) %>%
   summarize_if(is.numeric, sum)
 
