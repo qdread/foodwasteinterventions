@@ -60,8 +60,10 @@ standardized_date_labeling <- function(consumer_response_rate, proportion_confus
   
   cost_result <- data.frame(initial_cost = initial_cost,
                             annualized_cost = datelabel_costs_coord_annual,
+                            baseline_food_purchase = sum(datelabelingdemand$baseline_demand),
                             averted_food_purchase = sum(datelabelingdemand$averted_demand)) %>%
-    mutate(net_cost = annualized_cost - averted_food_purchase)
+    mutate(net_cost = annualized_cost - averted_food_purchase,
+           percent_food_purchase_reduction = averted_food_purchase/baseline_food_purchase)
   
   return(list(impact = eeio_datelabeling_result, cost = cost_result))
 }
