@@ -72,7 +72,8 @@ consumer_education_campaigns <- function(consumer_ed_waste_reduction, cost_conte
                             media_cost = consumer_ed_costs_annual[3],
                             annual_cost = sum(consumer_ed_costs_annual),
                             averted_food_purchase = sum(consumer_ed_demand$averted_demand)) %>%
-    mutate(net_cost = annual_cost - averted_food_purchase)
+    mutate(net_cost = annual_cost - averted_food_purchase,
+           savings_multiplier = averted_food_purchase/annual_cost)
   
   return(list(impact = eeio_consumer_ed_result, cost = cost_result))  
 

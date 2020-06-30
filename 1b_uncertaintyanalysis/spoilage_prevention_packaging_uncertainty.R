@@ -95,12 +95,14 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
                             annualized_initial_cost = annualized_initial_cost,
                             total_annual_cost = packaging_annual_cost,
                             averted_food_purchase = sum(fruitmeatdemand2012$demand_averted)) %>%
-    mutate(net_cost = total_annual_cost - averted_food_purchase)
+    mutate(net_cost = total_annual_cost - averted_food_purchase,
+           savings_multiplier = averted_food_purchase/total_annual_cost)
   
   cost_result_bytype <- param_table %>% 
     select(food, material_cost:annualized_total_cost) %>% 
     left_join(fruitmeatdemand2012 %>% select(food, demand_averted) %>% rename(averted_food_purchase = demand_averted)) %>%
-    mutate(net_cost = annualized_total_cost - averted_food_purchase)
+    mutate(net_cost = annualized_total_cost - averted_food_purchase,
+           savings_multiplier = averted_food_purchase/(material_cost + annualized_initial_cost))
   
   return(list(impact = eeio_packaging_result, cost = cost_result, impact_byfoodtype = eeio_packaging_result_bytype, cost_byfoodtype = cost_result_bytype))
 

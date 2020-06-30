@@ -183,7 +183,8 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
            annual_cost_fees = annual_cost_fees * establishments,
            annual_cost_equipment_lease = annual_cost_equipment_lease * establishments,
            averted_food_purchase = colSums(food_U_bygroup - food_U_bygroup_postintervention) * 1e6,
-           net_cost = annual_cost_wages + annual_cost_fees + annual_cost_equipment_lease - averted_food_purchase) %>%
+           net_cost = annual_cost_wages + annual_cost_fees + annual_cost_equipment_lease - averted_food_purchase,
+           savings_multiplier = averted_food_purchase/(annual_cost_wages + annual_cost_fees + annual_cost_equipment_lease)) %>%
     select(-equipment_cost_annual)
   
   # Calculate total impact, total cost, and average cost-effectiveness across the 3 industries
@@ -197,7 +198,10 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
   
   eeio_result_total <- cbind(group = 'total', eeio_result_sums, eeio_result_averages %>% select(-category))
   
-  cost_result_total <- cost_result %>% summarize_if(is.numeric, sum) %>% mutate(group = 'total')
+  cost_result_total <- cost_result %>% 
+    summarize_if(is.numeric, sum) %>% 
+    mutate(group = 'total', 
+           savings_multiplier = averted_food_purchase/(annual_cost_wages + annual_cost_fees + annual_cost_equipment_lease))
 
   return(list(impact = bind_rows(eeio_dat_bygroup_withoffset, eeio_result_total), cost = bind_rows(cost_result, cost_result_total)))
   
