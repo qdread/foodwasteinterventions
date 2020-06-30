@@ -202,9 +202,8 @@ waste_tracking_analytics <- function(wta_waste_reduction, proportion_kitchen_was
   
   cost_result_total <- cost_result %>% 
     summarize_if(is.numeric, sum) %>% 
-
     mutate(group = 'total',
-	       savings_multiplier = averted_food_purchase/(annual_cost_wages + annual_cost_fees + annual_cost_equipment_lease)
+	       savings_multiplier = averted_food_purchase/(annual_cost_wages + annual_cost_fees + annual_cost_equipment_lease),
            percent_food_purchase_reduction = percent_food_purchase_reduction/3) # change sum to a mean in this case.
 
   return(list(impact = bind_rows(eeio_dat_bygroup_withoffset, eeio_result_total), cost = bind_rows(cost_result, cost_result_total)))
