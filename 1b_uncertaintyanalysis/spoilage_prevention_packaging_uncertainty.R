@@ -90,13 +90,20 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
     mutate(net_averted = averted - offset,
            cost_per_reduction = annualized_total_cost / net_averted)
   
+  total_baseline_demand <- finaldemand2012 %>% 
+    left_join(bea_codes) %>% 
+    mutate(cons = `2012_US_Consumption` * proportion_food) %>%
+    pull(cons) %>% sum
+  
   cost_result <- data.frame(initial_cost = initial_cost,
                             material_cost = material_cost,
                             annualized_initial_cost = annualized_initial_cost,
                             total_annual_cost = packaging_annual_cost,
+                            baseline_food_purchase = total_baseline_demand,
                             averted_food_purchase = sum(fruitmeatdemand2012$demand_averted)) %>%
     mutate(net_cost = total_annual_cost - averted_food_purchase,
-           savings_multiplier = averted_food_purchase/total_annual_cost)
+           savings_multiplier = averted_food_purchase/total_annual_cost,
+           percent_food_purchase_reduction = averted_food_purchase/baseline_food_purchase)
   
   cost_result_bytype <- param_table %>% 
     select(food, material_cost:annualized_total_cost) %>% 
