@@ -95,7 +95,12 @@ p_pkgimpactbyfood <- ggplot(pkg_averted_byfood %>% filter(!food %in% 'misc'), ae
   theme_withxaxis +
   theme(axis.title.x = element_blank(), legend.position = 'none', axis.text.x = element_text(size = 7),
         panel.grid = element_blank()) +
-  food_colors
+  food_colors +
+  geom_text(data = data.frame(category_labels = sort(unique(pkg_averted_byfood$category_labels)),
+                              letter = letters[1:4],
+                              food = NA, q025 = 0, q50 = 0, q975 = 0),
+            aes(label = letter),
+            x = -Inf, y = Inf, hjust = -0.1, vjust = 1.1, color = 'black', fontface = 'bold', size = 6)
 
 p_pkgcosteffbyfood <- ggplot(pkg_cost_byfood %>% filter(!food %in% 'misc'), aes(x = food, color = food, y = 1/q50, ymin = 1/q025, ymax = 1/q975)) +
   facet_wrap(~ costeff_labels, scales = 'free_y', labeller = label_parsed) +
@@ -106,7 +111,12 @@ p_pkgcosteffbyfood <- ggplot(pkg_cost_byfood %>% filter(!food %in% 'misc'), aes(
   theme_withxaxis +
   theme(axis.title.x = element_blank(), legend.position = 'none', axis.text.x = element_text(size = 7),
         panel.grid = element_blank()) +
-  food_colors
+  food_colors +
+  geom_text(data = data.frame(costeff_labels = sort(unique(pkg_cost_byfood$costeff_labels)),
+                                         letter = letters[1:4],
+                                         food = NA, q025 = 0, q50 = 0, q975 = 0),
+                       aes(label = letter),
+                       x = -Inf, y = Inf, hjust = -0.1, vjust = 1.1, color = 'black', fontface = 'bold', size = 6)
 
 
 # Refed supp figs ---------------------------------------------------------

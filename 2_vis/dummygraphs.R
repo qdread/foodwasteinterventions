@@ -16,4 +16,4 @@ library(ggplot2)
     theme_void() +
     theme(legend.position = 'none'))
 
-ggsave('~/Dropbox/Q/projects/foodwaste/Interventions_MS/abstract_imgs/usmapgg.png', usmap::plot_usmap(regions='states'), dpi = 400, height = 3, width = 4)
+ggsave('~/Dropbox/Q/projects/foodwaste/Interventions_MS/abstract_imgs/usmapgg.png', usmap::plot_usmap(regions='states', color = NA, fill = 'black'), dpi = 400, height = 3, width = 4)
