@@ -3,7 +3,7 @@
 # QDR / foodwasteinterventions / 24 April 2020
 
 
-standardized_date_labeling <- function(consumer_response_rate, proportion_confusion_waste, initial_cost, annuity_years, annuity_rate, baseline_beverage_rate) {
+standardized_date_labeling <- function(consumer_response_rate, proportion_confusion_waste, p_packaged_produce, p_packaged_meat, initial_cost, annuity_years, annuity_rate, baseline_beverage_rate) {
   
   
   # Annualize initial costs
@@ -24,16 +24,27 @@ standardized_date_labeling <- function(consumer_response_rate, proportion_confus
     select(BEA_389_code, BEA_389_def) %>%
     mutate(primary_loss_value = 4.5, retail_loss_value = 5, avoidable_consumer_loss_value = baseline_beverage_rate)
   
-  bea_waste_rates_final <- bind_rows(bea_waste_rates, beverage_waste_rates)
+  # Codes that need to be adjusted because some proportion is not packaged and does not have an expiration date
+  produce_codes <- c('111200', '111300', '111400', '111900')
+  meat_codes <- c('1121A0', '112300', '112A00', '114000')
+  
+  # Assign the proportion packaged to the appropriate waste rate rows
+  bea_waste_rates_final <- bea_waste_rates %>%
+    bind_rows(beverage_waste_rates) %>%
+    mutate(proportion_packaged = case_when(
+      BEA_389_code %in% produce_codes ~ p_packaged_produce,
+      BEA_389_code %in% meat_codes ~ p_packaged_meat,
+      TRUE ~ 1
+    )) 
   
   datelabelingdemand <- finaldemand2012 %>%
     right_join(bea_waste_rates_final) %>%
     left_join(bea_codes) %>%
-    mutate(baseline_demand = `2012_US_Consumption` * proportion_food,
+    mutate(baseline_demand = `2012_US_Consumption` * proportion_food * proportion_packaged,
            baseline_consumer_waste_demand = baseline_demand * avoidable_consumer_loss_value / 100,
            averted_demand = `2012_US_Consumption` * (1 - demand_change_fn(W0 = proportion_confusion_waste * avoidable_consumer_loss_value / 100,
                                                                           r = consumer_response_rate,
-                                                                          p = proportion_food))) %>%
+                                                                          p = proportion_food * proportion_packaged))) %>%
     select(BEA_389_code, BEA_389_def, baseline_demand, baseline_consumer_waste_demand, averted_demand)
   
   # Join with long code names
