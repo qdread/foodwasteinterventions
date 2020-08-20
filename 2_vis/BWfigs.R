@@ -50,22 +50,34 @@ fig2 <- ggplot(dat_unitcost_alternate, aes(x = intervention, color = interventio
   interv_colors 
 
 # Additional figure with cost breakdown between annual and annualized.
+
+fig0b_data <- dat_costbreakdown_alternate %>% 
+  ungroup %>%
+  filter(!cost_type %in% 'initial_raw') 
+
+spp_total <- dat_totalcost_alternate %>% 
+  mutate_if(is.numeric, ~ ./1e6) %>%
+  filter(intervention=='spoilage prevention packaging') %>%
+  mutate(cost_type = 'total')
+
+# Add row for total costs in SPP.
+fig0b_data <- bind_rows(fig0b_data, spp_total)
+
+
 pd <- position_dodge(width = 0.1)
-fig0b <- ggplot(dat_costbreakdown_alternate %>% 
-                                      ungroup %>%
-                                      filter(!cost_type %in% 'initial_raw') , 
-                                    aes(x = intervention, y = q50, color = cost_type)) +
+fig0b <- ggplot(fig0b_data, aes(x = intervention, y = q50, color = cost_type)) +
   geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pd) +
   geom_point(size = 2, position = pd) +
   geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pd) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +  
-  scale_y_continuous(name = 'Annual cost (million $)', expand = c(0, 0), limits = c(0, 600)) +
-  scale_color_manual(labels = c('Annual', 'Initial (annualized)'), values = c('forestgreen', 'goldenrod')) +
+  scale_y_continuous(name = 'Annual cost (million $)', expand = c(0, 0), limits = c(0, 825)) +
+  scale_color_manual(labels = c('Annual', 'Initial (annualized)', 'Total'), values = c('forestgreen', 'goldenrod', 'plum')) +
   theme(axis.text.x = element_text(color = 'white'), 
         axis.title.x = element_text(), 
         legend.position = c(0.2, 0.87),
         legend.title = element_blank(),
-        legend.key = element_blank())
+        legend.key = element_blank(),
+        legend.background = element_rect(color = NA, fill = 'transparent'))
 
 
 
