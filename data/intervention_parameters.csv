@@ -1,0 +1,38 @@
+Intervention,Parameter,Description,minimum,mode,maximum,source,include in uncertainty analysis?
+consumer education campaigns,consumer_ed_waste_reduction,waste reduction,0.011111111,0.022222222,0.033333333,"refed assumption: 1/3 total household waste reduction due to consumer education that is attributable to media campaigns * 2/3 of the media-attibutable impact driven by awareness campaigns * 10% overall waste reduction due to consumer education, with lower and upper bounds of 5% and 15%",yes
+consumer education campaigns,pop_in_metro,percent population reachable by intervention ,NA,0.856,NA,percentage of US population living in metro counties (Census data),no
+consumer education campaigns,n_metro_counties,number of metropolitan counties implementing the intervention,NA,1251,NA,number of metro counties in US (Census data),no
+consumer education campaigns,cost_content,"content development and administrative cost, incurred once per year nationwide",1.09E+07,1.36E+07,1.63E+07,"MacMonegle et al. paper, Table 1, all nationwide costs for 2014 converted to 2012 dollars",yes
+consumer education campaigns,cost_mediaconsultant,"media consultant cost, incurred once per campaign cycle per county",12544,15680,18816,"estimates provided by King County, WA employees",yes
+consumer education campaigns,cost_media,"media cost, incurred once per campaign cycle per county",23520,29400,35280,"estimates provided by King County, WA employees",yes
+consumer education campaigns,p_print,proportion of media buying spent on print and outdoor ads,0.3,0.4,0.5,Roughly based on antismoking campaign percentage in Clayforth et al.,yes
+consumer education campaigns,p_radiotv,proportion of media buying spent on radio and TV ads,NA,NA,NA,(the remainder once accounting for print and internet media),yes
+consumer education campaigns,p_internet,proportion of media buying spent on digital media (internet and social media ads),0.05,0.2,0.35,"MacMonegle et al. paper shows approx 7% for digital media, Clayforth et al. paper shows 30%",yes
+consumer education campaigns,n_campaigns,number of campaign cycles per year,2,3,6,"our assumption (maximum of once every two months), to roughly align with costs of a large campaign such as ""Got Milk?""",yes
+spoilage prevention packaging,wr_retail_fv,"waste reduction, retail, fruit and vegetables",0.1,0.215,0.33,refed assumption,yes
+spoilage prevention packaging,wr_household_fv,"waste reduction, household, fruit and vegetables",0.05,0.075,0.1,refed assumption,yes
+spoilage prevention packaging,wr_retail_meat,"waste reduction, retail, meat and seafood",0.1,0.215,0.33,refed assumption,yes
+spoilage prevention packaging,wr_household_meat,"waste reduction, household, meat and seafood",0.05,0.075,0.1,refed assumption,yes
+spoilage prevention packaging,p_fruit,percent of fresh fruit eligible for intervention,0.266666667,0.333333333,0.4,"refed assumption, with our assumptions for upper and lower bounds",yes
+spoilage prevention packaging,p_veg,percent of fresh vegetables eligible for intervention,0.266666667,0.333333333,0.4,our assumption copying from refed's assumption on fruit,yes
+spoilage prevention packaging,p_meat,percent of fresh meat eligible for intervention,0.4,0.5,0.6,"refed assumption, with our assumptions for upper and lower bounds",yes
+spoilage prevention packaging,p_seafood,percent of seafood eligible for intervention,0.4,0.5,0.6,our assumption copying from refed's assumption on meat,yes
+spoilage prevention packaging,cost_per_package,cost of upgrading a single package unit,2.00E-02,3.00E-02,4.00E-02,"lower bound from Claire Sands, upper bound from Refed",yes
+standardized date labeling,consumer_response_rate,waste reduction (consumer response rate),0.05,0.075,0.1,refed assumption,yes
+standardized date labeling,proportion_confusion_waste,percent of household waste that results from confusion over expiry date,0.1,0.15,0.2,our assumption (Refed's assumption was 0.2 but that is more realistic as an upper bound than as a mode),yes
+standardized date labeling,p_packaged_produce,percent of fresh fruit and vegetables eligible for intervention,0.266666667,0.333333333,0.4,"same source as the parameter for spoilage prevention packaging (ReFED, with our assumption for upper and lower bounds)",
+standardized date labeling,p_packaged_meat,percent of fresh meat and seafood eligible for intervention,0.4,0.5,0.6,"same source as the parameter for spoilage prevention packaging (ReFED, with our assumption for upper and lower bounds)",
+standardized date labeling,initial_cost,initial costs,1.41E+08,5.02E+08,1.15E+09,"cost model, assuming 100% coordination",yes
+waste tracking and analytics,wta_waste_reduction,waste reduction,0.2,0.35,0.5,combination of our assumptions and Refed's,yes
+waste tracking and analytics,proportion_kitchen_waste,proportion of foodservice waste generated in the kitchen (i.e. not plate waste),0.25,0.61,0.97,from several published sources (upper bound) and Refed's assumption (lower bound),yes
+waste tracking and analytics,p_equipment,proportion of annual fees and equipment cost that is equipment,0.15,0.25,0.35,"our assumption, with conservative lower and upper bounds",yes
+waste tracking and analytics,annual_cost_wages,annual costs (wages),2907,5198,8136,"estimates confirmed by Steve for hours required, and employee hourly wage data from BLS. These are 10th and 90th percentiles. All converted to 2012 dollars",yes
+waste tracking and analytics,annual_cost_fees_equipment,"annual costs (including licensing fees, support, and equipment)",5445,6806,8167,estimates confirmed by Steve; lower and upper bounds at 80% and 120% of estimate,yes
+waste tracking and analytics,p_scales,proportion of equipment costs that is industrial and retail scales (vs computer equipment),0.05,0.2,0.4,our assumptions,yes
+all,annuity_years,n in annuity function (number of years),3,5,10,"our assumptions, based on common usage in regulatory impact analyses",yes
+all,annuity_rate,r in annuity function (annual rate),0.03,0.05,0.07,"our assumptions, based on common usage in regulatory impact analyses",yes
+all,,baseline waste rates for foods,NA,NA,NA,"LAFA, QFAHPD, and BEA data harmonized (consumer level average for all foods is around 22%) -- will not subject to uncertainty analysis",no
+all,baseline_beverage_rate,baseline waste rate for beverages at consumer level,0.064,0.08,0.096,from a publication cited in STOTEN paper,yes
+all,,baseline demand for food in 2012,NA,NA,NA,BEA data as processed by USEEIO model -- will not subject this to uncertainty analysis,no
+meta-parameter,width,proportion of mode value to use for upper and lower bound if not given,NA,0.2,NA,our assumption,
+meta-parameter,lambda,shape parameter (lambda) for PERT distributions,NA,4,NA,based on common usage in uncertainty analyses; this makes the PERT distributions have similar shapes to truncated normal distributions,

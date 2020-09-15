@@ -1,0 +1,36 @@
+BEA_389_code,BEA_389_def,QFAHPD_code
+1111B0,"Fresh wheat, corn, rice, and other grains",18;21
+111200,"Fresh vegetables, melons, and potatoes",4;6;8;10;12;14
+111300,Fresh fruits and tree nuts,1;35
+111400,"Greenhouse crops, mushrooms, nurseries, and flowers",1;4;6;8;10;12;14
+111900,"Tobacco, cotton, sugarcane, peanuts, sugar beets, herbs and spices, and other crops",35
+112120,Dairies,22;25
+112300,Poultry farms,31;37
+112A00,Animal farms and aquaculture ponds (except cattle and poultry),28;29;33
+114000,Wild-caught fish and game,33
+311210,Flours and malts,17;20;21
+311221,Corn products,20;21
+311225,"Refined vegetable, olive, and seed oils",38
+31122A,Vegetable oils and by-products,38
+311230,Breakfast cereals,16;19
+311300,"Sugar, candy, and chocolate",40;46
+311410,Frozen food,48
+311420,Fruit and vegetable preservation,1;2;3;4;5;6;7;8;9;10;11;12;13;14;15
+311513,Cheese,23;26
+311514,"Dry, condensed, and evaporated dairy",24;27
+31151A,Fluid milk and butter,22;24;25;27
+311520,Ice cream and frozen desserts,44
+311615,Packaged poultry,31;32;37
+31161A,Packaged meat (except poultry),28;29;30
+311700,Seafood,33;34
+311810,Bread and other baked goods,16;18;19;21;45;46;47
+3118A0,"Cookies, crackers, pastas, and tortillas",16;19;45;46;47
+311910,Snack foods,50
+311920,Coffee and tea,54
+311930,Flavored drink concentrates,41;42;53
+311940,Seasonings and dressings,49
+311990,All other foods,51;52
+312110,"Soft drinks, bottled water, and ice",41;42;53
+312120,Breweries and beer,
+312130,Wineries and wine,
+312140,Distilleries and spirits,

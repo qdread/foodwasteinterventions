@@ -1,0 +1,15 @@
+product_category,product_subcategory,NAICS,NAICS_description,5th Percentile,Mean,95th Percentile,food,Units
+Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,6918454.806500001,14780146.199000003,26757273.363,misc,50555309.620000005
+Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,6250160.4255,13734332.613,25054822.5585,misc,367716601.15999997
+Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,80969895.702,174205310.152,316121594.65200007,misc,447320162.78000003
+Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,52027870.82850001,112336096.25100002,204047507.73,misc,360010185.45
+Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,85449425.45,184654122.7,335055706.8,fruit,2482218443
+Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,33058871.650000006,71350980.9,129667737.60000002,fruit,270791933
+Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,30881077.35,66142012.1,119826934.80000001,vegetables,159730333
+Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,8643567.549999999,18696850.3,33960618,vegetables,1159062282
+Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,137393500.10000002,295170635.6,535238833.3500001,vegetables,3223188237
+Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,19757465.5,43205360,78746575.95,vegetables,1336157890
+Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,13683794.450000001,29145160.7,52698805.35,meat,94244059
+Meat & poultry,Poultry - frozen,311615,Poultry Processing,12593938.350000001,27211704.1,49453731.6,poultry,160769132
+Seafood,Seafood - refrigerated,311711,Seafood Canning,20630463.400000002,43592921.4,78570497.7,seafood,84111310
+Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,44326342.701500006,95395092.91900001,173267755.63500002,vegetables,270998424.87

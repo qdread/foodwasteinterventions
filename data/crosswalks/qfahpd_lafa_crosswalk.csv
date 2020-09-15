@@ -1,0 +1,55 @@
+QFAHPD_code,QFAHPD_name,LAFA_names
+1,Fresh/Frozen fruit,Fresh fruit;Frozen fruit
+2,Canned Fruit,Canned fruit
+3,Fruit Juice,Juice
+4,Fresh/Frozen dark green vegetables,Fresh broccoli;Fresh collard greens;Fresh kale;Fresh leaf lettuce;Fresh mustard greens;Fresh spinach;Fresh turnip greens;Frozen broccoli;Frozen spinach
+5,Canned dark green vegetables,Canned vegetables
+6,Fresh/Frozen orange vegetables,Fresh carrots;Fresh pumpkin;Fresh squash;Fresh sweetpotatoes
+7,Canned orange vegetables,Canned carrots
+8,Fresh/Frozen starchy vegetables,Fresh lima beans;Fresh potatoes;Fresh sweet corn;Frozen green peas;Frozen lima beans;Frozen potatoes;Frozen sweet corn
+9,Canned starchy vegetables,Canned green peas;Canned potatoes;Canned sweet corn
+10,Fresh/Frozen select nutrient vegetables,Fresh artichokes;Fresh Brussels sprouts;Fresh cabbage;Fresh cauliflower;Fresh okra;Fresh tomatoes;Fresh avocados;Frozen cauliflower
+11,Canned select nutrients,Canned cabbage;Canned chile peppers;Canned tomatoes
+12,Fresh/Frozen other vegetables,Fresh vegetables;Frozen vegetables
+13,Canned other vegetables,Other canned vegetables
+14,Frozen/Dried Legumes,Dry edible beans
+15,Canned Legumes,Canned vegetables
+16,"Whole grain bread, rolls, rice, pasta, cereal",Total grains
+17,Whole grain flour and mixes,Total grains
+18,Whole grain frozen/ready to cook,Total grains
+19,"other bread, rolls, rice, pasta, cereal",Total grains
+20,other flour and mixes,Total grains
+21,other frozen/ready to cook grains,Total grains
+22,Low fat milk,Skim milk;1 percent milk;2 percent milk;Lowfat flavored milk
+23,Low fat cheese,Total cheese
+24,Low fat yogurt & other dairy,Yogurt
+25,Regular fat milk,Plain whole milk;Whole flavored milk
+26,Regular fat cheese,Total cheese
+27,Regular fat yogurt & other dairy,Yogurt
+28,Fresh/frozen low fat meat,Red meat
+29,Fresh/frozen regular fat meat,Red meat
+30,Canned meat,Red meat
+31,Fresh/frozen poultry,Poultry
+32,Canned poultry,Poultry
+33,Fresh/frozen fish,Total Fresh and Frozen Fish
+34,Canned fish,Canned fish and shellfish
+35,Raw nuts and seeds,Total tree nuts
+36,"Processed nuts, seeds and nut butters",Total tree nuts
+37,Eggs,Eggs
+38,Oils,Salad and cooking oils;Other edible fats and oils
+39,Solid fats,Butter;Margarine;Lard;Edible beef tallow;Shortening
+40,Raw sugars,Caloric sweeteners
+41,Non-alcoholic nondiet carbonated beverages,beverage
+42,Non-carbonated caloric beverages,beverage
+43,Water,beverage
+44,Ice cream and frozen desserts,Ice cream
+45,Baked good mixes,prepared food
+46,Packaged sweets/baked goods,prepared food
+47,"Bakery items, ready to eat",prepared food
+48,Frozen entrees and sides,prepared food
+49,"Canned soups, sauces, prepared foods",prepared food
+50,Packaged snacks,prepared food
+51,Ready to cook meals and sides,prepared food
+52,Ready to eat deli items (hot and cold),prepared food
+53,Non-alcoholic diet carbonated beverages,beverage
+54,Unsweetened coffee and tea,beverage

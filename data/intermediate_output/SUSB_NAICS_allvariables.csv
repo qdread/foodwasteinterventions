@@ -1,0 +1,1096 @@
+NAICS,NAICS description,Size class,No. firms,No. establishments,No. employees,Total payroll,Total receipts
+114111,Finfish Fishing,fewer than 20,1200,1200,1606,97348,872958
+114111,Finfish Fishing,20 to 99,14,15,545,31344,272199
+114111,Finfish Fishing,100 to 499,9,15,1403,95941,853583
+114111,Finfish Fishing,more than 500,1,4,0,0,0
+114111,Finfish Fishing,total,1224,1234,3959,248205,2208472
+114112,Shellfish Fishing,fewer than 20,894,894,1009,53756,463366
+114112,Shellfish Fishing,20 to 99,14,15,451,20071,128613
+114112,Shellfish Fishing,100 to 499,2,2,0,0,0
+114112,Shellfish Fishing,more than 500,1,1,0,0,0
+114112,Shellfish Fishing,total,911,912,2063,88794,712598
+114119,Other Marine Fishing,fewer than 20,41,41,59,2594,20264
+114119,Other Marine Fishing,20 to 99,1,1,0,0,0
+114119,Other Marine Fishing,total,42,42,93,4209,32803
+114210,Hunting and Trapping,fewer than 20,287,287,885,24881,104386
+114210,Hunting and Trapping,20 to 99,11,11,329,7925,24300
+114210,Hunting and Trapping,100 to 499,4,4,0,0,0
+114210,Hunting and Trapping,total,302,302,1652,49301,170026
+311211,Flour Milling,fewer than 20,89,89,490,23119,470606
+311211,Flour Milling,20 to 99,38,49,1629,75572,1572963
+311211,Flour Milling,100 to 499,22,52,2914,157020,3340976
+311211,Flour Milling,more than 500,16,112,5920,316465,10072736
+311211,Flour Milling,total,165,302,10953,572176,15457281
+311212,Rice Milling,fewer than 20,21,21,180,10097,127596
+311212,Rice Milling,20 to 99,11,12,443,21048,338004
+311212,Rice Milling,100 to 499,9,14,1148,55339,1189273
+311212,Rice Milling,more than 500,9,21,0,84316,2077239
+311212,Rice Milling,total,50,68,3631,170800,3732112
+311213,Malt Manufacturing,fewer than 20,8,8,0,1382,20356
+311213,Malt Manufacturing,20 to 99,3,3,102,3425,90319
+311213,Malt Manufacturing,100 to 499,6,16,830,54802,919541
+311213,Malt Manufacturing,more than 500,2,5,0,0,0
+311213,Malt Manufacturing,total,19,32,1172,72502,1436586
+311221,Wet Corn Milling,fewer than 20,15,15,0,3342,88476
+311221,Wet Corn Milling,20 to 99,7,10,249,12328,243212
+311221,Wet Corn Milling,100 to 499,3,9,513,32647,0
+311221,Wet Corn Milling,more than 500,6,29,5833,439169,11576710
+311221,Wet Corn Milling,total,31,63,6687,487486,12359066
+311224,Soybean and Other Oilseed Processing,fewer than 20,49,49,298,11018,664532
+311224,Soybean and Other Oilseed Processing,20 to 99,14,15,697,36313,1125280
+311224,Soybean and Other Oilseed Processing,100 to 499,6,10,1021,53652,2961788
+311224,Soybean and Other Oilseed Processing,more than 500,15,79,5877,337817,36500841
+311224,Soybean and Other Oilseed Processing,total,84,153,7893,438800,41252441
+311225,Fats and Oils Refining and Blending,fewer than 20,42,42,250,11979,244746
+311225,Fats and Oils Refining and Blending,20 to 99,22,26,952,56753,1065730
+311225,Fats and Oils Refining and Blending,100 to 499,11,14,0,0,0
+311225,Fats and Oils Refining and Blending,more than 500,15,51,7202,349873,13952896
+311225,Fats and Oils Refining and Blending,total,90,133,10104,504603,18219680
+311230,Breakfast Cereal Manufacturing,fewer than 20,20,20,90,2494,39508
+311230,Breakfast Cereal Manufacturing,20 to 99,3,3,193,8678,93433
+311230,Breakfast Cereal Manufacturing,100 to 499,4,5,665,33834,279492
+311230,Breakfast Cereal Manufacturing,more than 500,10,35,0,0,0
+311230,Breakfast Cereal Manufacturing,total,37,63,0,0,0
+311313,Beet Sugar Manufacturing,fewer than 20,2,2,0,0,0
+311313,Beet Sugar Manufacturing,20 to 99,5,5,0,8865,0
+311313,Beet Sugar Manufacturing,100 to 499,2,3,0,0,0
+311313,Beet Sugar Manufacturing,more than 500,6,21,4735,203541,3642646
+311313,Beet Sugar Manufacturing,total,15,31,5790,270777,4621777
+311314,Cane Sugar Manufacturing,fewer than 20,11,11,63,2728,18710
+311314,Cane Sugar Manufacturing,20 to 99,9,14,553,33892,510943
+311314,Cane Sugar Manufacturing,100 to 499,7,11,1403,71984,1160602
+311314,Cane Sugar Manufacturing,more than 500,8,16,4563,301123,4249004
+311314,Cane Sugar Manufacturing,total,35,52,6582,409727,5939259
+311340,Nonchocolate Confectionery Manufacturing,fewer than 20,312,314,1550,35905,243317
+311340,Nonchocolate Confectionery Manufacturing,20 to 99,61,63,2234,89260,599438
+311340,Nonchocolate Confectionery Manufacturing,100 to 499,33,36,5224,202733,1640199
+311340,Nonchocolate Confectionery Manufacturing,more than 500,20,32,11411,615769,6671408
+311340,Nonchocolate Confectionery Manufacturing,total,426,445,20419,943667,9154362
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,fewer than 20,126,126,621,16273,127585
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,20 to 99,16,16,662,20596,94213
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,100 to 499,7,7,955,47970,394445
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,more than 500,12,23,6293,327174,5640652
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,total,161,172,8531,412013,6256895
+311352,Confectionery Manufacturing from Purchased Chocolate,fewer than 20,870,894,5577,97621,365342
+311352,Confectionery Manufacturing from Purchased Chocolate,20 to 99,176,204,5975,144930,802263
+311352,Confectionery Manufacturing from Purchased Chocolate,100 to 499,46,72,5976,219761,1296214
+311352,Confectionery Manufacturing from Purchased Chocolate,more than 500,18,37,11939,547147,6113074
+311352,Confectionery Manufacturing from Purchased Chocolate,total,1110,1207,29467,1009459,8576893
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",fewer than 20,57,57,376,20795,184181
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",20 to 99,38,42,1670,68514,634495
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",100 to 499,31,42,7188,236070,2342787
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",more than 500,22,80,20093,758368,8410634
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",total,148,221,29327,1083747,11572097
+311412,Frozen Specialty Food Manufacturing,fewer than 20,187,187,1355,36431,316078
+311412,Frozen Specialty Food Manufacturing,20 to 99,105,110,4836,157666,1279426
+311412,Frozen Specialty Food Manufacturing,100 to 499,54,63,9756,331765,2588363
+311412,Frozen Specialty Food Manufacturing,more than 500,43,103,38333,1459770,13003454
+311412,Frozen Specialty Food Manufacturing,total,389,463,54280,1985632,17187321
+311421,Fruit and Vegetable Canning,fewer than 20,354,354,1787,57434,488958
+311421,Fruit and Vegetable Canning,20 to 99,116,119,5092,203914,1812304
+311421,Fruit and Vegetable Canning,100 to 499,62,85,10454,468328,4797373
+311421,Fruit and Vegetable Canning,more than 500,43,135,24949,1403883,16860975
+311421,Fruit and Vegetable Canning,total,575,693,42282,2133559,23959610
+311422,Specialty Canning,fewer than 20,63,63,340,9243,88968
+311422,Specialty Canning,20 to 99,17,17,751,25557,202369
+311422,Specialty Canning,100 to 499,12,13,1572,86207,756565
+311422,Specialty Canning,more than 500,14,27,9978,546580,9186521
+311422,Specialty Canning,total,106,120,12641,667587,10234423
+311423,Dried and Dehydrated Food Manufacturing,fewer than 20,75,76,505,16980,130496
+311423,Dried and Dehydrated Food Manufacturing,20 to 99,53,54,2582,107104,858291
+311423,Dried and Dehydrated Food Manufacturing,100 to 499,18,30,3595,147148,2395523
+311423,Dried and Dehydrated Food Manufacturing,more than 500,21,45,7328,308973,3120501
+311423,Dried and Dehydrated Food Manufacturing,total,167,205,14010,580205,6504811
+311511,Fluid Milk Manufacturing,fewer than 20,97,97,605,21370,260491
+311511,Fluid Milk Manufacturing,20 to 99,65,68,2971,118213,1634300
+311511,Fluid Milk Manufacturing,100 to 499,38,51,7256,365835,4451239
+311511,Fluid Milk Manufacturing,more than 500,46,226,40877,2121325,30693339
+311511,Fluid Milk Manufacturing,total,246,442,51709,2626743,37039369
+311512,Creamery Butter Manufacturing,fewer than 20,16,16,0,0,0
+311512,Creamery Butter Manufacturing,20 to 99,6,6,199,8008,232976
+311512,Creamery Butter Manufacturing,100 to 499,1,1,0,0,0
+311512,Creamery Butter Manufacturing,more than 500,7,15,1593,73801,2566741
+311512,Creamery Butter Manufacturing,total,30,38,2008,90802,3035784
+311513,Cheese Manufacturing,fewer than 20,212,212,1406,42476,689982
+311513,Cheese Manufacturing,20 to 99,103,111,4623,169097,2622091
+311513,Cheese Manufacturing,100 to 499,46,73,7846,348069,6277033
+311513,Cheese Manufacturing,more than 500,29,150,31337,1509704,31489685
+311513,Cheese Manufacturing,total,390,546,45212,2069346,41078791
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",fewer than 20,54,54,396,19428,342169
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",20 to 99,29,32,1290,70538,1069581
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",100 to 499,21,28,2888,155982,3529480
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",more than 500,29,76,10993,641987,14647723
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",total,133,190,15567,887935,19588953
+311520,Ice Cream and Frozen Dessert Manufacturing,fewer than 20,255,257,1392,37842,318149
+311520,Ice Cream and Frozen Dessert Manufacturing,20 to 99,47,52,1709,53060,336233
+311520,Ice Cream and Frozen Dessert Manufacturing,100 to 499,23,25,2789,94062,796153
+311520,Ice Cream and Frozen Dessert Manufacturing,more than 500,22,57,13284,617095,5761414
+311520,Ice Cream and Frozen Dessert Manufacturing,total,347,391,19174,802059,7211949
+311611,Animal (except Poultry) Slaughtering,fewer than 20,1172,1173,6340,138406,1913419
+311611,Animal (except Poultry) Slaughtering,20 to 99,151,159,6413,208082,2397133
+311611,Animal (except Poultry) Slaughtering,100 to 499,58,69,10841,393330,5331417
+311611,Animal (except Poultry) Slaughtering,more than 500,46,112,130467,4456033,81125120
+311611,Animal (except Poultry) Slaughtering,total,1427,1513,154061,5195851,90767089
+311612,Meat Processed from Carcasses,fewer than 20,759,759,4376,120146,1143586
+311612,Meat Processed from Carcasses,20 to 99,272,278,12182,449632,4615740
+311612,Meat Processed from Carcasses,100 to 499,117,137,21142,852779,8542363
+311612,Meat Processed from Carcasses,more than 500,54,175,65826,2375173,31398179
+311612,Meat Processed from Carcasses,total,1202,1349,103526,3797730,45699868
+311613,Rendering and Meat Byproduct Processing,fewer than 20,54,56,338,14663,192643
+311613,Rendering and Meat Byproduct Processing,20 to 99,39,43,1321,71745,896186
+311613,Rendering and Meat Byproduct Processing,100 to 499,8,23,1227,93306,825389
+311613,Rendering and Meat Byproduct Processing,more than 500,13,92,5484,260547,3508455
+311613,Rendering and Meat Byproduct Processing,total,114,214,8370,440261,5422673
+311615,Poultry Processing,fewer than 20,143,143,795,24238,237607
+311615,Poultry Processing,20 to 99,63,63,2763,88059,795090
+311615,Poultry Processing,100 to 499,41,44,8456,250204,2427940
+311615,Poultry Processing,more than 500,60,267,208507,5669635,53365273
+311615,Poultry Processing,total,307,517,220521,6032136,56825910
+311710,Seafood Product Preparation and Packaging,fewer than 20,283,285,1419,71624,515748
+311710,Seafood Product Preparation and Packaging,20 to 99,140,144,6216,192156,1592144
+311710,Seafood Product Preparation and Packaging,100 to 499,53,79,8842,381990,3078712
+311710,Seafood Product Preparation and Packaging,more than 500,21,81,14511,550437,5066607
+311710,Seafood Product Preparation and Packaging,total,497,589,30988,1196207,10253211
+311811,Retail Bakeries,fewer than 20,5710,5733,30420,473810,1486050
+311811,Retail Bakeries,20 to 99,662,757,20966,406045,1219438
+311811,Retail Bakeries,100 to 499,34,77,3849,94425,353905
+311811,Retail Bakeries,more than 500,17,28,1125,30441,125274
+311811,Retail Bakeries,total,6423,6595,56360,1004721,3184667
+311812,Commercial Bakeries,fewer than 20,1609,1610,9260,185841,700549
+311812,Commercial Bakeries,20 to 99,482,506,19041,511086,2071261
+311812,Commercial Bakeries,100 to 499,153,192,24749,913252,4141178
+311812,Commercial Bakeries,more than 500,77,336,73244,3310240,21861243
+311812,Commercial Bakeries,total,2321,2644,126294,4920419,28774231
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",fewer than 20,89,89,565,12982,85315
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",20 to 99,64,65,3040,102150,652376
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",100 to 499,29,32,5650,169161,978749
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",more than 500,23,46,11646,440734,3802595
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",total,205,232,20901,725027,5519035
+311821,Cookie and Cracker Manufacturing,fewer than 20,204,204,1177,26668,125669
+311821,Cookie and Cracker Manufacturing,20 to 99,58,58,2346,85750,429343
+311821,Cookie and Cracker Manufacturing,100 to 499,27,30,4531,184316,1224797
+311821,Cookie and Cracker Manufacturing,more than 500,20,58,22070,1064009,9925256
+311821,Cookie and Cracker Manufacturing,total,309,350,30124,1360743,11705065
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",fewer than 20,211,211,1414,42799,268289
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",20 to 99,96,101,3763,142385,1089003
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",100 to 499,36,58,5367,247880,2328634
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",more than 500,32,69,12941,577274,7937348
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",total,375,439,23485,1010338,11623274
+311830,Tortilla Manufacturing,fewer than 20,209,209,1276,24090,152090
+311830,Tortilla Manufacturing,20 to 99,91,97,3665,92264,439141
+311830,Tortilla Manufacturing,100 to 499,26,29,3563,117449,616275
+311830,Tortilla Manufacturing,more than 500,8,23,7877,285955,1997667
+311830,Tortilla Manufacturing,total,334,358,16381,519758,3205173
+311911,Roasted Nuts and Peanut Butter Manufacturing,fewer than 20,109,109,658,22796,271976
+311911,Roasted Nuts and Peanut Butter Manufacturing,20 to 99,57,58,2597,92016,1299275
+311911,Roasted Nuts and Peanut Butter Manufacturing,100 to 499,25,31,4614,172359,3111563
+311911,Roasted Nuts and Peanut Butter Manufacturing,more than 500,17,36,8102,382253,6122877
+311911,Roasted Nuts and Peanut Butter Manufacturing,total,208,234,15971,669424,10805691
+311919,Other Snack Food Manufacturing,fewer than 20,188,189,1139,29881,284345
+311919,Other Snack Food Manufacturing,20 to 99,72,74,2796,86091,569461
+311919,Other Snack Food Manufacturing,100 to 499,23,29,4166,183004,1565751
+311919,Other Snack Food Manufacturing,more than 500,24,86,22658,963023,19333844
+311919,Other Snack Food Manufacturing,total,307,378,30759,1261999,21753401
+311920,Coffee and Tea Manufacturing,fewer than 20,307,307,1403,39554,340955
+311920,Coffee and Tea Manufacturing,20 to 99,64,73,2404,106577,908719
+311920,Coffee and Tea Manufacturing,100 to 499,25,35,3416,167913,2254955
+311920,Coffee and Tea Manufacturing,more than 500,14,30,8862,515869,9379879
+311920,Coffee and Tea Manufacturing,total,410,445,16085,829913,12884508
+311930,Flavoring Syrup and Concentrate Manufacturing,fewer than 20,81,81,489,22450,200817
+311930,Flavoring Syrup and Concentrate Manufacturing,20 to 99,31,33,1173,60706,423727
+311930,Flavoring Syrup and Concentrate Manufacturing,100 to 499,13,14,0,0,0
+311930,Flavoring Syrup and Concentrate Manufacturing,more than 500,13,25,3209,192909,0
+311930,Flavoring Syrup and Concentrate Manufacturing,total,138,153,6633,424330,8540957
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",fewer than 20,196,196,896,38377,313789
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",20 to 99,63,67,2763,121218,964948
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",100 to 499,23,45,2912,127871,1529303
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",more than 500,21,40,7980,427961,7201437
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",total,303,348,14551,715427,10009477
+311942,Spice and Extract Manufacturing,fewer than 20,203,204,1186,65619,505832
+311942,Spice and Extract Manufacturing,20 to 99,71,75,3245,203754,1381907
+311942,Spice and Extract Manufacturing,100 to 499,42,53,5874,351138,2239403
+311942,Spice and Extract Manufacturing,more than 500,28,51,6796,391228,5116893
+311942,Spice and Extract Manufacturing,total,344,383,17101,1011739,9244035
+311991,Perishable Prepared Food Manufacturing,fewer than 20,395,395,2523,57926,545691
+311991,Perishable Prepared Food Manufacturing,20 to 99,137,147,6077,173141,1115793
+311991,Perishable Prepared Food Manufacturing,100 to 499,68,85,10949,332312,2421438
+311991,Perishable Prepared Food Manufacturing,more than 500,40,69,20492,744017,6823172
+311991,Perishable Prepared Food Manufacturing,total,640,696,40041,1307396,10906094
+311999,All Other Miscellaneous Food Manufacturing,fewer than 20,375,375,2136,73554,646787
+311999,All Other Miscellaneous Food Manufacturing,20 to 99,111,118,5040,189977,1965654
+311999,All Other Miscellaneous Food Manufacturing,100 to 499,46,79,6467,317888,3203952
+311999,All Other Miscellaneous Food Manufacturing,more than 500,35,69,12854,593992,6590219
+311999,All Other Miscellaneous Food Manufacturing,total,567,641,26497,1175411,12406612
+312111,Soft Drink Manufacturing,fewer than 20,122,122,715,31600,471874
+312111,Soft Drink Manufacturing,20 to 99,48,48,2274,90708,1124469
+312111,Soft Drink Manufacturing,100 to 499,36,38,4351,210745,2388221
+312111,Soft Drink Manufacturing,more than 500,38,242,41298,2016441,37836720
+312111,Soft Drink Manufacturing,total,244,450,48638,2349494,41821284
+312112,Bottled Water Manufacturing,fewer than 20,173,174,824,29901,267286
+312112,Bottled Water Manufacturing,20 to 99,22,24,806,34390,260322
+312112,Bottled Water Manufacturing,100 to 499,13,28,1683,71272,887342
+312112,Bottled Water Manufacturing,more than 500,11,82,6890,366335,4414140
+312112,Bottled Water Manufacturing,total,219,308,10203,501898,5829090
+312113,Ice Manufacturing,fewer than 20,278,278,1414,46407,174216
+312113,Ice Manufacturing,20 to 99,27,29,672,26212,102753
+312113,Ice Manufacturing,more than 500,5,136,2656,87676,429512
+312113,Ice Manufacturing,total,310,443,4742,160295,706481
+312120,Breweries,fewer than 20,668,668,2837,84825,514758
+312120,Breweries,20 to 99,135,140,5638,181851,1037447
+312120,Breweries,100 to 499,30,36,4236,222029,1846383
+312120,Breweries,more than 500,10,36,15029,1020228,25270441
+312120,Breweries,total,843,880,27740,1508933,28669029
+312130,Wineries,fewer than 20,2112,2113,10514,326012,1646535
+312130,Wineries,20 to 99,345,359,12016,469188,2453733
+312130,Wineries,100 to 499,43,77,5929,350007,2041496
+312130,Wineries,more than 500,19,82,9437,699216,9383215
+312130,Wineries,total,2519,2631,37896,1844423,15524979
+312140,Distilleries,fewer than 20,196,196,852,34461,315175
+312140,Distilleries,20 to 99,17,17,568,25263,318742
+312140,Distilleries,100 to 499,12,16,1740,118544,2107023
+312140,Distilleries,more than 500,6,20,3760,237864,6398073
+312140,Distilleries,total,231,249,6920,416132,9139013
+424410,General Line Grocery Merchant Wholesalers,fewer than 20,1816,1825,7671,260214,5045170
+424410,General Line Grocery Merchant Wholesalers,20 to 99,292,323,11058,470843,7816801
+424410,General Line Grocery Merchant Wholesalers,100 to 499,90,124,13475,684688,21548765
+424410,General Line Grocery Merchant Wholesalers,more than 500,73,560,103776,6066701,136393459
+424410,General Line Grocery Merchant Wholesalers,total,2271,2832,135980,7482446,170804195
+424420,Packaged Frozen Food Merchant Wholesalers,fewer than 20,2211,2227,10418,555927,15645490
+424420,Packaged Frozen Food Merchant Wholesalers,20 to 99,435,477,17070,794403,17801037
+424420,Packaged Frozen Food Merchant Wholesalers,100 to 499,112,152,13462,712101,13658031
+424420,Packaged Frozen Food Merchant Wholesalers,more than 500,81,547,33877,1830106,46323737
+424420,Packaged Frozen Food Merchant Wholesalers,total,2839,3403,74827,3892537,93428295
+424430,Dairy Product (except Dried or Canned) Merchant Wholesalers,fewer than 20,1303,1316,6226,282589,4966774
+424430,Dairy Product (except Dried or Canned) Merchant Wholesalers,20 to 99,239,282,9884,469823,11616304
+424430,Dairy Product (except Dried or Canned) Merchant Wholesalers,100 to 499,64,150,7275,363133,6602191
+424430,Dairy Product (except Dried or Canned) Merchant Wholesalers,more than 500,49,395,20968,1312204,38254271
+424430,Dairy Product (except Dried or Canned) Merchant Wholesalers,total,1655,2143,44353,2427749,61439540
+424440,Poultry and Poultry Product Merchant Wholesalers,fewer than 20,324,337,1721,97303,3012755
+424440,Poultry and Poultry Product Merchant Wholesalers,20 to 99,94,106,3625,141510,3226267
+424440,Poultry and Poultry Product Merchant Wholesalers,100 to 499,22,40,2819,113288,2006694
+424440,Poultry and Poultry Product Merchant Wholesalers,more than 500,13,30,2037,66657,3786318
+424440,Poultry and Poultry Product Merchant Wholesalers,total,453,513,10202,418758,12032034
+424450,Confectionery Merchant Wholesalers,fewer than 20,1550,1564,5700,229945,4068688
+424450,Confectionery Merchant Wholesalers,20 to 99,182,216,6066,298696,4892189
+424450,Confectionery Merchant Wholesalers,100 to 499,47,104,4905,232866,3097393
+424450,Confectionery Merchant Wholesalers,more than 500,33,272,36868,2153501,32139317
+424450,Confectionery Merchant Wholesalers,total,1812,2156,53539,2915008,44197587
+424460,Fish and Seafood Merchant Wholesalers,fewer than 20,1582,1596,6686,281402,5790579
+424460,Fish and Seafood Merchant Wholesalers,20 to 99,229,260,8377,349116,5388692
+424460,Fish and Seafood Merchant Wholesalers,100 to 499,28,51,2613,140668,1630085
+424460,Fish and Seafood Merchant Wholesalers,more than 500,15,47,2354,95993,1582774
+424460,Fish and Seafood Merchant Wholesalers,total,1854,1954,20030,867179,14392130
+424470,Meat and Meat Product Merchant Wholesalers,fewer than 20,1701,1704,8760,341238,7115418
+424470,Meat and Meat Product Merchant Wholesalers,20 to 99,342,357,12587,546236,11255152
+424470,Meat and Meat Product Merchant Wholesalers,100 to 499,74,117,10354,498960,11289146
+424470,Meat and Meat Product Merchant Wholesalers,more than 500,45,227,13115,650547,23040305
+424470,Meat and Meat Product Merchant Wholesalers,total,2162,2405,44816,2036981,52700021
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,fewer than 20,3377,3414,16907,818646,17276007
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,20 to 99,782,883,31279,1349686,21103473
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,100 to 499,203,364,34132,1505729,20100060
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,more than 500,43,193,19536,828345,15282164
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,total,4405,4854,101854,4502406,73761704
+424490,Other Grocery and Related Products Merchant Wholesalers,fewer than 20,8233,8289,31865,1370407,21829092
+424490,Other Grocery and Related Products Merchant Wholesalers,20 to 99,1072,1310,40096,1882193,23889768
+424490,Other Grocery and Related Products Merchant Wholesalers,100 to 499,306,686,34490,1676044,22382836
+424490,Other Grocery and Related Products Merchant Wholesalers,more than 500,176,3414,163507,8890101,210213121
+424490,Other Grocery and Related Products Merchant Wholesalers,total,9787,13699,269958,13818745,278314817
+424510,Grain and Field Bean Merchant Wholesalers,fewer than 20,1663,1815,10329,486117,23091814
+424510,Grain and Field Bean Merchant Wholesalers,20 to 99,426,1082,13801,697619,31939520
+424510,Grain and Field Bean Merchant Wholesalers,100 to 499,138,800,9818,558533,39453518
+424510,Grain and Field Bean Merchant Wholesalers,more than 500,44,1064,15496,951953,132186302
+424510,Grain and Field Bean Merchant Wholesalers,total,2271,4761,49444,2694222,226671154
+424520,Livestock Merchant Wholesalers,fewer than 20,571,575,2510,67726,5010191
+424520,Livestock Merchant Wholesalers,20 to 99,86,100,2769,45131,2025076
+424520,Livestock Merchant Wholesalers,100 to 499,10,89,836,24623,3126840
+424520,Livestock Merchant Wholesalers,more than 500,7,23,0,0,0
+424520,Livestock Merchant Wholesalers,total,674,787,6567,168105,10403204
+424590,Other Farm Product Raw Material Merchant Wholesalers,fewer than 20,517,524,2078,130859,5049872
+424590,Other Farm Product Raw Material Merchant Wholesalers,20 to 99,52,66,1549,69316,2302484
+424590,Other Farm Product Raw Material Merchant Wholesalers,100 to 499,21,41,1338,68311,2196484
+424590,Other Farm Product Raw Material Merchant Wholesalers,more than 500,11,19,419,45490,3066644
+424590,Other Farm Product Raw Material Merchant Wholesalers,total,601,650,5384,313976,12615484
+424810,Beer and Ale Merchant Wholesalers,fewer than 20,689,702,3743,163256,1555644
+424810,Beer and Ale Merchant Wholesalers,20 to 99,526,588,25448,1241265,11984125
+424810,Beer and Ale Merchant Wholesalers,100 to 499,278,465,51877,2548654,25803709
+424810,Beer and Ale Merchant Wholesalers,more than 500,31,179,25622,1409962,18666559
+424810,Beer and Ale Merchant Wholesalers,total,1524,1934,106690,5363137,58010037
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,fewer than 20,1617,1638,6752,350874,4100121
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,20 to 99,230,275,9029,608055,6149610
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,100 to 499,88,195,13574,995012,15173828
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,more than 500,43,381,47625,3395066,50746303
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,total,1978,2489,76980,5349007,76169862
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,fewer than 20,10153,10203,34395,1402911,15299374
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,20 to 99,663,759,21790,1013294,10838512
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,100 to 499,166,359,13445,642692,5300531
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,more than 500,111,303,12018,716454,14319555
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,total,11093,11624,81648,3775351,45757972
+445110,Supermarkets and Other Grocery (except Convenience) Stores,fewer than 20,34194,34325,143726,2511873,28647117
+445110,Supermarkets and Other Grocery (except Convenience) Stores,20 to 99,6504,7219,261216,4908962,43653946
+445110,Supermarkets and Other Grocery (except Convenience) Stores,100 to 499,1089,2960,180622,3626482,30630934
+445110,Supermarkets and Other Grocery (except Convenience) Stores,more than 500,320,21543,1885591,42352721,433526535
+445110,Supermarkets and Other Grocery (except Convenience) Stores,total,42107,66047,2471155,53400038,536458532
+445120,Convenience Stores,fewer than 20,22449,22707,75977,1196975,15777311
+445120,Convenience Stores,20 to 99,496,735,12142,193498,1692501
+445120,Convenience Stores,100 to 499,90,497,4541,75137,723154
+445120,Convenience Stores,more than 500,51,1544,18227,370663,3651843
+445120,Convenience Stores,total,23086,25483,110887,1836273,21844809
+445210,Meat Markets,fewer than 20,4564,4622,22096,448714,3835196
+445210,Meat Markets,20 to 99,289,360,8984,199412,1345510
+445210,Meat Markets,100 to 499,21,123,1510,31580,213880
+445210,Meat Markets,more than 500,6,123,0,26135,186316
+445210,Meat Markets,total,4880,5228,33782,705841,5580902
+445220,Fish and Seafood Markets,fewer than 20,1821,1835,6818,147748,1477409
+445220,Fish and Seafood Markets,20 to 99,94,104,2967,75453,575107
+445220,Fish and Seafood Markets,100 to 499,11,14,493,14029,96529
+445220,Fish and Seafood Markets,more than 500,3,4,0,0,0
+445220,Fish and Seafood Markets,total,1929,1957,10293,237619,2152524
+445230,Fruit and Vegetable Markets,fewer than 20,2495,2510,8679,182591,1981177
+445230,Fruit and Vegetable Markets,20 to 99,195,219,7332,148019,1134849
+445230,Fruit and Vegetable Markets,100 to 499,19,34,3139,74442,484689
+445230,Fruit and Vegetable Markets,more than 500,7,25,0,35570,320822
+445230,Fruit and Vegetable Markets,total,2716,2788,20332,440622,3921537
+445291,Baked Goods Stores,fewer than 20,2258,2271,8801,129117,657495
+445291,Baked Goods Stores,20 to 99,170,237,4144,65886,251902
+445291,Baked Goods Stores,100 to 499,29,143,2239,40598,147915
+445291,Baked Goods Stores,more than 500,13,589,0,0,0
+445291,Baked Goods Stores,total,2470,3240,19560,344567,1618610
+445292,Confectionery and Nut Stores,fewer than 20,1792,1832,7124,93903,593962
+445292,Confectionery and Nut Stores,20 to 99,116,241,2937,45308,258717
+445292,Confectionery and Nut Stores,100 to 499,30,213,2090,33498,186589
+445292,Confectionery and Nut Stores,more than 500,14,885,7369,95023,803856
+445292,Confectionery and Nut Stores,total,1952,3171,19520,267732,1843124
+445299,All Other Specialty Food Stores,fewer than 20,3647,3685,14958,226985,1460820
+445299,All Other Specialty Food Stores,20 to 99,312,605,10575,155875,774638
+445299,All Other Specialty Food Stores,100 to 499,45,225,4727,72953,348143
+445299,All Other Specialty Food Stores,more than 500,14,868,5702,78842,503751
+445299,All Other Specialty Food Stores,total,4018,5383,35962,534655,3087352
+445310,"Beer, Wine, and Liquor Stores",fewer than 20,27526,27974,105287,1983063,27286549
+445310,"Beer, Wine, and Liquor Stores",20 to 99,707,1531,21064,511968,5659738
+445310,"Beer, Wine, and Liquor Stores",100 to 499,102,946,7229,158532,2225645
+445310,"Beer, Wine, and Liquor Stores",more than 500,51,1876,17355,452188,7913389
+445310,"Beer, Wine, and Liquor Stores",total,28386,32327,150935,3105751,43085321
+446110,Pharmacies and Drug Stores,fewer than 20,16520,16809,112481,4203406,39198290
+446110,Pharmacies and Drug Stores,20 to 99,1970,2989,63159,2260654,16808975
+446110,Pharmacies and Drug Stores,100 to 499,145,898,14171,529281,4533751
+446110,Pharmacies and Drug Stores,more than 500,217,22647,527359,17775346,175736357
+446110,Pharmacies and Drug Stores,total,18852,43343,717170,24768687,236277373
+447110,Gasoline Stations with Convenience Stores,fewer than 20,51360,52541,260707,4279722,135614929
+447110,Gasoline Stations with Convenience Stores,20 to 99,3035,7574,92046,1508185,38020383
+447110,Gasoline Stations with Convenience Stores,100 to 499,654,8551,77693,1300139,41491378
+447110,Gasoline Stations with Convenience Stores,more than 500,217,29273,290642,5566407,210407868
+447110,Gasoline Stations with Convenience Stores,total,55266,97939,721088,12654453,425534558
+452910,Warehouse Clubs and Supercenters,fewer than 20,15,15,51,718,6356
+452910,Warehouse Clubs and Supercenters,20 to 99,2,2,0,0,0
+452910,Warehouse Clubs and Supercenters,100 to 499,2,23,0,0,0
+452910,Warehouse Clubs and Supercenters,more than 500,13,5124,0,34667415,421015038
+452910,Warehouse Clubs and Supercenters,total,32,5164,0,34677743,421104918
+452990,All Other General Merchandise Stores,fewer than 20,7552,7617,23929,402433,3239681
+452990,All Other General Merchandise Stores,20 to 99,307,523,10688,210105,1436584
+452990,All Other General Merchandise Stores,100 to 499,75,327,8544,164560,1470746
+452990,All Other General Merchandise Stores,more than 500,43,27045,278392,4577960,50226563
+452990,All Other General Merchandise Stores,total,7977,35512,321553,5355058,56373574
+454111,Electronic Shopping,fewer than 20,21613,21720,69298,2520413,25521490
+454111,Electronic Shopping,20 to 99,1222,1336,42070,1808246,16401713
+454111,Electronic Shopping,100 to 499,306,375,31204,1567990,15003991
+454111,Electronic Shopping,more than 500,278,524,61780,3531854,94675781
+454111,Electronic Shopping,total,23419,23955,204352,9428503,151602975
+454390,Other Direct Selling Establishments,fewer than 20,19917,20146,60532,1764554,11616491
+454390,Other Direct Selling Establishments,20 to 99,768,1095,21954,750470,3794786
+454390,Other Direct Selling Establishments,100 to 499,135,299,9521,389471,2957480
+454390,Other Direct Selling Establishments,more than 500,68,976,18631,837941,5099379
+454390,Other Direct Selling Establishments,total,20888,22516,110638,3742436,23468136
+481111,Scheduled Passenger Air Transportation,fewer than 20,162,168,572,33050,193376
+481111,Scheduled Passenger Air Transportation,20 to 99,55,136,2110,110965,1703435
+481111,Scheduled Passenger Air Transportation,100 to 499,32,269,6120,292886,10944415
+481111,Scheduled Passenger Air Transportation,more than 500,37,1677,373225,21387121,0
+481111,Scheduled Passenger Air Transportation,total,286,2250,382027,21824022,150141762
+481112,Scheduled Freight Air Transportation,fewer than 20,132,135,454,17778,178808
+481112,Scheduled Freight Air Transportation,20 to 99,24,54,987,57664,839259
+481112,Scheduled Freight Air Transportation,100 to 499,17,73,2280,118224,1393061
+481112,Scheduled Freight Air Transportation,more than 500,13,114,6041,563622,4334301
+481112,Scheduled Freight Air Transportation,total,186,376,9762,757288,6745429
+481211,Nonscheduled Chartered Passenger Air Transportation,fewer than 20,1197,1202,4595,312929,1867313
+481211,Nonscheduled Chartered Passenger Air Transportation,20 to 99,154,167,5288,313320,1572362
+481211,Nonscheduled Chartered Passenger Air Transportation,100 to 499,56,111,4156,300635,1457908
+481211,Nonscheduled Chartered Passenger Air Transportation,more than 500,80,124,14222,1140397,5321804
+481211,Nonscheduled Chartered Passenger Air Transportation,total,1487,1604,28261,2067281,10219387
+481212,Nonscheduled Chartered Freight Air Transportation,fewer than 20,124,124,439,25021,270212
+481212,Nonscheduled Chartered Freight Air Transportation,20 to 99,15,23,555,31755,168839
+481212,Nonscheduled Chartered Freight Air Transportation,100 to 499,7,20,998,72137,273533
+481212,Nonscheduled Chartered Freight Air Transportation,more than 500,4,10,686,45101,262439
+481212,Nonscheduled Chartered Freight Air Transportation,total,150,177,2678,174014,975023
+481219,Other Nonscheduled Air Transportation,fewer than 20,456,460,1505,94860,610668
+481219,Other Nonscheduled Air Transportation,20 to 99,42,60,1313,90006,375429
+481219,Other Nonscheduled Air Transportation,100 to 499,10,22,1015,68988,291153
+481219,Other Nonscheduled Air Transportation,more than 500,11,29,0,0,0
+481219,Other Nonscheduled Air Transportation,total,519,571,5382,402964,1844630
+483111,Deep Sea Freight Transportation,fewer than 20,156,157,628,42623,562807
+483111,Deep Sea Freight Transportation,20 to 99,30,40,1195,123717,807848
+483111,Deep Sea Freight Transportation,100 to 499,13,16,1253,86024,494553
+483111,Deep Sea Freight Transportation,more than 500,19,162,9299,821165,8584282
+483111,Deep Sea Freight Transportation,total,218,375,12375,1073529,10449490
+483112,Deep Sea Passenger Transportation,fewer than 20,40,40,0,5364,41568
+483112,Deep Sea Passenger Transportation,20 to 99,3,3,144,7356,0
+483112,Deep Sea Passenger Transportation,100 to 499,2,2,0,0,0
+483112,Deep Sea Passenger Transportation,more than 500,7,13,0,0,0
+483112,Deep Sea Passenger Transportation,total,52,58,0,0,0
+483113,Coastal and Great Lakes Freight Transportation,fewer than 20,231,233,965,63013,257067
+483113,Coastal and Great Lakes Freight Transportation,20 to 99,63,77,2647,188802,601287
+483113,Coastal and Great Lakes Freight Transportation,100 to 499,32,68,6139,472990,1929147
+483113,Coastal and Great Lakes Freight Transportation,more than 500,32,118,9348,742904,3979958
+483113,Coastal and Great Lakes Freight Transportation,total,358,496,19099,1467709,6767459
+483114,Coastal and Great Lakes Passenger Transportation,fewer than 20,115,117,479,26063,99960
+483114,Coastal and Great Lakes Passenger Transportation,20 to 99,20,22,763,49941,199719
+483114,Coastal and Great Lakes Passenger Transportation,100 to 499,8,18,983,47565,211006
+483114,Coastal and Great Lakes Passenger Transportation,more than 500,3,3,202,9158,0
+483114,Coastal and Great Lakes Passenger Transportation,total,146,160,2427,132727,533095
+483211,Inland Water Freight Transportation,fewer than 20,224,229,1100,69975,281358
+483211,Inland Water Freight Transportation,20 to 99,42,43,1554,115273,394045
+483211,Inland Water Freight Transportation,100 to 499,24,28,4685,342646,1486729
+483211,Inland Water Freight Transportation,more than 500,23,45,9570,660755,4594929
+483211,Inland Water Freight Transportation,total,313,345,16909,1188649,6757061
+483212,Inland Water Passenger Transportation,fewer than 20,306,308,1020,44889,157471
+483212,Inland Water Passenger Transportation,20 to 99,24,27,742,31028,81315
+483212,Inland Water Passenger Transportation,100 to 499,7,25,768,31113,117813
+483212,Inland Water Passenger Transportation,more than 500,1,1,0,0,0
+483212,Inland Water Passenger Transportation,total,338,361,2693,112664,388685
+484110,"General Freight Trucking, Local",fewer than 20,23491,23530,75183,2648939,12346149
+484110,"General Freight Trucking, Local",20 to 99,1680,2017,60900,2584475,9768630
+484110,"General Freight Trucking, Local",100 to 499,362,895,37745,1615911,5750171
+484110,"General Freight Trucking, Local",more than 500,221,1866,63122,3002881,4114121
+484110,"General Freight Trucking, Local",total,25754,28308,236950,9852206,31979071
+484121,"General Freight Trucking, Long-Distance, Truckload",fewer than 20,23184,23211,71698,2490363,16834436
+484121,"General Freight Trucking, Long-Distance, Truckload",20 to 99,1995,2226,79845,3195556,16822790
+484121,"General Freight Trucking, Long-Distance, Truckload",100 to 499,495,912,74609,3126322,15390443
+484121,"General Freight Trucking, Long-Distance, Truckload",more than 500,259,2837,219881,8919455,39165844
+484121,"General Freight Trucking, Long-Distance, Truckload",total,25933,29186,446033,17731696,88213513
+484122,"General Freight Trucking, Long-Distance, Less Than Truckload",fewer than 20,3161,3163,8889,312384,1595303
+484122,"General Freight Trucking, Long-Distance, Less Than Truckload",20 to 99,216,292,8096,339482,1495807
+484122,"General Freight Trucking, Long-Distance, Less Than Truckload",100 to 499,79,242,9168,388760,1332994
+484122,"General Freight Trucking, Long-Distance, Less Than Truckload",more than 500,69,3395,204477,10720103,30589661
+484122,"General Freight Trucking, Long-Distance, Less Than Truckload",total,3525,7092,230630,11760729,35013765
+484210,Used Household and Office Goods Moving,fewer than 20,5975,6014,27564,761724,2770472
+484210,Used Household and Office Goods Moving,20 to 99,828,1014,29909,1017563,3438173
+484210,Used Household and Office Goods Moving,100 to 499,111,444,17779,725322,2799906
+484210,Used Household and Office Goods Moving,more than 500,31,243,10240,409432,4563064
+484210,Used Household and Office Goods Moving,total,6945,7715,85492,2914041,13571615
+484220,"Specialized Freight (except Used Goods) Trucking, Local",fewer than 20,26791,26832,87737,3347977,16322904
+484220,"Specialized Freight (except Used Goods) Trucking, Local",20 to 99,1779,1977,63124,2926948,11129464
+484220,"Specialized Freight (except Used Goods) Trucking, Local",100 to 499,300,600,31365,1536179,5520129
+484220,"Specialized Freight (except Used Goods) Trucking, Local",more than 500,178,1071,35872,1761708,5532070
+484220,"Specialized Freight (except Used Goods) Trucking, Local",total,29048,30480,218098,9572812,38504567
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",fewer than 20,6683,6698,22033,880875,5303664
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",20 to 99,600,718,22528,1059970,5116866
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",100 to 499,198,516,26603,1371820,5910256
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",more than 500,142,1050,56033,2844573,12347766
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",total,7623,8982,127197,6157238,28678552
+485111,Mixed Mode Transit Systems,fewer than 20,65,65,196,4838,0
+485111,Mixed Mode Transit Systems,20 to 99,14,14,457,9700,17201
+485111,Mixed Mode Transit Systems,100 to 499,1,2,0,0,0
+485111,Mixed Mode Transit Systems,more than 500,2,18,0,0,0
+485111,Mixed Mode Transit Systems,total,82,99,2775,90695,137044
+485112,Commuter Rail Systems,fewer than 20,2,2,0,0,0
+485112,Commuter Rail Systems,20 to 99,1,1,0,0,0
+485112,Commuter Rail Systems,100 to 499,1,7,0,0,0
+485112,Commuter Rail Systems,more than 500,1,3,0,0,0
+485112,Commuter Rail Systems,total,5,13,0,0,0
+485113,Bus and Other Motor Vehicle Transit Systems,fewer than 20,447,447,2064,46340,161807
+485113,Bus and Other Motor Vehicle Transit Systems,20 to 99,104,115,4176,90344,219225
+485113,Bus and Other Motor Vehicle Transit Systems,100 to 499,48,70,5917,205747,408739
+485113,Bus and Other Motor Vehicle Transit Systems,more than 500,26,225,32292,1330049,2283751
+485113,Bus and Other Motor Vehicle Transit Systems,total,625,857,44449,1672480,3073522
+485119,Other Urban Transit Systems,fewer than 20,68,68,210,4907,19976
+485119,Other Urban Transit Systems,20 to 99,10,10,395,17450,0
+485119,Other Urban Transit Systems,100 to 499,1,1,0,0,0
+485119,Other Urban Transit Systems,total,79,79,661,26121,90544
+485210,Interurban and Rural Bus Transportation,fewer than 20,293,295,1361,33625,152982
+485210,Interurban and Rural Bus Transportation,20 to 99,66,91,2580,65656,206660
+485210,Interurban and Rural Bus Transportation,100 to 499,27,94,3578,112823,320579
+485210,Interurban and Rural Bus Transportation,more than 500,11,98,9927,334505,551819
+485210,Interurban and Rural Bus Transportation,total,397,578,17446,546609,1232040
+485310,Taxi Service,fewer than 20,2688,2690,9571,187332,899647
+485310,Taxi Service,20 to 99,214,257,7765,181186,637270
+485310,Taxi Service,100 to 499,28,45,5665,162610,449705
+485310,Taxi Service,more than 500,14,55,9704,199895,512898
+485310,Taxi Service,total,2944,3047,32705,731023,2499520
+485320,Limousine Service,fewer than 20,3958,3962,13484,276779,1428250
+485320,Limousine Service,20 to 99,359,369,14127,383221,1377985
+485320,Limousine Service,100 to 499,62,81,8744,271968,866802
+485320,Limousine Service,more than 500,10,46,3448,126415,481166
+485320,Limousine Service,total,4389,4458,39803,1058383,4154203
+485410,School and Employee Bus Transportation,fewer than 20,1832,1832,10192,156155,496136
+485410,School and Employee Bus Transportation,20 to 99,653,696,28037,478297,1152770
+485410,School and Employee Bus Transportation,100 to 499,232,399,43623,900853,1930019
+485410,School and Employee Bus Transportation,more than 500,51,1366,129053,2614901,5672286
+485410,School and Employee Bus Transportation,total,2768,4293,210905,4150206,9251211
+485510,Charter Bus Industry,fewer than 20,877,880,4877,121036,590704
+485510,Charter Bus Industry,20 to 99,308,336,12682,343806,1145992
+485510,Charter Bus Industry,100 to 499,56,104,7333,204431,648252
+485510,Charter Bus Industry,more than 500,24,65,6407,181471,521386
+485510,Charter Bus Industry,total,1265,1385,31299,850744,2906334
+485991,Special Needs Transportation,fewer than 20,1929,1937,10417,224244,690883
+485991,Special Needs Transportation,20 to 99,501,545,19544,429042,1029318
+485991,Special Needs Transportation,100 to 499,182,258,20722,506443,1273661
+485991,Special Needs Transportation,more than 500,57,166,13279,394269,761790
+485991,Special Needs Transportation,total,2669,2906,63962,1553998,3755652
+485999,All Other Transit and Ground Passenger Transportation,fewer than 20,922,924,3189,72060,268862
+485999,All Other Transit and Ground Passenger Transportation,20 to 99,107,112,4035,85450,228116
+485999,All Other Transit and Ground Passenger Transportation,100 to 499,36,51,4272,87942,217151
+485999,All Other Transit and Ground Passenger Transportation,more than 500,24,153,3668,100926,287689
+485999,All Other Transit and Ground Passenger Transportation,total,1089,1240,15164,346378,1001818
+487110,"Scenic and Sightseeing Transportation, Land",fewer than 20,453,457,1579,50089,231470
+487110,"Scenic and Sightseeing Transportation, Land",20 to 99,66,71,2483,60128,214434
+487110,"Scenic and Sightseeing Transportation, Land",100 to 499,13,21,1597,55273,245058
+487110,"Scenic and Sightseeing Transportation, Land",more than 500,11,35,2393,70794,238957
+487110,"Scenic and Sightseeing Transportation, Land",total,543,584,8052,236284,929919
+487210,"Scenic and Sightseeing Transportation, Water",fewer than 20,1478,1482,3727,152695,606130
+487210,"Scenic and Sightseeing Transportation, Water",20 to 99,98,111,3596,110651,374069
+487210,"Scenic and Sightseeing Transportation, Water",100 to 499,21,28,2481,94564,359736
+487210,"Scenic and Sightseeing Transportation, Water",more than 500,12,33,0,68327,204834
+487210,"Scenic and Sightseeing Transportation, Water",total,1609,1654,12027,426237,1544769
+487990,"Scenic and Sightseeing Transportation, Other",fewer than 20,170,173,616,23749,112132
+487990,"Scenic and Sightseeing Transportation, Other",20 to 99,21,27,650,26224,110594
+487990,"Scenic and Sightseeing Transportation, Other",100 to 499,9,19,1161,58345,305467
+487990,"Scenic and Sightseeing Transportation, Other",more than 500,4,4,73,3365,14606
+487990,"Scenic and Sightseeing Transportation, Other",total,204,223,2500,111683,542799
+488111,Air Traffic Control,fewer than 20,11,11,0,1785,8831
+488111,Air Traffic Control,20 to 99,1,1,0,0,0
+488111,Air Traffic Control,100 to 499,2,80,0,0,0
+488111,Air Traffic Control,more than 500,4,159,927,57290,182141
+488111,Air Traffic Control,total,18,251,1558,101828,257654
+488119,Other Airport Operations,fewer than 20,899,906,4757,152559,914524
+488119,Other Airport Operations,20 to 99,196,229,6565,236532,1223479
+488119,Other Airport Operations,100 to 499,52,138,5746,232969,995093
+488119,Other Airport Operations,more than 500,71,746,66088,1791695,4169543
+488119,Other Airport Operations,total,1218,2019,83156,2413755,7302639
+488190,Other Support Activities for Air Transportation,fewer than 20,2498,2528,10856,484669,1985628
+488190,Other Support Activities for Air Transportation,20 to 99,276,322,10216,528754,1954390
+488190,Other Support Activities for Air Transportation,100 to 499,85,208,11908,628655,2141532
+488190,Other Support Activities for Air Transportation,more than 500,91,624,50275,2875423,9755565
+488190,Other Support Activities for Air Transportation,total,2950,3682,83255,4517501,15837115
+488210,Support Activities for Rail Transportation,fewer than 20,314,321,1895,80527,307072
+488210,Support Activities for Rail Transportation,20 to 99,105,178,3975,171470,640218
+488210,Support Activities for Rail Transportation,100 to 499,39,108,4308,200161,662955
+488210,Support Activities for Rail Transportation,more than 500,46,603,17114,818482,3179353
+488210,Support Activities for Rail Transportation,total,504,1210,27292,1270640,4789598
+488310,Port and Harbor Operations,fewer than 20,257,260,1126,54998,420663
+488310,Port and Harbor Operations,20 to 99,56,87,1785,101803,409277
+488310,Port and Harbor Operations,100 to 499,32,53,4081,212718,724121
+488310,Port and Harbor Operations,more than 500,34,125,18404,976338,3791969
+488310,Port and Harbor Operations,total,379,525,25396,1345857,5346030
+488320,Marine Cargo Handling,fewer than 20,128,131,687,38064,190252
+488320,Marine Cargo Handling,20 to 99,34,41,1242,72957,788001
+488320,Marine Cargo Handling,100 to 499,35,57,5846,230673,731846
+488320,Marine Cargo Handling,more than 500,32,114,36049,2259452,4176046
+488320,Marine Cargo Handling,total,229,343,43824,2601146,5886145
+488330,Navigational Services to Shipping,fewer than 20,564,568,1872,141795,571495
+488330,Navigational Services to Shipping,20 to 99,86,115,2847,195740,667596
+488330,Navigational Services to Shipping,100 to 499,31,64,3417,231245,788600
+488330,Navigational Services to Shipping,more than 500,16,103,4396,270179,1249569
+488330,Navigational Services to Shipping,total,697,850,12532,838959,3277260
+488390,Other Support Activities for Water Transportation,fewer than 20,541,555,1844,92590,319006
+488390,Other Support Activities for Water Transportation,20 to 99,68,76,2552,120211,399351
+488390,Other Support Activities for Water Transportation,100 to 499,19,26,2209,119337,357007
+488390,Other Support Activities for Water Transportation,more than 500,21,62,3181,218856,1156268
+488390,Other Support Activities for Water Transportation,total,649,719,9786,550994,2231632
+488410,Motor Vehicle Towing,fewer than 20,7708,7787,33304,944608,3313491
+488410,Motor Vehicle Towing,20 to 99,546,662,17027,601692,1648181
+488410,Motor Vehicle Towing,100 to 499,17,28,0,52703,0
+488410,Motor Vehicle Towing,more than 500,11,51,3365,98007,252202
+488410,Motor Vehicle Towing,total,8282,8528,55139,1697010,5398904
+488490,Other Support Activities for Road Transportation,fewer than 20,1211,1221,4534,156938,687562
+488490,Other Support Activities for Road Transportation,20 to 99,149,206,4906,196522,645959
+488490,Other Support Activities for Road Transportation,100 to 499,56,132,5010,160393,544184
+488490,Other Support Activities for Road Transportation,more than 500,54,1170,21510,641196,1581736
+488490,Other Support Activities for Road Transportation,total,1470,2729,35960,1155049,3459441
+488510,Freight Transportation Arrangement,fewer than 20,13163,13512,54680,2714481,15336918
+488510,Freight Transportation Arrangement,20 to 99,1284,2208,47483,2618310,10916456
+488510,Freight Transportation Arrangement,100 to 499,345,1634,41936,2353453,9025849
+488510,Freight Transportation Arrangement,more than 500,226,3498,99216,5173990,18696432
+488510,Freight Transportation Arrangement,total,15018,20852,243315,12860234,53975655
+488991,Packing and Crating,fewer than 20,1077,1092,4796,139613,717423
+488991,Packing and Crating,20 to 99,111,127,4396,152365,611664
+488991,Packing and Crating,100 to 499,40,74,3995,138574,488426
+488991,Packing and Crating,more than 500,18,53,3437,101505,348983
+488991,Packing and Crating,total,1246,1346,16624,532057,2166496
+488999,All Other Support Activities for Transportation,fewer than 20,128,128,336,14948,78472
+488999,All Other Support Activities for Transportation,20 to 99,7,7,208,4468,14602
+488999,All Other Support Activities for Transportation,100 to 499,2,13,0,0,0
+488999,All Other Support Activities for Transportation,more than 500,6,10,195,5355,0
+488999,All Other Support Activities for Transportation,total,143,158,854,32701,151060
+493120,Refrigerated Warehousing and Storage,fewer than 20,342,353,2039,83882,396878
+493120,Refrigerated Warehousing and Storage,20 to 99,167,222,6609,247083,887172
+493120,Refrigerated Warehousing and Storage,100 to 499,47,112,5051,203462,564736
+493120,Refrigerated Warehousing and Storage,more than 500,72,471,28118,1208519,2456551
+493120,Refrigerated Warehousing and Storage,total,628,1158,41817,1742946,4305337
+493130,Farm Product Warehousing and Storage,fewer than 20,241,246,1172,46131,482384
+493130,Farm Product Warehousing and Storage,20 to 99,55,95,1168,44528,201702
+493130,Farm Product Warehousing and Storage,100 to 499,40,93,1109,55138,119732
+493130,Farm Product Warehousing and Storage,more than 500,33,96,1319,63150,325376
+493130,Farm Product Warehousing and Storage,total,369,530,4768,208947,1129194
+512110,Motion Picture and Video Production,fewer than 20,12514,12544,25255,2702312,9060774
+512110,Motion Picture and Video Production,20 to 99,353,410,13256,1000329,4738827
+512110,Motion Picture and Video Production,100 to 499,76,124,9418,761195,3165318
+512110,Motion Picture and Video Production,more than 500,51,406,85436,5891312,37330329
+512110,Motion Picture and Video Production,total,12994,13484,133365,10355148,54295248
+512120,Motion Picture and Video Distribution,fewer than 20,347,349,1218,90974,497416
+512120,Motion Picture and Video Distribution,20 to 99,18,20,487,42763,407591
+512120,Motion Picture and Video Distribution,100 to 499,5,8,684,71705,560289
+512120,Motion Picture and Video Distribution,more than 500,12,29,0,0,0
+512120,Motion Picture and Video Distribution,total,382,406,5525,827708,0
+512131,Motion Picture Theaters (except Drive-Ins),fewer than 20,1327,1344,9525,123466,726476
+512131,Motion Picture Theaters (except Drive-Ins),20 to 99,434,596,14859,167778,1061453
+512131,Motion Picture Theaters (except Drive-Ins),100 to 499,78,515,15886,183307,1386001
+512131,Motion Picture Theaters (except Drive-Ins),more than 500,37,2085,87819,936605,10150660
+512131,Motion Picture Theaters (except Drive-Ins),total,1876,4540,128089,1411156,13324590
+512132,Drive-In Motion Picture Theaters,fewer than 20,182,182,354,9362,55632
+512132,Drive-In Motion Picture Theaters,20 to 99,21,27,380,3898,22514
+512132,Drive-In Motion Picture Theaters,100 to 499,5,14,0,0,0
+512132,Drive-In Motion Picture Theaters,more than 500,2,2,0,0,0
+512132,Drive-In Motion Picture Theaters,total,210,225,1023,16685,99511
+512191,Teleproduction and Other Postproduction Services,fewer than 20,2009,2015,5243,386195,1141588
+512191,Teleproduction and Other Postproduction Services,20 to 99,134,160,4879,417631,1109289
+512191,Teleproduction and Other Postproduction Services,100 to 499,32,65,5221,354092,803515
+512191,Teleproduction and Other Postproduction Services,more than 500,17,62,7434,770905,1914060
+512191,Teleproduction and Other Postproduction Services,total,2192,2302,22777,1928823,4968452
+512199,Other Motion Picture and Video Industries,fewer than 20,171,172,565,33256,129725
+512199,Other Motion Picture and Video Industries,20 to 99,13,15,444,32250,119504
+512199,Other Motion Picture and Video Industries,100 to 499,2,2,0,0,0
+512199,Other Motion Picture and Video Industries,more than 500,3,8,0,0,0
+512199,Other Motion Picture and Video Industries,total,189,197,2125,156064,565505
+611110,Elementary and Secondary Schools,fewer than 20,8030,8061,62455,1536779,4004266
+611110,Elementary and Secondary Schools,20 to 99,8572,8828,386324,11560727,27974266
+611110,Elementary and Secondary Schools,100 to 499,2139,3199,346581,13096433,33998951
+611110,Elementary and Secondary Schools,more than 500,204,1271,100172,3384202,9433296
+611110,Elementary and Secondary Schools,total,18945,21359,895532,29578141,75410779
+611210,Junior Colleges,fewer than 20,189,189,1133,41930,140738
+611210,Junior Colleges,20 to 99,102,107,5020,144252,390094
+611210,Junior Colleges,100 to 499,112,180,25329,704801,1970851
+611210,Junior Colleges,more than 500,61,477,53685,1891824,5947738
+611210,Junior Colleges,total,464,953,85167,2782807,8449421
+611310,"Colleges, Universities, and Professional Schools",fewer than 20,682,684,3876,150152,734403
+611310,"Colleges, Universities, and Professional Schools",20 to 99,351,363,16695,542196,1702088
+611310,"Colleges, Universities, and Professional Schools",100 to 499,458,562,117729,3542978,11355888
+611310,"Colleges, Universities, and Professional Schools",more than 500,791,2720,1666899,63837999,209062039
+611310,"Colleges, Universities, and Professional Schools",total,2282,4329,1805199,68073325,222854418
+611410,Business and Secretarial Schools,fewer than 20,138,140,680,24333,63253
+611410,Business and Secretarial Schools,20 to 99,41,60,1897,68751,150051
+611410,Business and Secretarial Schools,100 to 499,18,55,2715,87347,217245
+611410,Business and Secretarial Schools,more than 500,11,30,1802,59957,143059
+611410,Business and Secretarial Schools,total,208,285,7094,240388,573608
+611420,Computer Training,fewer than 20,1438,1448,4669,220565,738840
+611420,Computer Training,20 to 99,138,191,5361,318014,852711
+611420,Computer Training,100 to 499,24,50,2095,133161,326850
+611420,Computer Training,more than 500,14,36,1683,111636,249782
+611420,Computer Training,total,1614,1725,13808,783376,2168183
+611430,Professional and Management Development Training,fewer than 20,5872,5903,17217,941523,3188505
+611430,Professional and Management Development Training,20 to 99,369,437,13477,812776,2275686
+611430,Professional and Management Development Training,100 to 499,94,206,12535,736857,1924299
+611430,Professional and Management Development Training,more than 500,84,195,8727,481836,1330665
+611430,Professional and Management Development Training,total,6419,6741,51956,2972992,8719155
+611511,Cosmetology and Barber Schools,fewer than 20,1166,1215,7373,198248,595970
+611511,Cosmetology and Barber Schools,20 to 99,232,371,7699,242233,722520
+611511,Cosmetology and Barber Schools,100 to 499,25,93,2443,79065,243445
+611511,Cosmetology and Barber Schools,more than 500,13,292,3957,116443,458280
+611511,Cosmetology and Barber Schools,total,1436,1971,21472,635989,2020215
+611512,Flight Training,fewer than 20,667,671,2845,84753,373052
+611512,Flight Training,20 to 99,66,77,2282,80510,365959
+611512,Flight Training,100 to 499,12,23,1484,52737,210607
+611512,Flight Training,more than 500,16,142,6957,467182,1615802
+611512,Flight Training,total,761,913,13568,685182,2565420
+611513,Apprenticeship Training,fewer than 20,951,981,4998,177734,610213
+611513,Apprenticeship Training,20 to 99,127,215,4462,146663,479892
+611513,Apprenticeship Training,100 to 499,27,39,2896,72530,184617
+611513,Apprenticeship Training,more than 500,14,25,0,33696,56562
+611513,Apprenticeship Training,total,1119,1260,14556,430623,1331284
+611519,Other Technical and Trade Schools,fewer than 20,2757,2788,11504,372234,1232183
+611519,Other Technical and Trade Schools,20 to 99,360,513,14101,505647,1408292
+611519,Other Technical and Trade Schools,100 to 499,121,356,17888,661400,1873930
+611519,Other Technical and Trade Schools,more than 500,92,620,47122,1944524,5591508
+611519,Other Technical and Trade Schools,total,3330,4277,90615,3483805,10105913
+611610,Fine Arts Schools,fewer than 20,11464,11532,52803,751113,2748029
+611610,Fine Arts Schools,20 to 99,641,776,21518,348323,852568
+611610,Fine Arts Schools,100 to 499,53,84,7896,171609,388071
+611610,Fine Arts Schools,more than 500,8,12,0,0,0
+611610,Fine Arts Schools,total,12166,12404,83653,1298807,4055993
+611620,Sports and Recreation Instruction,fewer than 20,12839,12891,50524,883808,3259377
+611620,Sports and Recreation Instruction,20 to 99,1106,1374,37839,582721,1493642
+611620,Sports and Recreation Instruction,100 to 499,53,173,6939,115196,274659
+611620,Sports and Recreation Instruction,more than 500,18,25,3009,90539,226144
+611620,Sports and Recreation Instruction,total,14016,14463,98311,1672264,5253822
+611630,Language Schools,fewer than 20,1027,1030,5688,120178,300725
+611630,Language Schools,20 to 99,212,260,7872,149988,387276
+611630,Language Schools,100 to 499,33,102,5123,159721,405800
+611630,Language Schools,more than 500,5,132,0,0,0
+611630,Language Schools,total,1277,1524,22687,508201,1436579
+611691,Exam Preparation and Tutoring,fewer than 20,6319,6369,32476,489892,1506378
+611691,Exam Preparation and Tutoring,20 to 99,979,1312,35307,451099,1083154
+611691,Exam Preparation and Tutoring,100 to 499,163,468,23607,311689,617234
+611691,Exam Preparation and Tutoring,more than 500,54,948,37505,650148,1604219
+611691,Exam Preparation and Tutoring,total,7515,9097,128895,1902828,4810985
+611692,Automobile Driving Schools,fewer than 20,2125,2146,8917,148555,425274
+611692,Automobile Driving Schools,20 to 99,111,206,3960,77799,193063
+611692,Automobile Driving Schools,100 to 499,16,39,1680,39352,102258
+611692,Automobile Driving Schools,more than 500,3,6,0,0,0
+611692,Automobile Driving Schools,total,2255,2397,14575,266223,721804
+611699,All Other Miscellaneous Schools and Instruction,fewer than 20,4336,4352,14451,385868,1365978
+611699,All Other Miscellaneous Schools and Instruction,20 to 99,275,299,9565,273428,812248
+611699,All Other Miscellaneous Schools and Instruction,100 to 499,47,179,6599,229791,1050873
+611699,All Other Miscellaneous Schools and Instruction,more than 500,26,156,0,187296,394676
+611699,All Other Miscellaneous Schools and Instruction,total,4684,4986,35300,1076383,3623775
+611710,Educational Support Services,fewer than 20,5663,5700,17358,731447,2546596
+611710,Educational Support Services,20 to 99,474,646,19009,770023,2538040
+611710,Educational Support Services,100 to 499,126,228,18467,810026,2507383
+611710,Educational Support Services,more than 500,75,614,39825,1754642,5537853
+611710,Educational Support Services,total,6338,7188,94659,4066138,13129872
+622110,General Medical and Surgical Hospitals,fewer than 20,52,52,175,150173,663091
+622110,General Medical and Surgical Hospitals,20 to 99,217,225,15152,629404,1726647
+622110,General Medical and Surgical Hospitals,100 to 499,1147,1197,271564,11573634,30646553
+622110,General Medical and Surgical Hospitals,more than 500,1488,3807,5039700,284379773,793618622
+622110,General Medical and Surgical Hospitals,total,2904,5281,5326591,296732984,826654913
+622210,Psychiatric and Substance Abuse Hospitals,fewer than 20,11,11,0,0,0
+622210,Psychiatric and Substance Abuse Hospitals,20 to 99,27,27,1607,60675,138846
+622210,Psychiatric and Substance Abuse Hospitals,100 to 499,177,189,46962,2251593,4206487
+622210,Psychiatric and Substance Abuse Hospitals,more than 500,196,357,170863,8281843,15387599
+622210,Psychiatric and Substance Abuse Hospitals,total,411,584,219460,10595748,19923881
+622310,Specialty (except Psychiatric and Substance Abuse) Hospitals,fewer than 20,24,24,35,56778,184966
+622310,Specialty (except Psychiatric and Substance Abuse) Hospitals,20 to 99,40,40,2620,108076,302834
+622310,Specialty (except Psychiatric and Substance Abuse) Hospitals,100 to 499,111,116,23663,1058115,2614220
+622310,Specialty (except Psychiatric and Substance Abuse) Hospitals,more than 500,198,696,233347,13187321,33393879
+622310,Specialty (except Psychiatric and Substance Abuse) Hospitals,total,373,876,259665,14410290,36495899
+623110,Nursing Care Facilities (Skilled Nursing Facilities),fewer than 20,1849,1857,8338,444962,1174037
+623110,Nursing Care Facilities (Skilled Nursing Facilities),20 to 99,2599,2692,165464,4028097,9099611
+623110,Nursing Care Facilities (Skilled Nursing Facilities),100 to 499,3436,4062,593593,16493837,37460950
+623110,Nursing Care Facilities (Skilled Nursing Facilities),more than 500,739,8238,936733,27166711,63512838
+623110,Nursing Care Facilities (Skilled Nursing Facilities),total,8623,16849,1704128,48133607,111247436
+623210,Residential Intellectual and Developmental Disability Facilities,fewer than 20,3203,3249,19844,390421,991343
+623210,Residential Intellectual and Developmental Disability Facilities,20 to 99,1365,2949,59548,1229301,2432538
+623210,Residential Intellectual and Developmental Disability Facilities,100 to 499,1241,10403,182726,3987282,7540876
+623210,Residential Intellectual and Developmental Disability Facilities,more than 500,416,11994,233347,5267610,10034806
+623210,Residential Intellectual and Developmental Disability Facilities,total,6225,28595,495465,10874614,20999563
+623220,Residential Mental Health and Substance Abuse Facilities,fewer than 20,1611,1639,10078,249755,683647
+623220,Residential Mental Health and Substance Abuse Facilities,20 to 99,961,1543,37470,1050660,2408590
+623220,Residential Mental Health and Substance Abuse Facilities,100 to 499,729,2355,62988,1828664,3923374
+623220,Residential Mental Health and Substance Abuse Facilities,more than 500,264,1737,57924,1711544,3858431
+623220,Residential Mental Health and Substance Abuse Facilities,total,3565,7274,168460,4840623,10874042
+623311,Continuing Care Retirement Communities,fewer than 20,1187,1189,8356,185324,472329
+623311,Continuing Care Retirement Communities,20 to 99,1158,1195,55250,1126695,2866468
+623311,Continuing Care Retirement Communities,100 to 499,825,1054,161507,4115121,10579915
+623311,Continuing Care Retirement Communities,more than 500,321,1341,190042,4991491,12914698
+623311,Continuing Care Retirement Communities,total,3491,4779,415155,10418631,26833410
+623312,Assisted Living Facilities for the Elderly,fewer than 20,9466,9539,50200,968927,2869551
+623312,Assisted Living Facilities for the Elderly,20 to 99,2502,2799,98564,1857629,4924839
+623312,Assisted Living Facilities for the Elderly,100 to 499,528,1345,55990,1131755,2977051
+623312,Assisted Living Facilities for the Elderly,more than 500,355,4007,197253,4345998,13050098
+623312,Assisted Living Facilities for the Elderly,total,12851,17690,402007,8304309,23821539
+623990,Other Residential Care Facilities,fewer than 20,1715,1736,11370,246073,582998
+623990,Other Residential Care Facilities,20 to 99,803,1171,31617,829236,1796623
+623990,Other Residential Care Facilities,100 to 499,438,1300,51246,1532548,3089177
+623990,Other Residential Care Facilities,more than 500,166,901,33786,1052609,2400655
+623990,Other Residential Care Facilities,total,3122,5108,128019,3660466,7869453
+624110,Child and Youth Services,fewer than 20,6087,6128,28739,829785,2406590
+624110,Child and Youth Services,20 to 99,1245,1789,47397,1317218,3280504
+624110,Child and Youth Services,100 to 499,550,1589,51706,1559651,3780566
+624110,Child and Youth Services,more than 500,225,1235,42507,1144356,2476191
+624110,Child and Youth Services,total,8107,10741,170349,4851010,11943851
+624120,Services for the Elderly and Persons with Disabilities,fewer than 20,13630,13718,62099,1331011,3200864
+624120,Services for the Elderly and Persons with Disabilities,20 to 99,4879,5788,217969,3885841,7764889
+624120,Services for the Elderly and Persons with Disabilities,100 to 499,2305,4593,322607,5872112,14419102
+624120,Services for the Elderly and Persons with Disabilities,more than 500,673,3207,309029,5184671,9473687
+624120,Services for the Elderly and Persons with Disabilities,total,21487,27306,911704,16273635,34858542
+624190,Other Individual and Family Services,fewer than 20,15871,16049,65188,1859036,5305055
+624190,Other Individual and Family Services,20 to 99,2363,3895,87064,2564340,6641888
+624190,Other Individual and Family Services,100 to 499,1298,4528,138130,3715906,9730644
+624190,Other Individual and Family Services,more than 500,415,2782,97441,2456259,6142389
+624190,Other Individual and Family Services,total,19947,27254,387823,10595541,27819976
+624210,Community Food Services,fewer than 20,2562,2594,11527,251797,1703212
+624210,Community Food Services,20 to 99,480,1152,16579,463416,4133323
+624210,Community Food Services,100 to 499,198,761,9779,258559,2670909
+624210,Community Food Services,more than 500,57,163,3370,74963,205495
+624210,Community Food Services,total,3297,4670,41255,1048735,8712939
+624221,Temporary Shelters,fewer than 20,1809,1818,13916,333939,807241
+624221,Temporary Shelters,20 to 99,951,1280,30695,810842,1900719
+624221,Temporary Shelters,100 to 499,302,591,15243,423955,1156670
+624221,Temporary Shelters,more than 500,106,309,9148,279936,666478
+624221,Temporary Shelters,total,3168,3998,69002,1848672,4531108
+624229,Other Community Housing Services,fewer than 20,2686,2705,15029,490911,2092573
+624229,Other Community Housing Services,20 to 99,600,857,18459,639739,2251036
+624229,Other Community Housing Services,100 to 499,341,704,13862,444315,1954197
+624229,Other Community Housing Services,more than 500,126,393,7400,206723,725374
+624229,Other Community Housing Services,total,3753,4659,54750,1781688,7023180
+624230,Emergency and Other Relief Services,fewer than 20,608,618,2583,74131,687112
+624230,Emergency and Other Relief Services,20 to 99,101,132,3834,106986,1158453
+624230,Emergency and Other Relief Services,100 to 499,63,125,6329,210974,3213097
+624230,Emergency and Other Relief Services,more than 500,24,542,0,0,0
+624230,Emergency and Other Relief Services,total,796,1417,23179,820160,7834082
+624310,Vocational Rehabilitation Services,fewer than 20,1870,1915,9249,310579,765584
+624310,Vocational Rehabilitation Services,20 to 99,964,1445,41997,867401,2138138
+624310,Vocational Rehabilitation Services,100 to 499,1056,2354,130421,2088395,4316110
+624310,Vocational Rehabilitation Services,more than 500,374,2144,140775,2496664,5269623
+624310,Vocational Rehabilitation Services,total,4264,7858,322442,5763039,12489455
+624410,Child Day Care Services,fewer than 20,49076,49361,293373,4578596,9703512
+624410,Child Day Care Services,20 to 99,9563,12545,312776,5740861,11294194
+624410,Child Day Care Services,100 to 499,1098,6529,122649,2603973,5545632
+624410,Child Day Care Services,more than 500,287,6994,132238,2796986,5597381
+624410,Child Day Care Services,total,60024,75429,861036,15720416,32140719
+711110,Theater Companies and Dinner Theaters,fewer than 20,2483,2488,9747,343026,1204311
+711110,Theater Companies and Dinner Theaters,20 to 99,501,544,21577,578236,2057930
+711110,Theater Companies and Dinner Theaters,100 to 499,130,158,23111,637511,1789215
+711110,Theater Companies and Dinner Theaters,more than 500,27,70,0,0,0
+711110,Theater Companies and Dinner Theaters,total,3141,3260,65728,2021807,6992796
+711120,Dance Companies,fewer than 20,485,485,2048,43420,156449
+711120,Dance Companies,20 to 99,61,62,2551,64708,183790
+711120,Dance Companies,100 to 499,17,18,3067,93416,227450
+711120,Dance Companies,more than 500,3,3,0,0,0
+711120,Dance Companies,total,566,568,8709,238522,648562
+711130,Musical Groups and Artists,fewer than 20,4144,4150,11768,722095,2804998
+711130,Musical Groups and Artists,20 to 99,202,210,9208,273717,772831
+711130,Musical Groups and Artists,100 to 499,76,77,13175,470265,1025029
+711130,Musical Groups and Artists,more than 500,5,6,0,0,0
+711130,Musical Groups and Artists,total,4427,4443,36618,1609512,4949464
+711190,Other Performing Arts Companies,fewer than 20,343,344,1021,58891,221882
+711190,Other Performing Arts Companies,20 to 99,26,26,1008,22610,90944
+711190,Other Performing Arts Companies,100 to 499,6,6,1199,26453,81179
+711190,Other Performing Arts Companies,more than 500,3,5,0,0,0
+711190,Other Performing Arts Companies,total,378,381,6010,227894,1232815
+711211,Sports Teams and Clubs,fewer than 20,630,630,2489,109589,389369
+711211,Sports Teams and Clubs,20 to 99,159,164,6201,422246,927345
+711211,Sports Teams and Clubs,100 to 499,85,108,19621,7238560,10854332
+711211,Sports Teams and Clubs,more than 500,59,96,31682,6788738,10284590
+711211,Sports Teams and Clubs,total,933,998,59993,14559133,22455636
+711212,Racetracks,fewer than 20,494,497,1517,50911,297207
+711212,Racetracks,20 to 99,63,69,2730,76001,414175
+711212,Racetracks,100 to 499,40,43,8211,218526,862958
+711212,Racetracks,more than 500,34,94,35083,1079195,6942889
+711212,Racetracks,total,631,703,47541,1424633,8517229
+711219,Other Spectator Sports,fewer than 20,2370,2381,7180,366232,1512555
+711219,Other Spectator Sports,20 to 99,141,154,5095,211988,675793
+711219,Other Spectator Sports,100 to 499,19,23,2354,243974,698713
+711219,Other Spectator Sports,more than 500,7,8,1148,98425,456236
+711219,Other Spectator Sports,total,2537,2566,15777,920619,3343297
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",fewer than 20,2033,2035,8426,258134,1298506
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",20 to 99,335,338,13651,315371,1379332
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",100 to 499,111,148,21584,458450,2046114
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",more than 500,68,256,68609,1088239,4993401
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",total,2547,2777,112270,2120194,9717353
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",fewer than 20,3838,3843,10529,517186,3336801
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",20 to 99,181,205,6457,267303,1610031
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",100 to 499,32,40,5465,197954,1197322
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",more than 500,26,64,4974,256828,2796133
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",total,4077,4152,27425,1239271,8940287
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",fewer than 20,3505,3518,8422,835097,2929097
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",20 to 99,91,120,3240,356186,831630
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",100 to 499,15,45,2592,340748,597238
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",more than 500,11,101,3294,487966,1485105
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",total,3622,3784,17548,2019997,5843070
+712110,Museums,fewer than 20,4139,4162,17214,421816,1508962
+712110,Museums,20 to 99,569,620,23139,661633,2152415
+712110,Museums,100 to 499,174,218,29752,972407,3298496
+712110,Museums,more than 500,33,65,16536,644873,2161618
+712110,Museums,total,4915,5065,86641,2700729,9121491
+712120,Historical Sites,fewer than 20,847,861,3021,77794,241169
+712120,Historical Sites,20 to 99,96,115,3374,83676,231596
+712120,Historical Sites,100 to 499,21,91,3654,104074,310467
+712120,Historical Sites,more than 500,2,14,0,0,0
+712120,Historical Sites,total,966,1081,11066,295182,858691
+712130,Zoos and Botanical Gardens,fewer than 20,362,362,2061,56972,204691
+712130,Zoos and Botanical Gardens,20 to 99,138,142,5589,155092,441858
+712130,Zoos and Botanical Gardens,100 to 499,71,78,14863,486554,1447847
+712130,Zoos and Botanical Gardens,more than 500,16,26,10440,301439,1035143
+712130,Zoos and Botanical Gardens,total,587,608,32953,1000057,3129539
+712190,Nature Parks and Other Similar Institutions,fewer than 20,472,475,2306,70344,301874
+712190,Nature Parks and Other Similar Institutions,20 to 99,69,100,2620,72048,222980
+712190,Nature Parks and Other Similar Institutions,100 to 499,13,14,960,35814,99872
+712190,Nature Parks and Other Similar Institutions,more than 500,7,92,0,0,0
+712190,Nature Parks and Other Similar Institutions,total,561,681,6745,212217,734302
+713110,Amusement and Theme Parks,fewer than 20,273,273,1093,66315,247104
+713110,Amusement and Theme Parks,20 to 99,74,81,3174,112070,347409
+713110,Amusement and Theme Parks,100 to 499,34,39,6429,178379,591585
+713110,Amusement and Theme Parks,more than 500,16,90,115201,2594505,11182504
+713110,Amusement and Theme Parks,total,397,483,125897,2951269,12368602
+713120,Amusement Arcades,fewer than 20,2098,2108,10624,165281,676362
+713120,Amusement Arcades,20 to 99,504,541,18812,205104,694199
+713120,Amusement Arcades,100 to 499,41,171,6313,78613,279240
+713120,Amusement Arcades,more than 500,12,133,0,0,0
+713120,Amusement Arcades,total,2655,2953,38744,499850,1924090
+713210,Casinos (except Casino Hotels),fewer than 20,114,114,673,63843,318889
+713210,Casinos (except Casino Hotels),20 to 99,84,95,4459,125855,691380
+713210,Casinos (except Casino Hotels),100 to 499,119,168,26516,715646,2826607
+713210,Casinos (except Casino Hotels),more than 500,67,130,72638,2388572,12520616
+713210,Casinos (except Casino Hotels),total,384,507,104286,3293916,16357492
+713290,Other Gambling Industries,fewer than 20,1333,1386,8093,146583,1220610
+713290,Other Gambling Industries,20 to 99,223,326,8006,164526,1144422
+713290,Other Gambling Industries,100 to 499,80,304,13463,416049,2653721
+713290,Other Gambling Industries,more than 500,42,463,21986,643123,3934882
+713290,Other Gambling Industries,total,1678,2479,51548,1370281,8953635
+713910,Golf Courses and Country Clubs,fewer than 20,6797,6829,39514,1197745,3469749
+713910,Golf Courses and Country Clubs,20 to 99,3238,3338,147168,3819797,9360183
+713910,Golf Courses and Country Clubs,100 to 499,562,761,78976,2237921,5424404
+713910,Golf Courses and Country Clubs,more than 500,101,700,41702,954430,2597380
+713910,Golf Courses and Country Clubs,total,10698,11628,307360,8209893,20851716
+713920,Skiing Facilities,fewer than 20,142,142,852,17063,59790
+713920,Skiing Facilities,20 to 99,73,74,3447,28366,74112
+713920,Skiing Facilities,100 to 499,89,90,19731,150853,437530
+713920,Skiing Facilities,more than 500,43,71,50216,502289,1613213
+713920,Skiing Facilities,total,347,377,74246,698571,2184645
+713930,Marinas,fewer than 20,3277,3299,13326,494226,2311519
+713930,Marinas,20 to 99,259,307,8674,287703,1027305
+713930,Marinas,100 to 499,44,146,3290,116315,438440
+713930,Marinas,more than 500,19,30,0,14896,67156
+713930,Marinas,total,3599,3782,25764,913140,3844420
+713940,Fitness and Recreational Sports Centers,fewer than 20,20440,20522,90176,1376555,5009915
+713940,Fitness and Recreational Sports Centers,20 to 99,3321,3653,130519,1589567,4527932
+713940,Fitness and Recreational Sports Centers,100 to 499,738,1406,121104,1547773,3955029
+713940,Fitness and Recreational Sports Centers,more than 500,276,3930,239618,3319511,10341236
+713940,Fitness and Recreational Sports Centers,total,24775,29511,581417,7833406,23834112
+713950,Bowling Centers,fewer than 20,2469,2473,18585,225102,789367
+713950,Bowling Centers,20 to 99,946,1046,32447,429915,1302930
+713950,Bowling Centers,100 to 499,42,93,4999,76203,240419
+713950,Bowling Centers,more than 500,13,449,13905,203284,713018
+713950,Bowling Centers,total,3470,4061,69936,934504,3045734
+713990,All Other Amusement and Recreation Industries,fewer than 20,13828,13883,46964,1188378,5095724
+713990,All Other Amusement and Recreation Industries,20 to 99,1058,1281,35752,656124,2263060
+713990,All Other Amusement and Recreation Industries,100 to 499,159,396,12221,246001,820763
+713990,All Other Amusement and Recreation Industries,more than 500,79,216,5847,113888,321691
+713990,All Other Amusement and Recreation Industries,total,15124,15776,100784,2204391,8501238
+721110,Hotels (except Casino Hotels) and Motels,fewer than 20,29001,29258,187168,3348172,16554592
+721110,Hotels (except Casino Hotels) and Motels,20 to 99,8141,9030,285029,5214590,21520864
+721110,Hotels (except Casino Hotels) and Motels,100 to 499,1211,2569,214573,5153944,17000845
+721110,Hotels (except Casino Hotels) and Motels,more than 500,410,8977,767042,22091429,81811031
+721110,Hotels (except Casino Hotels) and Motels,total,38763,49834,1453812,35808135,136887332
+721120,Casino Hotels,fewer than 20,29,29,155,18080,106469
+721120,Casino Hotels,20 to 99,19,19,981,29271,131536
+721120,Casino Hotels,100 to 499,67,72,18084,439670,2202110
+721120,Casino Hotels,more than 500,137,272,390348,12626275,48564619
+721120,Casino Hotels,total,252,392,409568,13113296,51004734
+721191,Bed-and-Breakfast Inns,fewer than 20,2792,2812,9427,170935,755725
+721191,Bed-and-Breakfast Inns,20 to 99,129,140,3889,70977,209250
+721191,Bed-and-Breakfast Inns,100 to 499,9,28,540,10598,45018
+721191,Bed-and-Breakfast Inns,more than 500,2,2,0,0,0
+721191,Bed-and-Breakfast Inns,total,2932,2982,13869,252723,1010784
+721199,All Other Traveler Accommodation,fewer than 20,1231,1235,3371,92458,430845
+721199,All Other Traveler Accommodation,20 to 99,51,65,1914,42963,146857
+721199,All Other Traveler Accommodation,100 to 499,9,22,0,0,0
+721199,All Other Traveler Accommodation,more than 500,10,29,0,0,0
+721199,All Other Traveler Accommodation,total,1301,1351,6539,162494,691462
+721211,RV (Recreational Vehicle) Parks and Campgrounds,fewer than 20,3963,3982,11137,305370,1532735
+721211,RV (Recreational Vehicle) Parks and Campgrounds,20 to 99,136,203,4025,96457,386785
+721211,RV (Recreational Vehicle) Parks and Campgrounds,100 to 499,36,90,2214,53365,233383
+721211,RV (Recreational Vehicle) Parks and Campgrounds,more than 500,13,128,1978,46336,201302
+721211,RV (Recreational Vehicle) Parks and Campgrounds,total,4148,4403,19354,501528,2354205
+721214,Recreational and Vacation Camps (except Campgrounds),fewer than 20,2211,2259,8342,376279,1391042
+721214,Recreational and Vacation Camps (except Campgrounds),20 to 99,302,458,6882,197899,593900
+721214,Recreational and Vacation Camps (except Campgrounds),100 to 499,92,172,2798,73788,243575
+721214,Recreational and Vacation Camps (except Campgrounds),more than 500,70,109,2988,74698,242909
+721214,Recreational and Vacation Camps (except Campgrounds),total,2675,2998,21010,722664,2471426
+721310,Rooming and Boarding Houses,fewer than 20,2064,2093,8120,129615,823700
+721310,Rooming and Boarding Houses,20 to 99,54,63,1586,35928,168317
+721310,Rooming and Boarding Houses,100 to 499,20,91,1881,44404,166464
+721310,Rooming and Boarding Houses,more than 500,11,38,0,0,0
+721310,Rooming and Boarding Houses,total,2149,2285,12458,229342,1254721
+722310,Food Service Contractors,fewer than 20,2335,2387,9342,213804,976851
+722310,Food Service Contractors,20 to 99,398,681,14315,299507,1029775
+722310,Food Service Contractors,100 to 499,171,1333,26864,542189,1654264
+722310,Food Service Contractors,more than 500,115,21495,0,9855081,35177693
+722310,Food Service Contractors,total,3019,25896,537742,10910581,38838583
+722320,Caterers,fewer than 20,8111,8131,36026,654270,2699362
+722320,Caterers,20 to 99,1559,1644,57781,987919,2934637
+722320,Caterers,100 to 499,218,306,26007,529613,1530280
+722320,Caterers,more than 500,53,115,8567,186437,494374
+722320,Caterers,total,9941,10196,128381,2358239,7658653
+722330,Mobile Food Services,fewer than 20,2786,2815,5416,98792,543975
+722330,Mobile Food Services,20 to 99,72,87,2075,34448,133068
+722330,Mobile Food Services,100 to 499,9,13,702,11694,37946
+722330,Mobile Food Services,more than 500,4,6,0,0,0
+722330,Mobile Food Services,total,2871,2921,8208,145242,715866
+722410,Drinking Places (Alcoholic Beverages),fewer than 20,37045,37151,178231,2329667,10819983
+722410,Drinking Places (Alcoholic Beverages),20 to 99,3844,4027,133967,2079145,6559641
+722410,Drinking Places (Alcoholic Beverages),100 to 499,207,476,24512,459909,1556426
+722410,Drinking Places (Alcoholic Beverages),more than 500,50,389,13044,252590,1001097
+722410,Drinking Places (Alcoholic Beverages),total,41146,42043,349754,5121311,19937147
+722511,Full-Service Restaurants,fewer than 20,147648,147907,955036,15466632,56010900
+722511,Full-Service Restaurants,20 to 99,48792,51085,1807347,30069334,78584465
+722511,Full-Service Restaurants,100 to 499,2768,6922,415678,7330175,19749313
+722511,Full-Service Restaurants,more than 500,664,25797,1596150,25611037,70548920
+722511,Full-Service Restaurants,total,199872,231711,4774211,78477178,224893598
+722513,Limited-Service Restaurants,fewer than 20,114650,115487,647308,8875433,39629196
+722513,Limited-Service Restaurants,20 to 99,24310,35228,898036,11316492,42527339
+722513,Limited-Service Restaurants,100 to 499,4048,26462,762977,9540754,37809281
+722513,Limited-Service Restaurants,more than 500,941,47700,1280125,16766179,66926432
+722513,Limited-Service Restaurants,total,143949,224877,3588446,46498858,186892248
+722514,"Cafeterias, Grill Buffets, and Buffets",fewer than 20,4067,4071,22719,336955,1616943
+722514,"Cafeterias, Grill Buffets, and Buffets",20 to 99,794,879,31060,418015,1467082
+722514,"Cafeterias, Grill Buffets, and Buffets",100 to 499,92,276,11717,144323,534916
+722514,"Cafeterias, Grill Buffets, and Buffets",more than 500,46,1144,56202,742209,2765917
+722514,"Cafeterias, Grill Buffets, and Buffets",total,4999,6370,121698,1641502,6384858
+722515,Snack and Nonalcoholic Beverage Bars,fewer than 20,35333,35889,186576,2274971,9572842
+722515,Snack and Nonalcoholic Beverage Bars,20 to 99,3664,6028,115847,1513743,5383604
+722515,Snack and Nonalcoholic Beverage Bars,100 to 499,282,1820,36255,509235,1993157
+722515,Snack and Nonalcoholic Beverage Bars,more than 500,91,10761,201546,3323755,14281219
+722515,Snack and Nonalcoholic Beverage Bars,total,39370,54498,540224,7621704,31230822
+813110,Religious Organizations,fewer than 20,165901,165909,751501,12845092,50356894
+813110,Religious Organizations,20 to 99,15694,15755,595511,11554113,45027590
+813110,Religious Organizations,100 to 499,1375,1457,225360,5230927,20534997
+813110,Religious Organizations,more than 500,113,290,113369,3348867,13051843
+813110,Religious Organizations,total,183083,183411,1685741,32978999,128971324
+813211,Grantmaking Foundations,fewer than 20,10090,10127,31664,1732398,23516948
+813211,Grantmaking Foundations,20 to 99,595,735,21382,1331781,19091220
+813211,Grantmaking Foundations,100 to 499,147,268,17575,953063,11550087
+813211,Grantmaking Foundations,more than 500,134,519,22575,1015507,0
+813211,Grantmaking Foundations,total,10966,11649,93196,5032749,64251744
+813212,Voluntary Health Organizations,fewer than 20,2520,2554,10110,478490,2519646
+813212,Voluntary Health Organizations,20 to 99,253,466,9339,491103,4561624
+813212,Voluntary Health Organizations,100 to 499,47,169,5717,352892,1713604
+813212,Voluntary Health Organizations,more than 500,155,1040,27092,1675465,7758496
+813212,Voluntary Health Organizations,total,2975,4229,52258,2997950,16553370
+813219,Other Grantmaking and Giving Services,fewer than 20,2840,2847,10123,399401,3297806
+813219,Other Grantmaking and Giving Services,20 to 99,267,342,9986,440978,3625338
+813219,Other Grantmaking and Giving Services,100 to 499,61,160,8812,473835,3923299
+813219,Other Grantmaking and Giving Services,more than 500,16,16,928,31724,321527
+813219,Other Grantmaking and Giving Services,total,3184,3365,29849,1345938,11167970
+813311,Human Rights Organizations,fewer than 20,2332,2369,10460,440327,1279407
+813311,Human Rights Organizations,20 to 99,243,388,8241,385860,2583532
+813311,Human Rights Organizations,100 to 499,53,249,7178,385359,1862025
+813311,Human Rights Organizations,more than 500,21,216,7974,471327,2879185
+813311,Human Rights Organizations,total,2649,3222,33853,1682873,8604149
+813312,"Environment, Conservation and Wildlife Organizations",fewer than 20,5147,5179,23857,768214,2704088
+813312,"Environment, Conservation and Wildlife Organizations",20 to 99,566,775,21267,727706,2481732
+813312,"Environment, Conservation and Wildlife Organizations",100 to 499,64,301,11182,563861,2024541
+813312,"Environment, Conservation and Wildlife Organizations",more than 500,12,790,0,0,0
+813312,"Environment, Conservation and Wildlife Organizations",total,5789,7045,64625,2480609,8834072
+813319,Other Social Advocacy Organizations,fewer than 20,5585,5634,21246,852060,2941955
+813319,Other Social Advocacy Organizations,20 to 99,394,522,14465,657313,2038769
+813319,Other Social Advocacy Organizations,100 to 499,84,299,8707,415558,1788870
+813319,Other Social Advocacy Organizations,more than 500,33,197,0,238320,587517
+813319,Other Social Advocacy Organizations,total,6096,6652,50736,2163251,7357111
+813410,Civic and Social Organizations,fewer than 20,22514,22663,102725,1625642,7844033
+813410,Civic and Social Organizations,20 to 99,1773,2617,65505,1545836,4499407
+813410,Civic and Social Organizations,100 to 499,333,940,46044,1104343,3076852
+813410,Civic and Social Organizations,more than 500,67,333,27017,447285,1096880
+813410,Civic and Social Organizations,total,24687,26553,241291,4723106,16517172
+813910,Business Associations,fewer than 20,14763,14863,52115,2748210,8721505
+813910,Business Associations,20 to 99,895,1151,32237,2478423,8161512
+813910,Business Associations,100 to 499,116,320,15963,1554264,4975581
+813910,Business Associations,more than 500,34,66,9148,559590,1772694
+813910,Business Associations,total,15808,16400,109463,7340487,23631292
+813920,Professional Organizations,fewer than 20,5835,5850,23019,1279343,4515411
+813920,Professional Organizations,20 to 99,591,680,24107,1628726,5513180
+813920,Professional Organizations,100 to 499,132,343,22772,1713876,5514593
+813920,Professional Organizations,more than 500,24,140,14147,1351887,3540107
+813920,Professional Organizations,total,6582,7013,84045,5973832,19083291
+813930,Labor Unions and Similar Labor Organizations,fewer than 20,12275,12355,69085,1602713,5478708
+813930,Labor Unions and Similar Labor Organizations,20 to 99,1310,1562,47976,1526775,4696726
+813930,Labor Unions and Similar Labor Organizations,100 to 499,134,441,25059,1334134,4205306
+813930,Labor Unions and Similar Labor Organizations,more than 500,21,197,12491,730599,2300462
+813930,Labor Unions and Similar Labor Organizations,total,13740,14555,154611,5194221,16681202
+813940,Political Organizations,fewer than 20,2380,2380,5924,303672,1050424
+813940,Political Organizations,20 to 99,85,87,3284,157694,503930
+813940,Political Organizations,100 to 499,8,9,1232,74757,259203
+813940,Political Organizations,more than 500,3,3,2946,53884,189914
+813940,Political Organizations,total,2476,2479,13386,590007,2003471
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",fewer than 20,18890,18897,71834,2315270,10614402
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",20 to 99,1154,1210,40150,1372956,6653178
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",100 to 499,115,303,17424,828398,3393793
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",more than 500,30,119,6812,469574,1831974
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",total,20189,20529,136220,4986198,22493347
