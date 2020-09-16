@@ -29,4 +29,14 @@ all_qs %>%
   mutate(percent_reduction = paste0(q50, '% (', q05, '%; ', q95, '%)')) %>%
   arrange(intervention) %>%
   select(intervention, percent_reduction)
+
+
+# Extract cost-effectiveness numbers into a table.
+
+costeffdat <- dat_unitcost %>% 
+  mutate_at(vars(starts_with("q")), ~ 1/.) %>%
+  select(intervention:q975) %>%
+  select(-name)
+
+write_csv(costeffdat, file.path(fp_out, 'costeff_output.csv')
  

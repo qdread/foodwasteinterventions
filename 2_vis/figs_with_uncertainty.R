@@ -43,12 +43,12 @@ dat_cost <- all_qs %>%
 # One figure for total costs, one figure for breakdowns.
 # For date labeling, use annualized cost, for spoilage prevention use annualized total cost, for cons ed, use sum of 3 components
 # for WTA use total cost annualized (names are inconsistent)
-dat_totalcost_alternate <- dat_cost %>%
+dat_totalcost <- dat_cost %>%
   filter(grepl('annual', name) | grepl('consumer', intervention), !grepl('content|media', name), name != 'annualized_initial_cost', is.na(group) | group == 'contracted foodservice operations') %>%
   group_by(intervention) %>%
   summarize_if(is.numeric, sum)
 
-p_totalcost_alternate <- ggplot(dat_totalcost_alternate, aes(y = q50/1e6, ymin = q025/1e6, ymax = q975/1e6, x = intervention, color = intervention)) +
+p_totalcost <- ggplot(dat_totalcost, aes(y = q50/1e6, ymin = q025/1e6, ymax = q975/1e6, x = intervention, color = intervention)) +
   geom_segment(aes(xend = intervention, y = q05/1e6, yend = q95/1e6), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
   geom_errorbar(width = 0.05) +
@@ -70,7 +70,7 @@ p_totalcost_alternate <- ggplot(dat_totalcost_alternate, aes(y = q50/1e6, ymin =
 
 # assign a cost type column 
 
-dat_costbreakdown_alternate <- dat_cost %>%
+dat_costbreakdown <- dat_cost %>%
   filter(is.na(group) | group %in% 'contracted foodservice operations') %>%
   mutate(cost_type = case_when( intervention == 'spoilage prevention packaging' & name == 'total_annual_cost' ~ 'other',
                                 grepl('^initial', name) ~ 'initial_raw',
@@ -84,7 +84,7 @@ dat_costbreakdown_alternate <- dat_cost %>%
 
 
 # Make a figure as well as a table
-p_costbreakdown_alternate <- ggplot(dat_costbreakdown_alternate %>% 
+p_costbreakdown <- ggplot(dat_costbreakdown %>% 
                                       ungroup %>%
                                       filter(!cost_type %in% 'initial_raw') %>%
                                       mutate(intervention = factor(intervention, levels = sort(unique(intervention), decreasing = TRUE))), 
@@ -96,9 +96,9 @@ p_costbreakdown_alternate <- ggplot(dat_costbreakdown_alternate %>%
   coord_flip()
 
 # Reformat for table
-table_costbreakdown_alternate <- dat_costbreakdown_alternate %>%
+table_costbreakdown <- dat_costbreakdown %>%
   ungroup %>%
-  bind_rows(dat_totalcost_alternate %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
+  bind_rows(dat_totalcost %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
   mutate_if(is.numeric, round) %>%
   mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, cost_type, cost_with_quantiles) %>%
@@ -110,15 +110,15 @@ table_costbreakdown_alternate <- dat_costbreakdown_alternate %>%
 
 # Averted food purchase and net cost --------------------------------------
 
-dat_netcost_alternate <- all_qs %>%
+dat_netcost <- all_qs %>%
   filter(name %in% c('averted_food_purchase', 'net_cost')) %>%
   filter(is.na(group) | group == 'contracted foodservice operations') %>%
-  bind_rows(dat_totalcost_alternate %>% mutate(name = 'total_cost')) %>%
+  bind_rows(dat_totalcost %>% mutate(name = 'total_cost')) %>%
   mutate_if(is_numeric, ~ if_else(name == 'averted_food_purchase', -., .))
 
 pd <- position_dodge(width = 0.1)
 
-p_netcost_alternate <- ggplot(dat_netcost_alternate %>% mutate_if(is.numeric, ~ ./1e6), aes(x = intervention, y = q50, color = name)) +
+p_netcost <- ggplot(dat_netcost %>% mutate_if(is.numeric, ~ ./1e6), aes(x = intervention, y = q50, color = name)) +
   geom_hline(yintercept = 0, linetype = 'dotted') +
   geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pd) +
   geom_point(size = 2, position = pd) +
@@ -130,7 +130,7 @@ p_netcost_alternate <- ggplot(dat_netcost_alternate %>% mutate_if(is.numeric, ~ 
         axis.text.y = element_text(color = c(rep('forestgreen',3),'black')))
 
 # Tables with total cost, averted food purchase, and net cost or savings
-table_netcost_alternate <- dat_netcost_alternate %>%
+table_netcost <- dat_netcost %>%
   mutate_if(is.numeric, ~ round(./1e6)) %>%
   mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, name, cost_with_quantiles) %>%
@@ -142,12 +142,12 @@ table_netcost_alternate <- dat_netcost_alternate %>%
 
 # Total impact reduced ----------------------------------------------------
 
-dat_netaverted_alternate <- all_qs %>%
+dat_netaverted <- all_qs %>%
   filter(grepl('enrg|gcc|land|watr', category), name %in%  c('net_averted', 'net_impact_averted'), is.na(group) | group == 'contracted foodservice operations') %>%
   left_join(conv_factors) %>%
   mutate_at(vars(starts_with('q')), ~ . * conv_factor)
 
-p_totalimpact_alternate <- ggplot(dat_netaverted_alternate, aes(x = intervention, color = intervention, y = q50, ymin = q025, ymax = q975)) +
+p_totalimpact <- ggplot(dat_netaverted, aes(x = intervention, color = intervention, y = q50, ymin = q025, ymax = q975)) +
   facet_wrap(~ category_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = intervention, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
@@ -160,11 +160,11 @@ p_totalimpact_alternate <- ggplot(dat_netaverted_alternate, aes(x = intervention
 
 # Cost per unit reduction -------------------------------------------------
 
-dat_unitcost_alternate <- all_qs %>%
+dat_unitcost <- all_qs %>%
   filter(grepl('enrg|gcc|land|watr', category), name %in%  c('cost_per_reduction'), is.na(group) | group == 'contracted foodservice operations') %>%
   left_join(conv_factors)
 
-p_unitcost_alternate <- ggplot(dat_unitcost_alternate, aes(x = intervention, color = intervention, y = q50, ymin = q025, ymax = q975)) +
+p_unitcost <- ggplot(dat_unitcost, aes(x = intervention, color = intervention, y = q50, ymin = q025, ymax = q975)) +
   facet_wrap(~ cost_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = intervention, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
@@ -178,7 +178,7 @@ p_unitcost_alternate <- ggplot(dat_unitcost_alternate, aes(x = intervention, col
 
 # Reduction per unit cost (cost-effectiveness) ----------------------------
 
-p_costeff_alternate <- ggplot(dat_unitcost_alternate, aes(x = intervention, color = intervention, y = 1/q50, ymin = 1/q025, ymax = 1/q975)) +
+p_costeff <- ggplot(dat_unitcost, aes(x = intervention, color = intervention, y = 1/q50, ymin = 1/q025, ymax = 1/q975)) +
   facet_wrap(~ costeff_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = intervention, y = 1/q05, yend = 1/q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +

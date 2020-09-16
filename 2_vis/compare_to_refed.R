@@ -8,13 +8,14 @@ library(tidyverse)
 library(readxl)
 library(units)
 
-is_local <- !dir.exists('/nfs/qread-data')
-fp <- ifelse(is_local, '~/Dropbox/Q/projects/foodwaste/Data', '/nfs/qread-data/scenario_inputdata')
+fp_github <- '.'
+fp_out <- '.'
+fp_data <- file.path(fp_github, 'data')
 
-refed <- read_xlsx(file.path(fp, 'ReFED-Data-Set.xlsx'), .name_repair = 'universal') %>%
+refed <- read_xlsx(file.path(fp_data, 'ReFED-Data-Set.xlsx'), .name_repair = 'universal') %>%
   setNames(gsub('[\\.]+', '_', names(.)))
 
-all_qs <- read_csv(file.path(fp, 'intervention_uncertainty/intervention_quantiles.csv'))
+all_qs <- read_csv(file.path(fp_out, 'intervention_quantiles.csv'))
 
 interv_colors <- scale_color_brewer(type = 'qual', palette = 'Set2', guide = guide_legend(nrow = 2))
 
@@ -181,14 +182,3 @@ p_watercosteff <- ggplot(costeff_water_table %>% filter(!group %in% 'total') %>%
   scale_y_continuous(name = parse(text = 'water~use~cost-effectiveness~(m^3/"$")')) +
   coord_flip() +
   interv_colors
-
-
-# Save plots --------------------------------------------------------------
-
-fp_fig <- file.path('~/google_drive/SESYNC Food Waste/MS3_Interventions/figs')
-
-ggsave(file.path(fp_fig, 'four_interventions_vsrefed_ghg_reduced.png'), p_ghgaverted, height = 4, width = 5, dpi = 300)
-ggsave(file.path(fp_fig, 'four_interventions_vsrefed_water_reduced.png'), p_wateraverted, height = 4, width = 5, dpi = 300)
-ggsave(file.path(fp_fig, 'four_interventions_vsrefed_total_annual_cost.png'), p_totalcost, height = 4, width = 5, dpi = 300)
-ggsave(file.path(fp_fig, 'four_interventions_vsrefed_ghg_costeff.png'), p_ghgcosteff, height = 4, width = 5, dpi = 300)
-ggsave(file.path(fp_fig, 'four_interventions_vsrefed_water_costeff.png'), p_watercosteff, height = 4, width = 5, dpi = 300)

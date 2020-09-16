@@ -6,40 +6,36 @@ The scripts should all be in the github repo `foodwasteinterventions` though som
 
 - crossreference_tables/naics_crosswalk_final.csv (BEA codes)
   + C:\Users\qread\Documents\GitHub\foodwaste\fwe\USEEIO\partial_sector_proportions.r
-  + Some post processing was done manually for this. Not sure if it's important here. We only use this for the codes
-  + I think we can say it was created manually.
+  + Some post processing was done manually for this. 
 - crossreference_tables/all_codes.csv (BEA codes with full text names)
   + fwe/read_data/all_demand_codes.r
   + this is also an output of the USEEIO model which we describe building -- just a lookup table.
 - USEEIO/useeiopy/Model Builds/USEEIO2012/USEEIO2012_FinalDemand.csv (final demand vector from USEEIO model)
   + This is an output of the USEEIO model which we describe building
 - crossreference_tables/waste_rates_bea.csv
-  + foodwasteinterventions/0_preprocessing/lafa_rate_conversion.R
+  + 0_preprocessing/lafa_rate_conversion.R
 - crossreference_tables/level13_to_level4678_inputs.csv (food_U)
-  + fwe/USEEIO/partial_sector_proportions.r
-  + *new location* 0_preprocessing/create_bea_submatrix.R
+  + 0_preprocessing/create_bea_submatrix.R
 - crossreference_tables/lafa_category_structure.csv
-  + fwe/read_data/write_lafa_cat_names.R
-  + *new location* 0_preprocessing
+  + 0_preprocessing/write_lafa_cat_names.R
 - csv_exports/SUSB_NAICS_allvariables.csv
-  + fwe/read_data/tabulate_qcew.r
-  + *new location* 0_preprocessing/clean_susb_data.R
+  + 0_preprocessing/clean_susb_data.R
 - crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv
-  + C:\Users\qread\Documents\GitHub\foodwaste\fwe\read_data\bea_naics_0712_crosswalk_create.r
-  + *new location* 0_preprocessing
+  + 0_preprocessing\bea_naics_0712_crosswalk_create.r
 - crossreference_tables/bea_qfahpd_crosswalk.csv
   + created manually
 - crossreference_tables/qfahpd_lafa_crosswalk.csv
   + created manually
 - raw_data/USDA/QFAHPD/tidy_data/qfahpd2.csv
-  + fwe/read_data/qfahpd_and_fes_extract.r
-  + *new location* 0_preprocessing/clean_qfahpd_data.R
+  + 0_preprocessing/clean_qfahpd_data.R
 - scenario_inputdata/intervention_parameters.csv
   + created manually
 - eeio_all_industries.csv
-  + foodwasteinterventions/0_preprocessing/run_all_eeio2012.R
+  + 0_preprocessing/run_all_eeio2012.R
 - scenario_inputdata/packaging_costs_byproduct.csv
-  + foodwasteinterventions/0_preprocessing/read_costmodel.R
+  + 0_preprocessing/read_costmodel.R
+- scenario_inputdata/ReFED-Data-Set.xlsx
+  + downloaded directly from ReFED
 
 ## Pipeline
 
