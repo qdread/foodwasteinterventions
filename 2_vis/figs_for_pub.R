@@ -74,18 +74,11 @@ fig2 <- p_costeff_alternate +
             x = -Inf, y = Inf, hjust = -0.1, vjust = 1.1, color = 'black', fontface = 'bold', size = 6) +
   theme_maintext + rti_colors
 
-fp_fig <- '~/google_drive/SESYNC Food Waste/MS3_Interventions/MSfiles/figs'
+fp_fig <- '.'
 W <- 1656
 H <- 1209
-# Save in pdf, tif, and png formats
-ggsave(file.path(fp_fig, 'fig1.tiff'), fig1, height = H/300, width = W/300, dpi = 300)
-ggsave(file.path(fp_fig, 'fig2.tiff'), fig2, height = H/300, width = W/300, dpi = 300)
 ggsave(file.path(fp_fig, 'fig1.png'), fig1, height = H/300, width = W/300, dpi = 300)
 ggsave(file.path(fp_fig, 'fig2.png'), fig2, height = H/300, width = W/300, dpi = 300)
-ggsave(file.path(fp_fig, 'fig1.pdf'), fig1, height = H/300, width = W/300)
-ggsave(file.path(fp_fig, 'fig2.pdf'), fig2, height = H/300, width = W/300)
-
-
 
 # Supplemental figures ----------------------------------------------------
 
