@@ -57,10 +57,7 @@ uncertainty_quantiles <- function(x, group = NULL) {
 
 library(tidyverse)
 
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-fp_github <- file.path(ifelse(is_local, '~/Documents/GitHub/foodwaste', '~'))
-fp_out <- file.path(fp, 'scenario_results/intervention_uncertainty')
+fp_out <- '.'
 
 # Load all RData files in results directory
 walk(dir(fp_out, pattern = '*.RData', full.names = TRUE), load, .GlobalEnv)

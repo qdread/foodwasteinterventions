@@ -1,6 +1,7 @@
 # All uncertainty analysis
 # QDR / foodwasteinterventions
 
+# Modified 16 Sep 2020: standardize file paths for archiving with manuscript
 # Modified 5 May 2020: implement new approach to calculating packaging costs, also modularize script
 # Modified 29 April 2020: parallelize with furrr
 
@@ -8,12 +9,11 @@ n_iter <- 10000 # Number of MC iterations in uncertainty analysis (can now be a 
 
 # Load data for all interventions -----------------------------------------
 
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-fp_github <- file.path(ifelse(is_local, '~/Documents/GitHub/foodwaste', '~'))
-fp_out <- file.path(fp, 'scenario_results/intervention_uncertainty')
+fp_github <- '.'
+fp_out <- '.'
+fp_data <- file.path(fp_github, 'data')
 
-source(file.path(fp_github, 'foodwasteinterventions/1b_uncertaintyanalysis/all_uncertainty_setup.R'))
+source(file.path(fp_github, '1_uncertaintyanalysis/all_uncertainty_setup.R'))
 
 # Standardized date labeling ---------------------------------------
 
@@ -41,7 +41,7 @@ save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
 
 # Edit 13 May: change (simplify) the way the number of units are summed up by broader food category
 
-packaging_costs <- read_csv(file.path(fp, 'scenario_inputdata/packaging_costs_byproduct.csv'))
+packaging_costs <- read_csv(file.path(fp_data, 'intermediate_output/packaging_costs_byproduct.csv'))
 
 ##########
 # LAFA rate conversion for the fruit and meat codes in LAFA.

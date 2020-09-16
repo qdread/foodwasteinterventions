@@ -18,7 +18,7 @@ table_netcost_alternate <- dat_netcost_alternate %>%
   setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net cost or savings'))
 
 cbind(table_costbreakdown_alternate, table_netcost_alternate[,3:4]) %>%
-  write_csv('~/google_drive/SESYNC Food Waste/MS3_Interventions/figs/table2.csv')
+  write_csv(file.path(fp_out, 'table2.csv')
 
 # Extract additional column for percentage reduction
 
