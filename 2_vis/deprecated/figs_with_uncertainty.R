@@ -6,7 +6,6 @@
 # Modified 21 May 2020: Include net cost or savings
 
 library(tidyverse)
-library(directlabels)
 
 fp_out <- '.'
 
