@@ -18,7 +18,9 @@ library(tidyverse)
 library(readxl)
 library(units)
 
+fp_github <- '.'
 fp_out <- '.'
+fp_data <- file.path(fp_github, 'data')
 
 all_qs <- read_csv(file.path(fp_out, 'intervention_quantiles.csv'))
 pkg_result <- read_csv(file.path(fp_out, 'packaging_quantiles_byfoodtype.csv'))
@@ -249,8 +251,7 @@ p_totalimpact <- ggplot(dat_netaverted, aes(x = intervention, color = interventi
   geom_errorbar(width = 0.05) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
   scale_y_continuous(name = 'Net impact averted', expand = expansion(mult = c(0, 0.05))) +
-  theme(axis.text.x = element_text(size = 6), legend.position = 'none') +
-  interv_colors 
+  theme(axis.text.x = element_text(size = 6), legend.position = 'none')
 
 p_costeff <- ggplot(dat_unitcost, aes(x = intervention, color = intervention, y = 1/q50, ymin = 1/q025, ymax = 1/q975)) +
   facet_wrap(~ costeff_labels, scales = 'free', labeller = label_parsed) +
@@ -260,8 +261,7 @@ p_costeff <- ggplot(dat_unitcost, aes(x = intervention, color = intervention, y 
   geom_errorbar(width = 0.05) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
   scale_y_continuous(name = 'Reduction per $1 spent',expand = expansion(mult = c(0, 0.05))) +
-  theme(axis.text.x = element_text(size = 6), legend.position = 'none') +
-  interv_colors 
+  theme(axis.text.x = element_text(size = 6), legend.position = 'none') 
 
 theme_maintext <- theme_bw() +
   theme(axis.text.x = element_text(size = 9, color = 'black'),

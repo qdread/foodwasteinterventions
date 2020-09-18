@@ -60,11 +60,12 @@ The scripts should all be in the github repo `foodwasteinterventions` though som
 - read_msas.R (read data on metropolitan statistical areas to get the population proportion number)
 - run_all_eeio2012.R (environmental impact of $1 demand from each industry in the USEEIO model)
 
-### Scripts in 1b_uncertaintyanalysis folder
+### Scripts in 1_uncertaintyanalysis folder
 
 - all_uncertainty.R (calls all_uncertainty_setup.R and the four functions, one for each intervention)
 - all_uncertainty_quantiles.R (pulls quantiles from all the results in previous step and saves them)
 
 ### Scripts in 2_vis folder
 
-- figs_with_uncertainty.R (currently all figures being used in draft are created in this script)
+- figs_for_pub.R (creates the 2 main-text figures and the 6 supplemental figures)
+- savetables.R (creates Table 2, which presents results in the manuscript, and some additional results presented as text in the main body of the manuscript)

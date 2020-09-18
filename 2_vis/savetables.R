@@ -1,6 +1,6 @@
 table_costbreakdown <- dat_costbreakdown %>%
   ungroup %>%
-  bind_rows(dat_totalcost_alternate %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
+  bind_rows(dat_totalcost %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
   mutate_if(is.numeric, round) %>%
   mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, cost_type, cost_with_quantiles) %>%
@@ -38,5 +38,6 @@ costeffdat <- dat_unitcost %>%
   select(intervention:q975) %>%
   select(-name)
 
-write_csv(costeffdat, file.path(fp_out, 'output_costeff.csv')
+write_csv(costeffdat, file.path(fp_out, 'output_costeff.csv'))
  
+          
