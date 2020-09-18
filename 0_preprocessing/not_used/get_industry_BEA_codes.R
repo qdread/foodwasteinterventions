@@ -1,6 +1,9 @@
 # Get BEA codes for the NAICS industries that may be involved in interventions
 # QDR / FWE / 20 Feb 2020
 
+# Note added Sep. 2020: This is good code but the CSV files are not directly used in further analysis.
+# I just manually got the few needed codes and hard-coded them into the scripts. (only a few are actually used in the analysis)
+
 library(tidyverse)
 
 is_local <- dir.exists('Q:/')

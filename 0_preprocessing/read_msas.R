@@ -1,6 +1,8 @@
 # Process US MSA data
 # QDR / FWE / 20 Feb 2020
 
+# Replace readLines('~/censusapikey.txt') with your own API key.
+
 library(tidyverse)
 library(readxl)
 
@@ -25,18 +27,6 @@ msas %>% filter(grepl('Seattle', `CSA Title`))
 
 
 # US population by county  ------------------------------------------------
-
-# library(tidycensus)
-# 
-# census_api_key(readLines('~/censusapikey.txt'))
-# # estimated 2012 population by county
-# #countypop2012 <- get_estimates(geography = 'county', variables = 'POP', year = 2015) # This way can only be done 2015 or later
-# 
-# get_estimates(geography = 'county', year = 2017, variables = c('POP','DATE'), time_series = TRUE)
-# 
-# # 2010 population by county
-# countypop2010 <- get_decennial(geography = 'county', variables = 'P001001', year = 2010)
-
 
 # Query API manually (DATE_CODE 5 is 2012 estimate)
 api_call <- paste0('https://api.census.gov/data/2018/pep/population?get=POP&DATE_CODE=5&for=county:*&key=',

@@ -1,12 +1,11 @@
 # Scripts to clean and manipulate the raw QFAHPD data
 # QDR / FWI / 3 Jun 2020
 
-# copied from fwe/read_data/qfahpd_and_fes_extract.r
 
 # Version 1 includes upc codes and random-weight purchases, 1999-2006
 # Version 2 is only upc coded purchases but has a couple extra groups (diet soda and coffee/tea), and covers 2004-2010.
 
-fp <- file.path(ifelse(dir.exists('Q:/'), 'Q:/raw_data', '/nfs/qread-data/raw_data'), 'ERS/QFAHPD')
+fp <- file.path(ifelse(dir.exists('Q:/'), 'Q:/raw_data', '/nfs/qread-data/raw_data'), 'USDA/QFAHPD')
 dir(fp)
 
 library(tidyverse)

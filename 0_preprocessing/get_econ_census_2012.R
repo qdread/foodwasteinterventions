@@ -1,5 +1,5 @@
 # Get revenue by NAICS code for economic census 2012, using US Census Bureau API
-
+# Replace readLines('~/censusapikey.txt') with your own API key.
 
 library(httr)
 library(jsonlite)
@@ -24,5 +24,3 @@ foodmfg2012 <- subset(foodmfg2012, substr(NAICS2012,1,2) == '31')
 write.csv(foodmfg2012, '/nfs/qread-data/scenario_inputdata/econcensus2012_naics31.csv', row.names = FALSE)
 
 
-# For code 11 (farming), use the 2012 census data query tool we already have
-# cdqt_naics2012 <- read_csv('/nfs/qread-data/cfs_io_analysis/NASS2012_receipts_workers_NAICS_imputed.csv')
