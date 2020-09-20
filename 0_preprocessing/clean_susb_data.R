@@ -8,6 +8,18 @@ library(tidyverse)
 fp <- ifelse(dir.exists('Q:/'), 'Q:/raw_data', '/nfs/qread-data/raw_data')
 fp_crosswalks <- ifelse(dir.exists('Q:/'), 'Q:/crossreference_tables', '/nfs/qread-data/crossreference_tables')
 
+# Read crosswalk that maps NAICS 07 and NAICS 12 to the BEA codes
+bea_naics <- read_csv(file.path(fp_crosswalks, 'BEA_NAICS07_NAICS12_crosswalk.csv'))
+
+# Food system codes crosswalk table
+food_crosswalk <- read_csv(file.path(fp_crosswalks, 'naics_crosswalk_final.csv')) %>%
+  select(BEA_389_code, BEA_389_def, proportion_food, cereals:beverages) %>%
+  rename(BEA_code = BEA_389_code, BEA_title = BEA_389_def) %>% 
+  filter(proportion_food > 0)
+
+# Better source of food-only naics codes for the wholesale ones
+naics2012classified <- read_csv(file.path(fp_crosswalks, '2012naics_foodclassified.csv'))
+
 # We want number of firms and number of establishments 
 # This can be done for everything except agriculture with SUSB
 
@@ -101,8 +113,7 @@ susb_summ <- susb12_us %>%
 
 # Remove the non-food codes
 food_naics2012 <- unique(bea_naics$related_2012_NAICS_6digit[bea_naics$BEA_Code %in% food_crosswalk$BEA_code])
-# Better source of food-only naics codes for the wholesale ones
-naics2012classified <- read_csv(file.path(fp_crosswalks, '2012naics_foodclassified.csv'))
+
 food_naics2012_wholesale <- naics2012classified$NAICS12[!is.na(naics2012classified$is_food)]
 
 wholesale_notfood <- grep('^42|^44|^45|^49', food_naics2012, value = TRUE)
