@@ -57,8 +57,14 @@ The scripts should all be in the github repo `foodwasteinterventions` though som
 - media_cost_breakdown.R (check some assumptions about what industries generate offsetting impacts of media campaigns, and in what proportion)
 - proportion_packaging_foodtype.R (I believe this is no longer used)
 - read_costmodel.R (convert the raw cost model output into the tidied output packaging_costs_byproduct.csv)
+- read_lafa.R (originally created within the FWE project; reads raw LAFA XLS files)
 - read_msas.R (read data on metropolitan statistical areas to get the population proportion number)
 - run_all_eeio2012.R (environmental impact of $1 demand from each industry in the USEEIO model)
+
+Subfolder `input_output_tables`:
+
+- reaggregate_mat.R (source code for functions that retotal rows and columns of make and use tables for many-to-one and one-to-many mappings)
+- create_2012_bea.R (script that implements the mapping to produce a 2012 make and use table in the correct format to be used in the USEEIO input-output model)
 
 ### Scripts in 1_uncertaintyanalysis folder
 
