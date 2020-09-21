@@ -50,7 +50,7 @@ The scripts should all be in the github repo `foodwasteinterventions` though som
 - clean_susb_data.R (create table of establishments and receipts from SUSB, grouped by NAICS and BEA codes)
 - bea_naics_0712_crosswalk_create.R (reformat raw BEA data to create a crosswalk between BEA codes, NAICS 2007 codes, and NAICS 2012 codes)
 - clean_qfahpd_data.R (tidy up the raw data from QFAHPD 2004-2010)
-- get_econ_census_2012.R (get some economic census data by NAICS code from the US Census Bureau API -- I believe this is no longer used)
+- get_econ_census_2012.R (get some economic census data by NAICS code from the US Census Bureau API)
 - lafa_rate_conversion.R (harmonize LAFA, QFAHPD, and BEA to get waste rates for BEA codes from LAFA categories)
 - get_industry_BEA_codes.R (identify six digit codes for industries that generate offsetting impacts, which are entered manually later on in the process)
 - lafa_find_proportion_fresh_fruit_waste.R (confirm one of the assumptions about what percentage of consumer fruit and vegetable waste is specifically fresh fruit)
