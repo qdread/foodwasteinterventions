@@ -12,7 +12,7 @@ Currently, this repository includes all code and intermediate output to reproduc
 The scripts in the folder `0_preprocessing` refer to raw data not currently included in the repository.
 *I am currently in the process of adding the raw data to the repository and testing the code . . . stay tuned!*
 
-The code in the folders `1_uncertaintyanalysis` and `2_vis` was successfully tested in R 4.0.1 on Windows and R 4.0.2 on Linux.
+The code in the folders `1_uncertaintyanalysis` and `2_vis` was successfully tested in R 4.0.0 on Windows and R 4.0.2 on Linux.
 
 ## Note about input-output model
 
