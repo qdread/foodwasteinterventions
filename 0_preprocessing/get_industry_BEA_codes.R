@@ -6,11 +6,8 @@
 
 library(tidyverse)
 
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-
-BEA_NAICS <- read_csv(file.path(fp, 'crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv'))
-industries <- read_csv(file.path(fp, 'scenario_inputdata/intervention_industry_NAICS.csv'))
+BEA_NAICS <- read_csv(file.path(fp_crosswalks, 'BEA_NAICS07_NAICS12_crosswalk.csv'))
+industries <- read_csv(file.path(fp_rawdata, 'raw/intervention_industry_NAICS.csv'))
 
 table(industries$NAICS %in% BEA_NAICS$related_2012_NAICS_6digit) # OK
 
@@ -33,5 +30,5 @@ industries_BEA <- industries_joined %>%
 
 industries_BEA %>% print(n=nrow(.))
 
-write_csv(industries_joined, file.path(fp, 'scenario_inputdata/intervention_industry_NAICS_BEA.csv'))
-write_csv(industries_BEA, file.path(fp, 'scenario_inputdata/intervention_industry_BEA.csv'))
+write_csv(industries_joined, file.path(fp_rawdata, 'raw/intervention_industry_NAICS_BEA.csv'))
+write_csv(industries_BEA, file.path(fp_rawdata, 'raw/intervention_industry_BEA.csv'))

@@ -7,12 +7,9 @@ library(tidyverse)
 
 # Load lookup table and use table
 
-fp_crosswalk <- ifelse(dir.exists('Q:/'), 'Q:/crossreference_tables', '/nfs/qread-data/crossreference_tables')
-fp_bea <- ifelse(dir.exists('Q:/'), 'Q:/raw_data/BEA', '/nfs/qread-data/raw_data/BEA')
+naics_lookup <- read.csv(file.path(fp_crosswalks, 'naics_crosswalk_final.csv'), stringsAsFactors = FALSE)
 
-naics_lookup <- read.csv(file.path(fp_crosswalk, 'naics_crosswalk_final.csv'), stringsAsFactors = FALSE)
-
-U <- read.csv(file.path(fp_bea, 'formatted/use2012.csv'), stringsAsFactors = FALSE, check.names = FALSE, row.names = 1)
+U <- read.csv(file.path(fp_rawdata, 'raw/BEA/use2012.csv'), stringsAsFactors = FALSE, check.names = FALSE, row.names = 1)
 
 # Proportions FSC by sector -----------------------------------------------
 
@@ -36,4 +33,4 @@ later_sectors <- naics_lookup %>% filter(stage %in% c('foodservice', 'institutio
 level1and3_inputs_tohigherlevels <- U[c(level1_fsc_sectors, level3_fsc_sectors), later_sectors]
 
 # Added 10 Feb. 2020: write this level 1 and 3 to levels 4 and up matrix to a CSV for use in later analysis.
-write.csv(level1and3_inputs_tohigherlevels, file.path(fp_crosswalk, 'level13_to_level4678_inputs.csv'))
+write.csv(level1and3_inputs_tohigherlevels, file.path(fp_data, 'intermediate_output/level13_to_level4678_inputs.csv'))

@@ -1,8 +1,6 @@
 # Create mapping that unites BEA codes, 2007 NAICS codes, and 2012 NAICS codes
 # QDR / FWI / 3 Jun 2020
 
-# script copied from fwe/read_data/
-
 # The provided BEA to NAICS mapping is only valid for 2007 but the 2012 codes are different
 
 
@@ -11,9 +9,7 @@
 library(tidyverse)
 library(readxl)
 
-fp_crosswalks <- '/nfs/qread-data/crossreference_tables'
-
-bea_naics <- read_xlsx(file.path(fp_crosswalks, 'NAICS/GDPbyInd_GO_NAICS_1997-2016.xlsx'), sheet = 'NAICS codes', skip = 3, na = 'n/a')
+bea_naics <- read_xlsx(file.path(fp_rawdata, 'raw/GDPbyInd_GO_NAICS_1997-2016.xlsx'), sheet = 'NAICS codes', skip = 3, na = 'n/a')
 
 # Quickly turn ugly formatting into tidy formatting
 bea_naics <- bea_naics %>%
@@ -41,7 +37,7 @@ bea_naics <- bea_naics %>%
 
 # combine bea-naics CW with naics 7-12 CW ---------------------------------
 
-naics07to12 <- readxl::read_xlsx(file.path(fp_crosswalks, 'NAICS/2007_to_2012_NAICS.xlsx'), skip = 2) %>%
+naics07to12 <- readxl::read_xlsx(file.path(fp_rawdata, 'raw/2007_to_2012_NAICS.xlsx'), skip = 2) %>%
   select(1:4) %>%
   setNames(c('NAICS07','NAICS07title','NAICS12','NAICS12title'))
 

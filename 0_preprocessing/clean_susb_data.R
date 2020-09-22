@@ -5,9 +5,6 @@
 
 library(tidyverse)
 
-fp <- ifelse(dir.exists('Q:/'), 'Q:/raw_data', '/nfs/qread-data/raw_data')
-fp_crosswalks <- ifelse(dir.exists('Q:/'), 'Q:/crossreference_tables', '/nfs/qread-data/crossreference_tables')
-
 # Read crosswalk that maps NAICS 07 and NAICS 12 to the BEA codes
 bea_naics <- read_csv(file.path(fp_crosswalks, 'BEA_NAICS07_NAICS12_crosswalk.csv'))
 
@@ -25,7 +22,7 @@ naics2012classified <- read_csv(file.path(fp_crosswalks, '2012naics_foodclassifi
 
 # This already has the harmonized size class mapping
 
-susb12 <- read_csv(file.path(fp, 'Census/SUSB/us_state_6digitnaics_2012.txt'))
+susb12 <- read_csv(file.path(fp_rawdata, 'raw/us_state_6digitnaics_2012.txt'))
 susb12_us <- susb12 %>%
   filter(STATE %in% '00', ENTRSIZE %in% c('01','05','06','07','09')) %>%
   select(NAICS, NAICSDSCR, ENTRSIZE, FIRM, ESTB, EMPL_N, PAYR_N, RCPT_N) %>%
@@ -122,4 +119,4 @@ wholesale_notfood <- wholesale_notfood[!wholesale_notfood %in% food_naics2012_wh
 susb_summ <- susb_summ %>%
   filter(NAICS %in% food_naics2012, !NAICS %in% wholesale_notfood)
 
-write_csv(susb_summ, file.path(fp_out, 'SUSB_NAICS_allvariables.csv'))
+write_csv(susb_summ, file.path(fp_data, 'intermediate_output/SUSB_NAICS_allvariables.csv'))

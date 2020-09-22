@@ -21,6 +21,4 @@ foodmfg2012$RCPTOT <- as.numeric(foodmfg2012$RCPTOT)
 
 foodmfg2012 <- subset(foodmfg2012, substr(NAICS2012,1,2) == '31')
 
-write.csv(foodmfg2012, '/nfs/qread-data/scenario_inputdata/econcensus2012_naics31.csv', row.names = FALSE)
-
-
+write.csv(foodmfg2012, file.path(fp_rawdata, 'raw/econcensus2012_naics31.csv'), row.names = FALSE)
