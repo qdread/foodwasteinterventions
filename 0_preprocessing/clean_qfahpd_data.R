@@ -87,8 +87,3 @@ qfahpd2 <- qfahpd2 %>%
          region = regions$desc[match(region, regions$code)])
 
 write.csv(qfahpd2, file.path(fp_data, 'intermediate_output/qfahpd2.csv'), row.names = FALSE)
-
-
-
-
-

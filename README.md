@@ -10,7 +10,11 @@ Please refer to `prose_pipeline.md` and `script_pipeline.md` for descriptions of
 
 Currently, this repository includes all code and intermediate output to reproduce the main analysis. 
 The scripts in the folder `0_preprocessing` refer to raw data not currently included in the repository.
-*I am currently in the process of adding the raw data to the repository and testing the code . . . stay tuned!*
+The raw data will be archived in a separate repository. 
+
+## Status of code testing
+
+The code in the folder `0_preprocessing` is currently being tested in R 4.0.2 on Linux. As of 23 Sep 2020, all scripts through line 33 in `all_analysis.R` have passed.
 
 The code in the folders `1_uncertaintyanalysis` and `2_vis` was successfully tested in R 4.0.0 on Windows and R 4.0.2 on Linux.
 

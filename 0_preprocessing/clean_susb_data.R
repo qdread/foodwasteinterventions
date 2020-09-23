@@ -1,8 +1,6 @@
 # Script to clean and manipulate the raw SUSB data, and harmonize it with BEA
 # QDR / FWI / 3 Jun 2020
 
-# copied from fwe/read_data/tabulate_qcew.r
-
 library(tidyverse)
 
 # Read crosswalk that maps NAICS 07 and NAICS 12 to the BEA codes
@@ -20,7 +18,8 @@ naics2012classified <- read_csv(file.path(fp_crosswalks, '2012naics_foodclassifi
 # We want number of firms and number of establishments 
 # This can be done for everything except agriculture with SUSB
 
-# This already has the harmonized size class mapping
+# Define size class labels
+harmonized_size_classes <- c('fewer than 20', '20 to 99', '100 to 499', 'more than 500')
 
 susb12 <- read_csv(file.path(fp_rawdata, 'raw/us_state_6digitnaics_2012.txt'))
 susb12_us <- susb12 %>%
