@@ -1,6 +1,7 @@
 # LAFA rates for fruit and vegetables
 
 lafa <- list(fruit, meat, veg)
+lafa_struct <- read_csv(file.path(fp_crosswalks, 'lafa_category_structure.csv'))
 
 # find the single year closest to 2012.
 lafa_df <- lafa %>%

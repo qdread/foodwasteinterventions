@@ -1,0 +1,113 @@
+company_size,product_category,product_subcategory,NAICS,NAICS_description,brand_type,UPCs,Formulas,Units,5th Percentile,Mean,95th Percentile
+Small Companies,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Branded,126.63000000000001,112.56,1946217.34,1176094.4160000002,2301311.712,4037195.1479999996
+Medium Companies,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Branded,255.27,204.35000000000002,32375591.26,23486149.85,51037577.29500001,93680068.32500002
+Large Companies,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Branded,14.07,9.38,3249957.6100000003,2580337.6340000005,5551620.536,10050956.559000002
+Total,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Branded,395.97,326.29,37571766.21,27242581.900000006,58890509.54300001,107768220.032
+Small Companies,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Private,0,0,0,0,0,0
+Medium Companies,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Private,136.68,112.56,12983543.41,12936633.36,28112501.592,51600824.52
+Large Companies,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Private,0,0,0,0,0,0
+Total,Condiments/dips/spreads,Sandwich spreads/horseradish/sauerkraut - refrig,311421,Fruit & Vegetable Canning,Private,136.68,112.56,12983543.41,12936633.36,28112501.592,51600824.52
+Small Companies,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Branded,10.05,10.05,109934.94,138334.22999999998,282728.61000000004,506942.6025000001
+Medium Companies,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Branded,87.10000000000001,75.04,108725897.53,8624422.24,18741667.728,34400549.68000001
+Large Companies,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Branded,109.88000000000001,100.5,257614780.91000003,27646474.650000002,59481648.6,107688820.27499999
+Total,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Branded,207.03000000000003,185.59,366450613.38,36409231.12,78506044.938,142596312.5575
+Small Companies,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Private,0,0,0,0,0,0
+Medium Companies,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Private,34.17,30.150000000000002,1265987.78,3465169.6500000004,7530134.355,13821649.425
+Large Companies,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Private,0,0,0,0,0,0
+Total,Entrees,Combination lunches,311911,Roasted Nuts & Peanut Butter Manufacturing,Private,34.17,30.150000000000002,1265987.78,3465169.6500000004,7530134.355,13821649.425
+Small Companies,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,899.1400000000001,866.98,6525382.590000001,11933632.908,24390054.756,43732248.508999996
+Medium Companies,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,1833.1200000000001,1620.0600000000002,151543423.38,186195115.86000004,404619219.34200007,742683295.7700001
+Large Companies,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,349.07,293.46000000000004,128132182.21000001,80727705.97800002,173686413.912,314451355.203
+Total,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,3081.3300000000004,2780.5,286200988.18,278856454.746,602695688.01,1100866899.482
+Small Companies,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Medium Companies,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,1964.44,1772.8200000000002,161119174.60000002,203751975.42000002,442771900.07400006,812712986.19
+Large Companies,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Total,Entrees,Entrees - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,1964.44,1772.8200000000002,161119174.60000002,203751975.42000002,442771900.07400006,812712986.19
+Small Companies,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Branded,497.81,462.3,2543993.35,6363374.579999999,13005516.059999999,23319359.715
+Medium Companies,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Branded,923.2600000000001,828.12,55293543.59,95176659.72,206827690.284,379634637.53999996
+Large Companies,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Branded,316.91,285.42,248667693.37,78515988.006,168927882.02400002,305836249.581
+Total,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Branded,1737.9800000000002,1575.8400000000001,306505230.31,180056022.30600002,388761088.36800003,708790246.8359998
+Small Companies,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Private,0,0,0,0,0,0
+Medium Companies,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Private,1281.71,1161.1100000000001,53504955.14,133447533.41000003,289993840.8270001,532287076.74500006
+Large Companies,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Private,0,0,0,0,0,0
+Total,Entrees,Sandwiches - refrigerated/frozen,311999,All Other Miscellaneous Food Manufacturing,Private,1281.71,1161.1100000000001,53504955.14,133447533.41000003,289993840.8270001,532287076.74500006
+Small Companies,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Branded,1389,1196,29188256,11001525.599999998,20963727.2,36287895.800000004
+Medium Companies,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Branded,3575,1959,838987221,200037408,431708160.3,789858025.5000001
+Large Companies,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Branded,2130,824,1466884977,202536975.20000002,433825452.8,783124285.1999999
+Total,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Branded,7094,3979,2335060454,413575908.8,886497340.3,1609270206.5
+Small Companies,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Private,0,0,0,0,0,0
+Medium Companies,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Private,847,476,147157989,48605312,104896929.2,191920582
+Large Companies,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Private,0,0,0,0,0,0
+Total,Fruits & vegetables,Fruit - fresh,111339,Other Noncitrus Fruit Farming,Private,847,476,147157989,48605312,104896929.2,191920582
+Small Companies,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,256,209,3019621,2876801.4,5879629.8,10542388.450000001
+Medium Companies,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,1615,894,100530136,102748314,223281595.8,409835972.99999994
+Large Companies,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,174,109,128728747,29984733.7,64512434.8,116796829.95000002
+Total,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Branded,2045,1212,232278504,135609849.10000002,293673660.40000004,537175191.4
+Small Companies,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Medium Companies,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,908,539,38513429,61947809,134618322.3,247093500.5
+Large Companies,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Total,Fruits & vegetables,Fruit/fruit salad - refrigerated,311991,Perishable Prepared Food Manufacturing,Private,908,539,38513429,61947809,134618322.3,247093500.5
+Small Companies,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,498,458,8550907,4212958.8,8027915.6,13896200.9
+Medium Companies,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,1397,1116,99130598,113956992,245934817.2,449965062.00000006
+Large Companies,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,94,78,7559832,19172189.400000002,41066001.6,74130696.89999999
+Total,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,1989,1652,115241337,137342140.2,295028734.40000004,537991959.8
+Small Companies,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,0,0,0,0,0,0
+Medium Companies,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,277,229,44488996,23383648,50465119.3,92331540.50000001
+Large Companies,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,0,0,0,0,0,0
+Total,Fruits & vegetables,Garlic/herbs - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,277,229,44488996,23383648,50465119.3,92331540.50000001
+Small Companies,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,87,87,1976854,800278.2,1524953.4,2639671.35
+Medium Companies,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,281,232,170800224,23689984,51126234.4,93541124
+Large Companies,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,109,67,815650141,16468419.1,35274642.4,63676367.85000001
+Total,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,477,386,988427219,40958681.3,87925830.2,159857163.20000002
+Small Companies,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,0,0,0,0,0,0
+Medium Companies,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,68,55,170635063,5616160,12120443.5,22175697.5
+Large Companies,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,0,0,0,0,0,0
+Total,Fruits & vegetables,Leafy greens - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,68,55,170635063,5616160,12120443.5,22175697.5
+Small Companies,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,1946,1770,42476374,16281521.999999998,31024914,53703658.5
+Medium Companies,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,5621,4352,992767243,444391424,959057638.4,1754702464
+Large Companies,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,953,521,1324554918,128060393.3,274299831.2,495155039.5500001
+Total,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Branded,8520,6643,2359798535,588733339.3,1264382383.6000001,2303561162.05
+Small Companies,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,0,0,0,0,0,0
+Medium Companies,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,1674,1306,863389702,133358272,287805440.2,526572017.00000006
+Large Companies,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,0,0,0,0,0,0
+Total,Fruits & vegetables,Vegetables - fresh,111219,Other Vegetable (except Potato) & Melon Farming,Private,1674,1306,863389702,133358272,287805440.2,526572017.00000006
+Small Companies,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Branded,56,46,1273165,633171.6,1294081.2,2320334.3000000003
+Medium Companies,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Branded,414,326,138350594,37467506,81420358.2,149448017
+Large Companies,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Branded,301,241,921347054,66296521.300000004,142637585.2,258238862.54999998
+Total,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Branded,771,613,1060970813,104397198.9,225352024.6,410007213.84999996
+Small Companies,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Medium Companies,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Private,422,168,275187077,19308408,41958957.6,77016156
+Large Companies,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Total,Fruits & vegetables,Vegetables - precut salad mix - fresh,311991,Perishable Prepared Food Manufacturing,Private,422,168,275187077,19308408,41958957.6,77016156
+Small Companies,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Branded,312,267,4168835,3675148.1999999997,7511297.4,13468027.349999998
+Medium Companies,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Branded,506,384,63088376,44133504,95906188.8,176036928
+Large Companies,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Branded,15,14,2223379,3851250.1999999997,8286000.8,15001427.700000001
+Total,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Branded,833,665,69480590,51659902.4,111703487,204506383.05
+Small Companies,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Private,0,0,0,0,0,0
+Medium Companies,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Private,307,245,24763469,28158095,61190146.5,112315227.5
+Large Companies,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Private,0,0,0,0,0,0
+Total,Meat & poultry,Meat - frozen,311612,Meat Processed from Carcasses,Private,307,245,24763469,28158095,61190146.5,112315227.5
+Small Companies,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Branded,97,88,2077785,1211284.7999999998,2475633.6,4438900.399999999
+Medium Companies,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Branded,286,234,68299089,26893854,58442833.8,107272503.00000001
+Large Companies,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Branded,76,60,21969110,16505358,35511432,64291833
+Total,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Branded,459,382,92345984,44610496.8,96429899.4,176003236.39999998
+Small Companies,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Private,0,0,0,0,0,0
+Medium Companies,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Private,326,271,68423148,31146301,67683794.7,124234394.49999999
+Large Companies,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Private,0,0,0,0,0,0
+Total,Meat & poultry,Poultry - frozen,311615,Poultry Processing,Private,326,271,68423148,31146301,67683794.7,124234394.49999999
+Small Companies,Seafood,Seafood - refrigerated,311711,Seafood Canning,Branded,658,575,5483310,7914645,16176015,29004178.75
+Medium Companies,Seafood,Seafood - refrigerated,311711,Seafood Canning,Branded,1008,807,62696599,92749317.00000001,201552849.9,369952606.50000006
+Large Companies,Seafood,Seafood - refrigerated,311711,Seafood Canning,Branded,1,1,20460,275089.3,591857.2,1071530.55
+Total,Seafood,Seafood - refrigerated,311711,Seafood Canning,Branded,1667,1383,68200369,100939051.3,218320722.1,400028315.8
+Small Companies,Seafood,Seafood - refrigerated,311711,Seafood Canning,Private,0,0,0,0,0,0
+Medium Companies,Seafood,Seafood - refrigerated,311711,Seafood Canning,Private,187,155,15910941,17814305,38712133.5,71056572.5
+Large Companies,Seafood,Seafood - refrigerated,311711,Seafood Canning,Private,0,0,0,0,0,0
+Total,Seafood,Seafood - refrigerated,311711,Seafood Canning,Private,187,155,15910941,17814305,38712133.5,71056572.5
+Small Companies,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Branded,339.69,300.83000000000004,2046665.08,4140804.6180000002,8463009.726000002,15174481.901500002
+Medium Companies,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Branded,1207.3400000000001,875.69,114247772.88000001,100643927.39,218708568.933,401442128.855
+Large Companies,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Branded,54.27,47.57,29895929.970000003,13085998.000999998,28154647.004000004,50972708.2635
+Total,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Branded,1601.3000000000002,1224.09,146190367.93,117870730.009,255326225.663,467589319.02
+Small Companies,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Medium Companies,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Private,1638.8200000000002,1252.9,124808056.94000001,143997049.9,312918916.53000003,574366320.55
+Large Companies,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Private,0,0,0,0,0,0
+Total,Side dishes & starches,Ready-made salads,311991,Perishable Prepared Food Manufacturing,Private,1638.8200000000002,1252.9,124808056.94000001,143997049.9,312918916.53000003,574366320.55

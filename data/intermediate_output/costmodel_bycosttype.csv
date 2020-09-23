@@ -1,0 +1,45 @@
+company_size,reformulation_activity,5th Percentile,Mean,95th Percentile
+Small Companies,1. Determine response to regulation,8436215.504,12523414.24,18442049.456
+Medium Companies,1. Determine response to regulation,76099608,185912860,361440616.79999995
+Large Companies,1. Determine response to regulation,16191672.31,37770847.18,71458646.16
+Total,1. Determine response to regulation,100727495.814,236207121.42000002,451341312.41599995
+Small Companies,2. Project management,7293897.040000001,18158649.2,35734163.160000004
+Medium Companies,2. Project management,267049917.8,644353058.5999999,1243696996.8000002
+Large Companies,2. Project management,65193112.71000001,149676986.15,280911243.47
+Total,2. Project management,339536927.54999995,812188693.95,1560342403.43
+Small Companies,3. Product reformulation/process modification,23788067.463999998,53083505.68,98321356.37599999
+Medium Companies,3. Product reformulation/process modification,461938622.16,1021094499,1884505180.4400003
+Large Companies,3. Product reformulation/process modification,131668086.24100001,288357807.34999996,529103145.29899997
+Total,3. Product reformulation/process modification,617394775.865,1362535812.0300002,2511929682.115
+Small Companies,4. Packaging assessment,1829501.8639999998,3927270.48,7347026.696
+Medium Companies,4. Packaging assessment,43203330.160000004,97845450.4,182710605.84
+Large Companies,4. Packaging assessment,11288567.740999999,24797889.490000002,45282860.469
+Total,4. Packaging assessment,56321399.76500001,126570610.37000002,235340493.005
+Small Companies,5. Packaging development,65132.07200000001,165732.10400000002,332431.516
+Medium Companies,5. Packaging development,11433369.88,25847849.76,48174737.6
+Large Companies,5. Packaging development,3243371.989,7126775.040000001,13066682.205500001
+Total,5. Packaging development,14741873.941000002,33140356.903999995,61573851.321499996
+Small Companies,6. Product and package performance testing,19384207.447999995,30705580.28,46908634.151999995
+Medium Companies,6. Product and package performance testing,366620159.92,786763710.8000001,1426382000.08
+Large Companies,6. Product and package performance testing,95517187.19000001,212440467.57999998,388263416.53
+Total,6. Product and package performance testing,481521554.55799997,1029909758.66,1861554050.7619998
+Small Companies,7. Production scale-up testing,10137387.84,21474237.599999998,39749910.08
+Medium Companies,7. Production scale-up testing,576796003.2,1243090348.8,2275031386.4
+Large Companies,7. Production scale-up testing,170711184.71,362861023.8,658187369.84
+Total,7. Production scale-up testing,757644575.75,1627425610.2000003,2972968666.3199997
+Small Companies,8. Recordkeeping,1425167.1199999999,3282398.48,6235912.24
+Medium Companies,8. Recordkeeping,461562551.20000005,994476615.2,1819691224.8000002
+Large Companies,8. Recordkeeping,148601743.84000003,322995625.92,590923127.74
+Total,8. Recordkeeping,611589462.1600001,1320754639.6,2416850264.78
+Small Companies,Analytical tests,0,0,0
+Medium Companies,Analytical tests,0,0,0
+Large Companies,Analytical tests,0,0,0
+Total,Analytical tests,0,0,0
+Small Companies,Consumer tests,0,0,0
+Medium Companies,Consumer tests,102427687.47999997,129759588,160325179.83999997
+Large Companies,Consumer tests,43292507.037999995,65780027.566,83290471.41799998
+Total,Consumer tests,145720194.518,195539615.56599998,243615651.25799996
+Small Companies,Grand Total,72359576.352,143320788.064,253071483.676
+Medium Companies,Grand Total,2367131249.8,5129143980.559999,9401957928.600002
+Large Companies,Grand Total,685707433.769,1471807450.076,2660486963.1315002
+Total,Grand Total,3125198259.921,6744272218.700001,12315516375.4075

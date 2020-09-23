@@ -51,9 +51,6 @@ source(file.path(fp_github, '0_preprocessing/media_cost_breakdown.R'))
 # Extract necessary information from the FDA Reformulation Cost Model Excel files and write to CSV.
 source(file.path(fp_github, '0_preprocessing/read_costmodel.R'))
 
-# Use information from the Reformulation Cost Model to estimate the proportion of spoilage prevention packaging cost spent on each type of food.
-source(file.path(fp_github, '0_preprocessing/proportion_packaging_foodtype.R'))
-
 # Use list of Metropolitan Statistical Areas and download data from US Census Bureau to estimate percentage of the total population that lives in the MSAs.
 source(file.path(fp_github, '0_preprocessing/read_msas.R'))
 

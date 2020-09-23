@@ -14,7 +14,7 @@ The raw data will be archived in a separate repository.
 
 ## Status of code testing
 
-The code in the folder `0_preprocessing` is currently being tested in R 4.0.2 on Linux. As of 23 Sep 2020, all scripts through line 33 in `all_analysis.R` have passed.
+The code in the folder `0_preprocessing` was successfully tested in R 4.0.2 on Linux. 
 
 The code in the folders `1_uncertaintyanalysis` and `2_vis` was successfully tested in R 4.0.0 on Windows and R 4.0.2 on Linux.
 

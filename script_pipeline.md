@@ -55,7 +55,6 @@ The scripts should all be in the github repo `foodwasteinterventions` though som
 - get_industry_BEA_codes.R (identify six digit codes for industries that generate offsetting impacts, which are entered manually later on in the process)
 - lafa_find_proportion_fresh_fruit_waste.R (confirm one of the assumptions about what percentage of consumer fruit and vegetable waste is specifically fresh fruit)
 - media_cost_breakdown.R (check some assumptions about what industries generate offsetting impacts of media campaigns, and in what proportion)
-- proportion_packaging_foodtype.R (I believe this is no longer used)
 - read_costmodel.R (convert the raw cost model output into the tidied output packaging_costs_byproduct.csv)
 - read_lafa.R (originally created within the FWE project; reads raw LAFA XLS files)
 - read_msas.R (read data on metropolitan statistical areas to get the population proportion number)
