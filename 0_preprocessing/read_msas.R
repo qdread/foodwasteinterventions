@@ -6,10 +6,7 @@
 library(tidyverse)
 library(readxl)
 
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-
-msas <- read_xls(file.path(fp, 'scenario_inputdata/metroareas_sep2018.xls'), skip = 2) %>%
+msas <- read_xls(file.path(fp_rawdata, 'raw/metroareas_sep2018.xls'), skip = 2) %>%
   filter(!is.na(`FIPS State Code`))
 
 table(msas$`Metropolitan/Micropolitan Statistical Area`)

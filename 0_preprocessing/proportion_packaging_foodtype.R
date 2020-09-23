@@ -11,17 +11,11 @@
 
 # Load data ---------------------------------------------------------------
 
-
-library(tidyverse)
-library(readxl)
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-
-bea_naics <- read_csv(file.path(fp, 'crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv'))
-productdat <- read_csv(file.path(fp, 'scenario_inputdata/packaging_costs_byproduct.csv'))
-foodmfg2012 <- read_csv(file.path(fp, 'scenario_inputdata/econcensus2012_naics31.csv'))
-naics_index <- read_xls(file.path(fp, 'crossreference_tables/NAICS/2012_NAICS_Index_File.xls'))
-naics_07to12 <- read_xlsx(file.path(fp, 'crossreference_tables/NAICS/2007_to_2012_NAICS.xlsx'), skip = 2)
+bea_naics <- read_csv(file.path(fp_crosswalks, 'BEA_NAICS07_NAICS12_crosswalk.csv'))
+productdat <- read_csv(file.path(fp_data, 'intermediate_output/packaging_costs_byproduct.csv'))
+foodmfg2012 <- read_csv(file.path(fp_rawdata, 'raw/econcensus2012_naics31.csv'))
+naics_index <- read_xls(file.path(fp_rawdata, 'raw/NAICS/2012_NAICS_Index_File.xls'))
+naics_07to12 <- read_xlsx(file.path(fp_rawdata, 'raw/2007_to_2012_NAICS.xlsx'), skip = 2)
 
 # Join data tables and crosswalks -----------------------------------------
 
@@ -86,4 +80,4 @@ productdat <- productdat %>%
 # Check
 productdat %>% select(product_subcategory, NAICS, BEA_Code, n_items, proportion, proportion_final) 
 
-write_csv(productdat, '/nfs/qread-data/scenario_inputdata/packaging_costs_proportions_byproduct.csv')
+write_csv(productdat, file.path(fp_data, 'intermediate_output/packaging_costs_proportions_byproduct.csv'))

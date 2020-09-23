@@ -11,6 +11,9 @@ fp_crosswalks <- file.path(fp_data, 'crosswalks')
 
 # Step 0. Preprocessing ---------------------------------------------------
 
+# Retotal rows and columns of 2012 BEA make and use tables to match the 2007 schema for compatibility with USEEIO.
+source(file.path(fp_github, '0_preprocessing/input_output_tables/create_2012_bea.R'))
+
 # Create crosswalk to match BEA, 2007 NAICS, and 2012 NAICS codes and write to CSV.
 source(file.path(fp_github, '0_preprocessing/bea_naics_0712_crosswalk_create.R'))
 
@@ -29,8 +32,6 @@ source(file.path(fp_github, '0_preprocessing/get_econ_census_2012.R'))
 # Find the corresponding BEA codes for a manually created table of relevant industry NAICS codes for further analysis. Write to CSV.
 source(file.path(fp_github, '0_preprocessing/get_industry_BEA_codes.R'))
 
-#FIXME anything below here hasn't had its file paths cleaned up.
-
 # Process raw Loss Adjusted Food Availability data and read them in as R data frames.
 source(file.path(fp_github, '0_preprocessing/read_lafa.R'))
 
@@ -46,6 +47,7 @@ source(file.path(fp_github, '0_preprocessing/lafa_rate_conversion.R'))
 # Use manually input data from a published table to estimate the proportions of media costs by type.
 source(file.path(fp_github, '0_preprocessing/media_cost_breakdown.R'))
 
+#FIXME anything below here hasn't had its file paths cleaned up.
 # Extract necessary information from the FDA Reformulation Cost Model Excel files and write to CSV.
 source(file.path(fp_github, '0_preprocessing/read_costmodel.R'))
 

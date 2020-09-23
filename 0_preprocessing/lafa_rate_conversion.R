@@ -3,38 +3,30 @@
 
 # Load data for waste rate calc -------------------------------------------
 
-# Load packages and check whether this is being run locally or on rstudio server.
-library(tidyverse)
-
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-fp_github <- file.path(ifelse(is_local, '~/Documents/GitHub/foodwaste', '~'))
-
 # Load the BEA code data (erroneously called NAICS)
-bea_codes <- read_csv(file.path(fp, 'crossreference_tables/naics_crosswalk_final.csv'))
+bea_codes <- read_csv(file.path(fp_crosswalks, 'naics_crosswalk_final.csv'))
 # Load NAICS BEA crosswalks
-load(file.path(fp, 'crossreference_tables/NAICS_BEA_SCTG_crosswalk.RData'))
-bea_naics <- read_csv(file.path(fp, 'crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv'))
+load(file.path(fp_crosswalks, 'NAICS_BEA_SCTG_crosswalk.RData'))
+bea_naics <- read_csv(file.path(fp_crosswalks, 'BEA_NAICS07_NAICS12_crosswalk.csv'))
 # Load LAFA
-source(file.path(fp_github, 'fwe/read_data/read_lafa.r'))
 lafa <- list(dairy, fat, fruit, grain, meat, sugar, veg)
 
 # BEA levels 1+3 to 4+6+7+8 is already subsetted from an older analysis I did.
-food_U <- read.csv(file.path(fp, 'crossreference_tables/level13_to_level4678_inputs.csv'), row.names = 1, check.names = FALSE)
+food_U <- read.csv(file.path(fp_data, 'intermediate_output/level13_to_level4678_inputs.csv'), row.names = 1, check.names = FALSE)
 
 # Mapping will need to go bea --> qfahpd --> lafa
 # Load the two necessary crosswalks.
-bea2qfahpd <- read_csv(file.path(fp, 'crossreference_tables/bea_qfahpd_crosswalk.csv'))
-qfahpd2lafa <- read_csv(file.path(fp, 'crossreference_tables/qfahpd_lafa_crosswalk.csv'))
+bea2qfahpd <- read_csv(file.path(fp_crosswalks, 'bea_qfahpd_crosswalk.csv'))
+qfahpd2lafa <- read_csv(file.path(fp_crosswalks, 'qfahpd_lafa_crosswalk.csv'))
 
 # Also load the QFAHPD data so that we can get the prices.
-qfahpd2 <- read_csv(file.path(fp, 'raw_data/USDA/QFAHPD/tidy_data/qfahpd2.csv'))
+qfahpd2 <- read_csv(file.path(fp_data, 'intermediate_output/qfahpd2.csv'))
 
 # Read the description of LAFA's nested category structure in.
-lafa_struct <- read_csv(file.path(fp, 'crossreference_tables/lafa_category_structure.csv'))
+lafa_struct <- read_csv(file.path(fp_crosswalks, 'lafa_category_structure.csv'))
 
 # Demand codes table to convert 6 digit codes to the ones used by USEEIO
-all_codes <- read_csv(file.path(fp, 'crossreference_tables/all_codes.csv'))
+all_codes <- read_csv(file.path(fp_crosswalks, 'all_codes.csv'))
 
 # Beverage codes should be removed.
 beveragecodes <- c('311920','311930','312110','312120','312130','312140')
@@ -152,9 +144,9 @@ food_U_LAFA_spread <- food_U_LAFA %>%
 
 # Save all results --------------------------------------------------------
 
-write_csv(all_lafa_rates, file.path(fp, 'scenario_inputdata/lafa_rates_with_groups.csv'))
+write_csv(all_lafa_rates, file.path(fp_data, 'intermediate_output/lafa_rates_with_groups.csv'))
 
-save(food_U_QFAHPD, food_U_LAFA, food_U_LAFA_spread, file = file.path(fp, 'crossreference_tables/intermediate_lafa_qfahpd_bea_tables.RData'))
+save(food_U_QFAHPD, food_U_LAFA, food_U_LAFA_spread, file = file.path(fp_data, 'intermediate_output/intermediate_lafa_qfahpd_bea_tables.RData'))
 
 
 # Table with all waste rates by BEA ---------------------------------------
@@ -192,19 +184,5 @@ bea_waste_rates <- bea2qfahpd %>%
             avoidable_consumer_loss_value = 100 * mean(avoidable_consumer_loss/100 * price)/mean(price)) %>%
   filter(!is.na(primary_loss_mass)) # filter to get rid of beverages
 
-# quickly create diagnostic ggplot
-
-ggplot(bea_waste_rates, aes(x = primary_loss_mass, y = primary_loss_value)) +
-  geom_abline(slope = 1, linetype = 'dashed') +
-  geom_point() + theme_minimal()
-
-ggplot(bea_waste_rates, aes(x = retail_loss_mass, y = retail_loss_value)) +
-  geom_abline(slope = 1, linetype = 'dashed') +
-  geom_point() + theme_minimal()
-
-ggplot(bea_waste_rates, aes(x = avoidable_consumer_loss_mass, y = avoidable_consumer_loss_value)) +
-  geom_abline(slope = 1, linetype = 'dashed') +
-  geom_point() + theme_minimal()
-
-write_csv(qfahpd_waste_rates_prices %>% select(-LAFA_names), file.path(fp, 'crossreference_tables/waste_rates_qfahpd.csv'))
-write_csv(bea_waste_rates, file.path(fp, 'crossreference_tables/waste_rates_bea.csv'))
+write_csv(qfahpd_waste_rates_prices %>% select(-LAFA_names), file.path(fp_data, 'intermediate_output/waste_rates_qfahpd.csv'))
+write_csv(bea_waste_rates, file.path(fp_data, 'intermediate_output/waste_rates_bea.csv'))

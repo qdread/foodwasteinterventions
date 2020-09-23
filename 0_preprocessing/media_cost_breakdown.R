@@ -1,4 +1,3 @@
-####
 # Use manually entered values from MacMonegle et al paper to derive estimates for how media cost is divided among media types.
 # ratio of digital media costs to total media costs
 digital <- 14.093

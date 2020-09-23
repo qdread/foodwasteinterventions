@@ -1,6 +1,5 @@
 # LAFA rates for fruit and vegetables
 
-source(file.path(fp_github, 'fwe/read_data/read_lafa.r'))
 lafa <- list(fruit, meat, veg)
 
 # find the single year closest to 2012.

@@ -1,10 +1,7 @@
 # Script to extract all information from FDA reformulation cost model spreadsheet
 # QDR / fwi / 5 May 2020
 
-is_local <- dir.exists('Q:/')
-fp <- ifelse(is_local, 'Q:', '/nfs/qread-data')
-
-filename <- file.path(fp, 'scenario_inputdata/intervention_costs_04may2020/reformulation cost model run_05-04-2020.xlsx')
+filename <- file.path(fp_rawdata, 'raw/reformulation cost model run_05-04-2020.xlsx')
 
 # Read in as tidyxl
 
@@ -59,9 +56,9 @@ costmodel_allcosts <- costmodel_cells_processed$data[[3]] %>%
   select(-address, -row, -col, -data_type, -character) %>%
   pivot_wider(names_from = statistic, values_from = numeric)
 
-write_csv(costmodel_byproduct, file.path(fp, 'scenario_inputdata/intervention_costs_04may2020', 'costmodel_byproduct.csv'))
-write_csv(costmodel_bycosttype, file.path(fp, 'scenario_inputdata/intervention_costs_04may2020', 'costmodel_bycosttype.csv'))
-write_csv(costmodel_allcosts, file.path(fp, 'scenario_inputdata/intervention_costs_04may2020', 'costmodel_allcosts.csv'))
+write_csv(costmodel_byproduct, file.path(fp_data, 'intermediate_output', 'costmodel_byproduct.csv'))
+write_csv(costmodel_bycosttype, file.path(fp_data, 'intermediate_output', 'costmodel_bycosttype.csv'))
+write_csv(costmodel_allcosts, file.path(fp_data, 'intermediate_output', 'costmodel_allcosts.csv'))
 
 
 # 311421, 311911: subsets of NAICS code, representing misc dips and such
@@ -90,4 +87,4 @@ units_byproduct <- costmodel_byproduct %>%
 
 costmodel_byproduct_summary %>%
   left_join(units_byproduct) %>%
-  write_csv(file.path(fp, 'scenario_inputdata/packaging_costs_byproduct.csv'))
+  write_csv(file.path(fp_data, 'intermediate_output/packaging_costs_byproduct.csv'))
