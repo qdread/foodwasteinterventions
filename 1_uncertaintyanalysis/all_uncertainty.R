@@ -19,6 +19,10 @@ source(file.path(fp_github, '1_uncertaintyanalysis/all_uncertainty_setup.R'))
 
 datelabel_costs_coord <- intervention_params %>% filter(Parameter == 'initial_cost', Intervention == 'standardized date labeling') %>% select(minimum, mode, maximum) %>% as.numeric %>% setNames(c('lower','mean','upper'))
 
+### edit: add an extra parameter to intervention_params
+intervention_params <- intervention_params %>%
+  add_row(Intervention = 'standardized date labeling', Parameter = 'proportion_correct_labels', Description = 'tbd', minimum = 0, mode = 0.18, maximum = 0.36, source = 'tbd', `include in uncertainty analysis?` = 'yes')
+
 # Set up PERT distributions for each parameter and draw from them.
 datelabel_pars <- intervention_params %>%
   filter(Intervention %in% c('all', 'standardized date labeling'), !is.na(Parameter))

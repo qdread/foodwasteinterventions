@@ -3,11 +3,11 @@
 # QDR / foodwasteinterventions / 24 April 2020
 
 
-standardized_date_labeling <- function(consumer_response_rate, proportion_confusion_waste, p_packaged_produce, p_packaged_meat, initial_cost, annuity_years, annuity_rate, baseline_beverage_rate) {
+standardized_date_labeling <- function(consumer_response_rate, proportion_confusion_waste, p_packaged_produce, p_packaged_meat, initial_cost, annuity_years, annuity_rate, baseline_beverage_rate, proportion_correct_labels) {
   
   
   # Annualize initial costs
-  datelabel_costs_coord_annual <- pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0)
+  datelabel_costs_coord_annual <- pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0) * (1 - proportion_correct_labels)
   
   
   # Consumer demand baseline, averted in lower bound scenario, and averted in upper bound scenario
@@ -40,11 +40,11 @@ standardized_date_labeling <- function(consumer_response_rate, proportion_confus
   datelabelingdemand <- finaldemand2012 %>%
     right_join(bea_waste_rates_final) %>%
     left_join(bea_codes) %>%
-    mutate(baseline_demand = `2012_US_Consumption` * proportion_food * proportion_packaged,
+    mutate(baseline_demand = `2012_US_Consumption` * proportion_food * proportion_packaged * (1 - proportion_correct_labels),
            baseline_consumer_waste_demand = baseline_demand * avoidable_consumer_loss_value / 100,
            averted_demand = `2012_US_Consumption` * (1 - demand_change_fn(W0 = proportion_confusion_waste * avoidable_consumer_loss_value / 100,
                                                                           r = consumer_response_rate,
-                                                                          p = proportion_food * proportion_packaged))) %>%
+                                                                          p = proportion_food * proportion_packaged * (1 - proportion_correct_labels)))) %>%
     select(BEA_389_code, BEA_389_def, baseline_demand, baseline_consumer_waste_demand, averted_demand)
   
   # Join with long code names
