@@ -47,15 +47,6 @@ save(datelabel_results, file = file.path(fp_out, 'datelabel_uncertainty.RData'))
 
 packaging_costs <- read_csv(file.path(fp_data, 'intermediate_output/packaging_costs_byproduct.csv'))
 
-## edit: manually add parameters for the proportion of different products in the offset.
-# Normalize them to add to 1 in each run of the uncertainty analysis.
-intervention_params <- intervention_params %>%
-  add_row(Intervention = 'spoilage prevention packaging', Parameter = 'proportion_plastic_film', Description = 'tbd', minimum = 0.1, mode = 0.2, maximum = 0.3, source = 'tbd', `include in uncertainty analysis?` = 'yes') %>%
-  add_row(Intervention = 'spoilage prevention packaging', Parameter = 'proportion_polystyrene', Description = 'tbd', minimum = 0.1, mode = 0.2, maximum = 0.3, source = 'tbd', `include in uncertainty analysis?` = 'yes') %>%
-  add_row(Intervention = 'spoilage prevention packaging', Parameter = 'proportion_polyurethane', Description = 'tbd', minimum = 0.1, mode = 0.2, maximum = 0.3, source = 'tbd', `include in uncertainty analysis?` = 'yes') %>%
-  add_row(Intervention = 'spoilage prevention packaging', Parameter = 'proportion_activated_charcoal', Description = 'tbd', minimum = 0.1, mode = 0.2, maximum = 0.3, source = 'tbd', `include in uncertainty analysis?` = 'yes') %>%
-  add_row(Intervention = 'spoilage prevention packaging', Parameter = 'proportion_silica_gel', Description = 'tbd', minimum = 0.1, mode = 0.2, maximum = 0.3, source = 'tbd', `include in uncertainty analysis?` = 'yes')
-
 ##########
 # LAFA rate conversion for the fruit and meat codes in LAFA.
 # These are probably more than needed.
@@ -87,16 +78,13 @@ fruitmeat_wtdavg_rates <- lafa_df %>%
   summarize(retail_loss = weighted.mean(retail_loss, retail_weight),
             avoidable_consumer_loss = weighted.mean(avoidable_consumer_loss, consumer_weight))
 
-##### offsetting impacts for the plastic code, foam pads, activated charcoal, and silica gel.
+##### offsetting impacts for the plastic packaging materials code
 # do this as per $1 spent on each category so it can be multiplied by the different costs. (extract from precalculated eeio)
 
-packaging_material_codes <- c("326110/plastic bags, films, and sheets/us",
-                              "326140/polystyrene foam products/us",
-                              "326150/urethane and other foam products/us",
-                              "3259a0/chemicals (except basic chemicals, agrichemicals, polymers, paints, pharmaceuticals,soaps, cleaning compounds)/us",
-                              "325180/other basic inorganic chemicals/us")
+plastic_packaging_code <- "326110/plastic bags, films, and sheets/us"
 eeio_packaging_offsetting_impacts <- eeio_df %>%
-  filter(sector_desc_drc %in% packaging_material_codes) 
+  filter(sector_desc_drc %in% plastic_packaging_code) %>%
+  select(category, impact)
 
 # Convert percentiles to PERT parameters for packaging costs for each food item
 packaging_costs_by_food <- packaging_costs %>%
