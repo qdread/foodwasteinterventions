@@ -4,7 +4,7 @@
 # Modified 20 May 2020: no longer incorporate proportion affected into the unit cost.
 # Modified 05 May 2020: implement new cost approach
 
-spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, p_seafood, cost_per_package, annuity_years, annuity_rate, unitcost_fruit, unitcost_meat, unitcost_poultry, unitcost_seafood, unitcost_vegetables) {
+spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_retail_meat, wr_household_meat, p_fruit, p_veg, p_meat, p_seafood, cost_per_package, annuity_years, annuity_rate, unitcost_fruit, unitcost_meat, unitcost_poultry, unitcost_seafood, unitcost_vegetables, proportion_plastic_film, proportion_polystyrene, proportion_polyurethane, proportion_activated_charcoal, proportion_silica_gel) {
   
   param_table <- data.frame(food = c('fruit','vegetables','meat','poultry','seafood'),
                             wr_retail = rep(c(wr_retail_fv, wr_retail_meat), c(2,3)),
@@ -62,10 +62,17 @@ spoilage_prevention_packaging <- function(wr_retail_fv, wr_household_fv, wr_reta
            averted = impact * demand_averted)
   
   #### cost estimates
-  # use the annual costs to get the annual impacts, using plastic packaging materials as the industry.
-  packaging_annual_offset <- eeio_packaging_offsetting_impacts %>%
-    mutate(offset = impact * material_cost)
+  # Normalize the proportions.
+  packaging_offset_proportions <- c(proportion_plastic_film, proportion_polystyrene, proportion_polyurethane, proportion_activated_charcoal, proportion_silica_gel)
+  packaging_offset_proportions <- packaging_offset_proportions / sum(packaging_offset_proportions)
   
+  # use the annual costs to get the annual impacts.
+  packaging_annual_offset <- eeio_packaging_offsetting_impacts %>%
+    left_join(data.frame(sector_desc_drc = packaging_material_codes, proportion = packaging_offset_proportions)) %>%
+    mutate(offset = impact * proportion) %>%
+    group_by(category) %>%
+    summarize(offset = sum(offset) * material_cost)
+
     # Put results from packaging into a "standardized" form that is similar to the other ones.
   # totals things up, ignoring individual food types.
   eeio_packaging_averted_total <- eeio_packaging_averted %>%
