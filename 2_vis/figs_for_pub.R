@@ -20,6 +20,7 @@ library(units)
 
 fp_github <- '.'
 fp_out <- '.'
+fp_fig <- '.'
 fp_data <- file.path(fp_github, 'data')
 
 all_qs <- read_csv(file.path(fp_out, 'intervention_quantiles.csv'))
@@ -243,24 +244,30 @@ theme_set(theme_bw() +
                   strip.background = element_blank(),
                   legend.position = 'none'))
 
+# Define dummy dataframe for p_totalimpact for both minimum and maximum limits
+dummy_dat_totalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(30, 5, 4.5, 0.8), category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'), intervention = NA)
+
+# Define dummy dataframe for p_costeff for both minimum and maximum limits
+dummy_dat_costeff <- data.frame(q025 = 0, q50 = 0, q975 = c(220, 35, 200, 5), costeff_labels = c("energy~(MJ/\"$\")", "greenhouse~gas~(kg~CO[2]/\"$\")", "land~(m^2/\"$\")", "water~(m^3/\"$\")"), intervention = NA)
+
 p_totalimpact <- ggplot(dat_netaverted, aes(x = intervention, color = intervention, y = q50, ymin = q025, ymax = q975)) +
   facet_wrap(~ category_labels, scales = 'free', labeller = label_parsed) +
   geom_segment(aes(xend = intervention, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
-  geom_blank(data = dummy_dat) +
+  geom_blank(data = dummy_dat_totalimpact) +
   geom_errorbar(width = 0.05) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
-  scale_y_continuous(name = 'Net impact averted', expand = expansion(mult = c(0, 0.05))) +
+  scale_y_continuous(name = 'Net impact averted', expand = expansion(mult = c(0, 0))) +
   theme(axis.text.x = element_text(size = 6), legend.position = 'none')
 
 p_costeff <- ggplot(dat_unitcost, aes(x = intervention, color = intervention, y = 1/q50, ymin = 1/q025, ymax = 1/q975)) +
   facet_wrap(~ costeff_labels, scales = 'free', labeller = label_parsed) +
   geom_segment(aes(xend = intervention, y = 1/q05, yend = 1/q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
-  geom_blank(data = dummy_dat, aes(y = 0, ymin = 0, ymax = 0, yend = 0)) +
+  geom_blank(data = dummy_dat_costeff, aes(y = 0, ymin = 0, ymax = q975, yend = 0)) +
   geom_errorbar(width = 0.05) +
   scale_x_discrete(labels = c('CEC', 'SPP', 'SDL', 'WTA')) +
-  scale_y_continuous(name = 'Reduction per $1 spent',expand = expansion(mult = c(0, 0.05))) +
+  scale_y_continuous(name = 'Reduction per $1 spent',expand = expansion(mult = c(0, 0))) +
   theme(axis.text.x = element_text(size = 6), legend.position = 'none') 
 
 theme_maintext <- theme_bw() +
@@ -291,8 +298,8 @@ fig2 <- p_costeff +
 
 W <- 1656
 H <- 1209
-ggsave(file.path(fp_out, 'fig1.png'), fig1, height = H/300, width = W/300, dpi = 300)
-ggsave(file.path(fp_out, 'fig2.png'), fig2, height = H/300, width = W/300, dpi = 300)
+ggsave(file.path(fp_fig, 'fig1.png'), fig1, height = H/300, width = W/300, dpi = 300)
+ggsave(file.path(fp_fig, 'fig2.png'), fig2, height = H/300, width = W/300, dpi = 300)
 
 # Supplemental figures ----------------------------------------------------
 
@@ -308,29 +315,37 @@ theme_withxaxis <- theme_bw() +
 
 pos_dodge <- position_dodge(width = 0.2)
 
-p_pkgnetcostbyfood <- ggplot(pkg_netcost_byfood %>% mutate(name = if_else(name == 'annualized_total_cost', 'total_cost', name)), aes(x = food, y = q50, color = name)) +
+# Graph now shows net savings as >0
+p_pkgnetcostbyfood <- ggplot(pkg_netcost_byfood %>% 
+                               mutate(name = if_else(name == 'annualized_total_cost', 'total_cost', name)) %>%
+                               mutate_if(is.numeric, ~ -.), aes(x = food, y = q50, color = name)) +
   geom_hline(yintercept = 0, linetype = 'dotted') +
   geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pos_dodge) +
   geom_point(size = 2, position = pos_dodge) +
   geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pos_dodge) +
-  scale_y_continuous(name = 'Cost (million $)', expand = expansion(mult = 0.01)) +
+  scale_y_continuous(name = 'Cost or savings (million $)', expand = expansion(mult = 0.01), limits = c(-500, 1500)) +
   scale_color_manual(values = c('#d73642', '#00aae7', '#b5931c'),
                      labels = c('Averted food purchases', 'Net cost or savings', 'Cost of implementation'),
                      guide = guide_legend(nrow = 2)) +
   theme_withxaxis +
   theme(legend.position = 'bottom', legend.title = element_blank(),
         axis.text.x = element_text(color = 'black'),
-        axis.text.y = element_text(color = c('forestgreen','forestgreen','black')),
+        axis.text.y = element_text(color = c('indianred', 'black','forestgreen','forestgreen', 'forestgreen')),
         axis.title.x = element_blank(),
         panel.grid = element_blank(),
         axis.ticks.x = element_blank())
 
+# Dummy data for pkgimpactbyfood
+dummy_dat_pkgtotalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(10, 4, 4, 0.32), category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'), food = NA)
+
 p_pkgimpactbyfood <- ggplot(pkg_averted_byfood %>% filter(!food %in% 'misc'), aes(x = food, color = food, y = q50, ymin = q025, ymax = q975)) +
   facet_wrap(~ category_labels, scales = 'free_y', labeller = label_parsed) +
+  geom_hline(yintercept = 0, linetype = 'dotted') +
   geom_segment(aes(xend = food, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
   geom_errorbar(width = 0.05) +
-  scale_y_continuous(name = 'Net impact averted', expand = expansion(mult = c(0, 0.05))) +
+  geom_blank(data = dummy_dat_pkgtotalimpact) +
+  scale_y_continuous(name = 'Net impact averted', expand = expansion(mult = c(0.02, 0.02))) +
   theme_withxaxis +
   theme(axis.title.x = element_blank(), legend.position = 'none', axis.text.x = element_text(size = 7, color = 'black'),
         axis.text.y = element_text(color = 'black'),
@@ -343,12 +358,16 @@ p_pkgimpactbyfood <- ggplot(pkg_averted_byfood %>% filter(!food %in% 'misc'), ae
             aes(label = letter),
             x = -Inf, y = Inf, hjust = -0.1, vjust = 1.1, color = 'black', fontface = 'bold', size = 6)
 
+# Dummy data for pkgcosteffbyfood
+dummy_dat_pkgcosteff <- data.frame(q025 = 0, q50 = 0, q975 = 1/c(800, 80, 500, 6), costeff_labels = c("energy~(MJ/\"$\")", "greenhouse~gas~(kg~CO[2]/\"$\")", "land~(m^2/\"$\")", "water~(m^3/\"$\")"), food = NA)
+
 p_pkgcosteffbyfood <- ggplot(pkg_cost_byfood %>% filter(!food %in% 'misc'), aes(x = food, color = food, y = 1/q50, ymin = 1/q025, ymax = 1/q975)) +
   facet_wrap(~ costeff_labels, scales = 'free_y', labeller = label_parsed) +
   geom_segment(aes(xend = food, y = 1/q05, yend = 1/q95), size = 2, alpha = 0.5) +
   geom_point(size = 2) +
   geom_errorbar(width = 0.05) +
-  scale_y_continuous(name = 'Reduction per $1 spent', expand = expansion(mult = c(0, 0.05))) +
+  geom_blank(data = dummy_dat_pkgcosteff) +
+  scale_y_continuous(name = 'Reduction per $1 spent', expand = expansion(mult = c(0.02, 0.02))) +
   theme_withxaxis +
   theme(axis.title.x = element_blank(), legend.position = 'none', axis.text.x = element_text(size = 7, color = 'black'),
         axis.text.y = element_text(color = 'black'),
@@ -384,7 +403,7 @@ p_ghgaverted <- ggplot(all_ghg_table %>% mutate(intervention = str_wrap(interven
   geom_segment(aes(xend = intervention, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(aes(y = q50), size = 2) +
   geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05) +
-  scale_y_continuous(name = parse(text = 'Potential~GHG~emissions~reduced~(MT~CO[2])')) +
+  scale_y_continuous(name = parse(text = 'Potential~GHG~emissions~reduced~(MT~CO[2])'), limits = c(0, 5), expand = expansion(mult = 0.02)) +
   rti_colors
 
 p_wateraverted <- ggplot(all_h2o_table %>% mutate(intervention = str_wrap(intervention, width = 25)), aes(x = intervention, color = intervention)) +
@@ -396,9 +415,9 @@ p_wateraverted <- ggplot(all_h2o_table %>% mutate(intervention = str_wrap(interv
   rti_colors
 
 W2 <- 5.75
-ggsave(file.path(fp_out, 'figS1.png'), p_pkgnetcostbyfood, height = 4, width = W2, dpi = 400)
-ggsave(file.path(fp_out, 'figS2.png'), p_pkgimpactbyfood, height = 4, width = W2, dpi = 400)
-ggsave(file.path(fp_out, 'figS3.png'), p_pkgcosteffbyfood, height = 4, width = W2, dpi = 400)
-ggsave(file.path(fp_out, 'figS4.png'), p_totalcost, height = 4, width = W2, dpi = 400)
-ggsave(file.path(fp_out, 'figS5.png'), p_ghgaverted, height = 4, width = W2, dpi = 400)
-ggsave(file.path(fp_out, 'figS6.png'), p_wateraverted, height = 4, width = W2, dpi = 400)
+ggsave(file.path(fp_fig, 'figS1.png'), p_pkgnetcostbyfood, height = 4, width = W2, dpi = 400)
+ggsave(file.path(fp_fig, 'figS2.png'), p_pkgimpactbyfood, height = 4, width = W2, dpi = 400)
+ggsave(file.path(fp_fig, 'figS3.png'), p_pkgcosteffbyfood, height = 4, width = W2, dpi = 400)
+ggsave(file.path(fp_fig, 'figS4.png'), p_totalcost, height = 4, width = W2, dpi = 400)
+ggsave(file.path(fp_fig, 'figS5.png'), p_ghgaverted, height = 4, width = W2, dpi = 400)
+ggsave(file.path(fp_fig, 'figS6.png'), p_wateraverted, height = 4, width = W2, dpi = 400)

@@ -1,7 +1,7 @@
 table_costbreakdown <- dat_costbreakdown %>%
   ungroup %>%
   bind_rows(dat_totalcost %>% mutate(cost_type = 'total') %>% mutate_if(is.numeric, ~ round(./1e6))) %>%
-  mutate_if(is.numeric, round) %>%
+  mutate_if(is.numeric, ~ -1*round(.)) %>%
   mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, cost_type, cost_with_quantiles) %>%
   pivot_wider(names_from = cost_type, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
@@ -9,16 +9,16 @@ table_costbreakdown <- dat_costbreakdown %>%
   setNames(c('Intervention', 'Initial capital cost', 'Annualized initial cost', 'Annual cost', 'Total (annualized + annual) cost'))
 
 table_netcost <- dat_netcost %>%
-  mutate_if(is.numeric, ~ round(./1e6)) %>%
+  mutate_if(is.numeric, ~ round(./-1e6)) %>%
   mutate(cost_with_quantiles = paste0(q50, ' (', q05, '; ', q95, ')')) %>%
   select(intervention, name, cost_with_quantiles) %>%
   pivot_wider(names_from = name, values_from = cost_with_quantiles, values_fill = list(cost_with_quantiles = "--")) %>%
   select(intervention, total_cost, averted_food_purchase, net_cost) %>%
   arrange(intervention) %>%
-  setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net cost or savings'))
+  setNames(c('Intervention', 'Cost', 'Averted food purchase', 'Net savings'))
 
-cbind(table_costbreakdown, table_netcost[,3:4]) %>%
-  write_csv(file.path(fp_out, 'table2.csv')
+table2 <- cbind(table_costbreakdown, table_netcost[,3:4])
+write_csv(table2, file.path(fp_out, 'table2.csv'))
 
 # Extract additional column for percentage reduction
 # These values appear in the text of the manuscript.
