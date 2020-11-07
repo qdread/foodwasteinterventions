@@ -3,11 +3,11 @@
 # QDR / foodwasteinterventions / 24 April 2020
 
 
-standardized_date_labeling <- function(consumer_response_rate, proportion_confusion_waste, p_packaged_produce, p_packaged_meat, initial_cost, annuity_years, annuity_rate, baseline_beverage_rate, proportion_correct_labels) {
+standardized_date_labeling <- function(consumer_response_rate, proportion_confusion_waste, p_packaged_produce, p_packaged_meat, initial_cost, annuity_years, annuity_rate, baseline_beverage_rate, proportion_correct_labels, education_campaign_cost) {
   
   
   # Annualize initial costs
-  datelabel_costs_coord_annual <- pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0) * (1 - proportion_correct_labels)
+  datelabel_costs_coord_annual <- pmt(initial_cost, r = annuity_rate, n = annuity_years, f = 0, t = 0) * (1 - proportion_correct_labels) + education_campaign_cost
   
   
   # Consumer demand baseline, averted in lower bound scenario, and averted in upper bound scenario

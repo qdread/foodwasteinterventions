@@ -54,6 +54,9 @@ source(file.path(fp_github, '0_preprocessing/read_costmodel.R'))
 # Use list of Metropolitan Statistical Areas and download data from US Census Bureau to estimate percentage of the total population that lives in the MSAs.
 source(file.path(fp_github, '0_preprocessing/read_msas.R'))
 
+# Find distribution of campaign costs from Table 4 in Kraak et al. 2017 and convert them to 2012 dollars using PPI for advertising agencies
+source(file.path(fp_github, '0_preprocessing/food_campaign_costs.R'))
+
 #### NOTE: The USEEIO model source code needed to run the script run_all_eeio2012.R is not provided here at least for now. 22 Sep 2020
 
 

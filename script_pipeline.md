@@ -59,6 +59,7 @@ The scripts should all be in the github repo `foodwasteinterventions` though som
 - read_lafa.R (originally created within the FWE project; reads raw LAFA XLS files)
 - read_msas.R (read data on metropolitan statistical areas to get the population proportion number)
 - run_all_eeio2012.R (environmental impact of $1 demand from each industry in the USEEIO model)
+- food_campaign_costs.R (costs of campaign to educate consumers about standardized date label changes)
 
 Subfolder `input_output_tables`:
 
