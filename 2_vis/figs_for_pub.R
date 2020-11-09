@@ -248,7 +248,7 @@ theme_set(theme_bw() +
 dummy_dat_totalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(30, 5, 4.5, 0.8), category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'), intervention = NA)
 
 # Define dummy dataframe for p_costeff for both minimum and maximum limits
-dummy_dat_costeff <- data.frame(q025 = 0, q50 = 0, q975 = c(220, 35, 200, 5), costeff_labels = c("energy~(MJ/\"$\")", "greenhouse~gas~(kg~CO[2]/\"$\")", "land~(m^2/\"$\")", "water~(m^3/\"$\")"), intervention = NA)
+dummy_dat_costeff <- data.frame(q025 = 0, q50 = 0, q975 = c(200, 30, 150, 4.5), costeff_labels = c("energy~(MJ/\"$\")", "greenhouse~gas~(kg~CO[2]/\"$\")", "land~(m^2/\"$\")", "water~(m^3/\"$\")"), intervention = NA)
 
 p_totalimpact <- ggplot(dat_netaverted, aes(x = intervention, color = intervention, y = q50, ymin = q025, ymax = q975)) +
   facet_wrap(~ category_labels, scales = 'free', labeller = label_parsed) +
