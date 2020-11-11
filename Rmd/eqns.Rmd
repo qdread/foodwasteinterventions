@@ -1,0 +1,103 @@
+---
+title: "Equations"
+author: "Quentin D. Read"
+date: "11/11/2020"
+output: pdf_document
+---
+
+# A.3 Harmonization of rates
+
+$$ W_{QFAHPD,jk} = \frac {\sum_{i=1}^{n} m_{ij}W_{LAFA,ij}} {\sum_{i=1}^{n} m_{ij}} $$
+The waste rate, by mass, of QFAHPD category k is the weighted mean across all LAFA categories i belonging to QFAHPD category k, Where W is the waste rate for supply chain stage j for LAFA category i, m is the total mass of food remaining in LAFA category i at supply chain stage j. This is in mass units.
+
+$$ W_{BEA,j} = \frac {\sum_{i=1}^{n}  W_{QFAHPD,i}} {\sum_{i=1}^{n} P_{QFAHPD,i}} $$
+
+The waste rate, in dollar units, of BEA category j is the mean of the waste rates by mass of all QFAHPD categories i belonging to BEA category j, divided by the mean of the prices per mass of those categories.
+
+# A.4 EEIO model
+
+$$ \mathbf{m} = \mathbf{B}(\mathbf{I}-\mathbf{A})^{-1}(\mathbf{f}_{baseline} - \mathbf{f}_{counterfactual} - \mathbf{f}_{offset}) $$
+
+This is the standard formulation of an environmentally-extended input-output model (Miller and Blair 2009). Here, m is the total environmental benefit of the intervention (vector with length q where q is the number of environmental impact categories), B is a matrix of environmental impact per dollar for each of the industries (dimension q x n where n is the number of industries), I is the identity matrix (dimension n x n), A is the direct requirements coefficients table (dimension n x n), and each vector f has length n and is the final demand for the output of all industries. Vectors f_baseline and f_counterfactual have nonzero entries only for food supply chain industries and represent the demand for products associated with food that is ultimately wasted in the baseline and counterfactual case. Vector f_offset has nonzero entries only for industries involved in producing materials used in the intervention (e.g., plastic film for the packaging intervention) and therefore represents the additional demand required to implement the intervention.
+
+Annuity function:
+
+$$ a(p, r, n) = \frac {pr(1+r)^n} {\left((1+r)^n - 1\right)(1+r)} $$
+
+Where p is the principal, r is the interest rate, and n the number of years.
+
+Demand change function:
+
+$$ \mathbf{f}_{counterfactual} = \mathbf{f}_{baseline}\left( 1 + \mathbf{p}_{FSC} \left(\frac {1 - \mathbf{W}_{baseline}} {1 - (1-r)\mathbf{W}_{baseline}} - 1 \right) \right) $$
+Here, f is the final demand vector, p_FSC is a vector of proportions belonging to the food supply chain (mostly zero, sometimes <1 for food industries), W_baseline is the vector of waste rates, and r is the waste reduction rate. This equation is derived from first principles. In these equations the vectors are multiplied and divided elementwise.
+
+## A.5.1 Consumer education campaigns
+
+Cost
+
+$$ C = C_{development} + n_{campaigns}n_{counties}(C_{consultant} + C_{media})$$
+Where C is annual cost, C_development is the nationwide content development cost, n_campaigns is the number of campaigns run annually, n_counties is the number of metropolitan area counties, C_consultant is the county-level cost of hiring consultants, and C_media is the county-level cost of purchasing media.
+
+Baseline waste demand
+
+$$ \mathbf{f}_{baseline} = \mathbf{f}_{all}\mathbf{p}_{FSC}p_{metro}\mathbf{W}_{baseline} $$
+
+Here, f_all is the total US consumer final demand for all goods in 2012 (derived from BEA table), p_metro is the proportion of the population living in metropolitan counties in 2012, and W_baseline is the waste rate, in dollar units, for BEA industries.
+
+To find f_counterfactual, counterfactual waste, apply demand change equation where r is the waste reduction rate of the intervention and p is pFSCpmetro.
+
+To find f_offset, multiply C * p_offset where p_offset sums to one and is zero for all industries except for print media, radio and TV, and internet media.
+
+## A.5.2 Spoilage prevention packaging
+
+Cost 
+
+$$ C = C_{materials} + C_{initial} = \sum_{i=1}^{n_{foodgroups}} n_{units,i}c_{package} + \sum_{i=1}^{n_{foodgroups}}a(n_{units,i}c_{initial}, r, n_{years})  $$
+
+Here, C is the annual cost summed across the eligible food groups. n_units,i is the number of affected units in food group i, c_package is the material cost per package, c_initial is the initial reformulation cost per package, r is the interest rate for annualization, and n_years is the number of years for annualization.
+
+Baseline waste demand
+
+$$ \mathbf{f}_{baseline} = \mathbf{f}_{all}\mathbf{p}_{eligible}\mathbf{W}_{baseline} $$
+
+Here, f_all is as given above, p_eligible is the vector of proportions of each food industry that are eligible for the intervention (zero for all noneligible industries), and W_baseline is the baseline consumer waste rate.
+
+To find f_counterfactual, apply the demand change function where $r = 1 - (1-r_{retail})(1- r_{household})$, the product of the household and retail waste reductions, and p is p_eligible.
+
+To find f_offset, multiply C_materials by p_offset where p_offset sums to one and has nonzero entries only for the industries involved in producing the packaging materials.
+
+## A.5.3 Standardized date labeling
+
+Cost
+
+$$ C = C_{campaign} + (1 - p_{correct})a(C_{initial}, r, n_{years}) $$
+
+Here, C is the annual cost, C_campaign is the annual cost of the education campaign, p_correct is the proportion of labels that already have correct wording and need no change, a() is the annuity function given above, C_initial is the initial cost output by the cost model, r is the interest rate for annualization, and n is the number of years for annualization.
+
+Baseline waste demand
+
+$$ \mathbf{f}_{baseline} = \mathbf{f}_{all}\mathbf{p}_{FSC}\mathbf{p}_{packaged}(1 - p_{correct})\mathbf{W}_{baseline} $$
+
+Here, f_all and p_FSC are as given above, p_packaged is a vector of the proportion of each food category that is packaged and thus eligible for the intervention, and p_correct and W_baseline are as given above.
+
+To find f_counterfactual, use the same equation as given under CEC.
+
+f_offset = 0.
+
+## A.5.4 Waste tracking & analytics
+
+Cost 
+
+$$ C = n_{establishments}(C_{equipment} + C_{fees} + C_{wages}) $$
+
+These components are both annual costs.
+
+Baseline waste demand
+
+$$ \mathbf{f}_{baseline} = p_{kitchen}\mathbf{W}_{baseline} \sum_{i=1}^{n} \mathbf{U}_{ij}$$
+
+Here, U is a submatrix of the use table with dimensions pxq, where p are the primary food supply chain industries whose outputs are used by the foodservice industries, and q are the foodservice industries. The column sums of this matrix are multiplied by the baseline consumer waste rate (consumer waste rate is used because food preparation is included under consumer waste by LAFA).
+
+To find f_counterfactual, apply demand change function where r is waste reduction rate x proportion kitchen waste, and p is the proportion of each foodservice industry eligible for the intervention, based on the proportion of establishments above the size threshold.
+
+To find f_offset, multiply C_equipment * p_offset where p_offset sums to one and is zero for all industries except for computers, computer peripherals, and industrial scales.
