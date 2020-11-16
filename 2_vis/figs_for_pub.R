@@ -315,22 +315,22 @@ theme_withxaxis <- theme_bw() +
 
 pos_dodge <- position_dodge(width = 0.2)
 
-# Graph now shows net savings as >0
 p_pkgnetcostbyfood <- ggplot(pkg_netcost_byfood %>% 
-                               mutate(name = if_else(name == 'annualized_total_cost', 'total_cost', name)) %>%
-                               mutate_if(is.numeric, ~ -.), aes(x = food, y = q50, color = name)) +
+                               mutate(name = if_else(name == 'annualized_total_cost', 'total_cost', name)), #%>%
+                               #mutate_if(is.numeric, ~ -.), 
+                             aes(x = food, y = q50, color = name)) +
   geom_hline(yintercept = 0, linetype = 'dotted') +
   geom_errorbar(aes(ymin = q05, ymax = q95), size = 2, alpha = 0.5, width = 0, position = pos_dodge) +
   geom_point(size = 2, position = pos_dodge) +
   geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05, position = pos_dodge) +
-  scale_y_continuous(name = 'Cost or savings (million $)', expand = expansion(mult = 0.01), limits = c(-500, 1500)) +
+  scale_y_continuous(name = 'Cost or savings (million $)', expand = expansion(mult = 0.01), limits = c(-1500, 500)) +
   scale_color_manual(values = c('#d73642', '#00aae7', '#b5931c'),
                      labels = c('Averted food purchases', 'Net cost or savings', 'Cost of implementation'),
                      guide = guide_legend(nrow = 2)) +
   theme_withxaxis +
   theme(legend.position = 'bottom', legend.title = element_blank(),
         axis.text.x = element_text(color = 'black'),
-        axis.text.y = element_text(color = c('indianred', 'black','forestgreen','forestgreen', 'forestgreen')),
+        axis.text.y = element_text(color = rev(c('indianred', 'black','forestgreen','forestgreen', 'forestgreen'))),
         axis.title.x = element_blank(),
         panel.grid = element_blank(),
         axis.ticks.x = element_blank())
