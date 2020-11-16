@@ -1,47 +1,12 @@
 # Script pipeline for food waste interventions work
 
-The scripts should all be in the github repo `foodwasteinterventions` though some pre-processing scripts will probably still be in the `fwe` repository.
+Description of scripts in the repo `foodwasteinterventions`.
 
-## Input data needed (and scripts where they are created)
+### Scripts in root directory
 
-- crossreference_tables/naics_crosswalk_final.csv (BEA codes)
-  + C:\Users\qread\Documents\GitHub\foodwaste\fwe\USEEIO\partial_sector_proportions.r
-  + Some post processing was done manually for this. 
-- crossreference_tables/all_codes.csv (BEA codes with full text names)
-  + fwe/read_data/all_demand_codes.r
-  + this is also an output of the USEEIO model which we describe building -- just a lookup table.
-- USEEIO/useeiopy/Model Builds/USEEIO2012/USEEIO2012_FinalDemand.csv (final demand vector from USEEIO model)
-  + This is an output of the USEEIO model which we describe building
-- crossreference_tables/waste_rates_bea.csv
-  + 0_preprocessing/lafa_rate_conversion.R
-- crossreference_tables/level13_to_level4678_inputs.csv (food_U)
-  + 0_preprocessing/create_bea_submatrix.R
-- crossreference_tables/lafa_category_structure.csv
-  + 0_preprocessing/write_lafa_cat_names.R
-- csv_exports/SUSB_NAICS_allvariables.csv
-  + 0_preprocessing/clean_susb_data.R
-- crossreference_tables/BEA_NAICS07_NAICS12_crosswalk.csv
-  + 0_preprocessing\bea_naics_0712_crosswalk_create.r
-- crossreference_tables/bea_qfahpd_crosswalk.csv
-  + created manually
-- crossreference_tables/qfahpd_lafa_crosswalk.csv
-  + created manually
-- raw_data/USDA/QFAHPD/tidy_data/qfahpd2.csv
-  + 0_preprocessing/clean_qfahpd_data.R
-- scenario_inputdata/intervention_parameters.csv
-  + created manually
-- eeio_all_industries.csv
-  + 0_preprocessing/run_all_eeio2012.R
-- scenario_inputdata/packaging_costs_byproduct.csv
-  + 0_preprocessing/read_costmodel.R
-- scenario_inputdata/ReFED-Data-Set.xlsx
-  + downloaded directly from ReFED
-
-## Pipeline
-
-### Scripts outside the repo
-
-- read_lafa.R (read LAFA data from the XLS files)
+- all_analysis.R (Control script that runs all other scripts)
+- get_pert.R (utility function to get PERT parameters from quantiles)
+- test_scripts.R (script to validate output of analysis)
 
 ### Scripts in 0_preprocessing folder
 
