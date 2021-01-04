@@ -31,13 +31,13 @@ refed <- read_xlsx(file.path(fp_data, 'ReFED-Data-Set.xlsx'), .name_repair = 'un
 
 # Define data frame with better formatted labels and conversion factors to join to the raw data
 conv_factors <- data.frame(category = c("resource use/enrg/mj", "impact potential/gcc/kg co2 eq", "resource use/land/m2*yr", "resource use/watr/m3"),
-                           category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'),
+                           category_labels = c('energy~(PJ)', 'greenhouse~gas~(Mt~CO[2])', 'land~(Mha)', 'water~(km^3)'),
                            cost_labels = c('energy~("$"/MJ)', 'greenhouse~gas~("$"/kg~CO[2])', 'land~("$"/m^2)', 'water~("$"/m^3)'),
                            costeff_labels = c('energy~(MJ/"$")', 'greenhouse~gas~(kg~CO[2]/"$")', 'land~(m^2/"$")', 'water~(m^3/"$")'),
                            conv_factor = c(1e-9, 1e-9, 1e-10, 1e-9))
 
 # Define dummy dataframe to stick in and make the axes always go down to zero
-dummy_dat <- data.frame(q025 = 0, q50 = 0, q975 = 0, category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'), intervention = NA)
+dummy_dat <- data.frame(q025 = 0, q50 = 0, q975 = 0, category_labels = c('energy~(PJ)', 'greenhouse~gas~(Mt~CO[2])', 'land~(Mha)', 'water~(km^3)'), intervention = NA)
 
 ### Total cost
 
@@ -245,7 +245,7 @@ theme_set(theme_bw() +
                   legend.position = 'none'))
 
 # Define dummy dataframe for p_totalimpact for both minimum and maximum limits
-dummy_dat_totalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(30, 5, 4.5, 0.8), category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'), intervention = NA)
+dummy_dat_totalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(30, 5, 4.5, 0.8), category_labels = c('energy~(PJ)', 'greenhouse~gas~(Mt~CO[2])', 'land~(Mha)', 'water~(km^3)'), intervention = NA)
 
 # Define dummy dataframe for p_costeff for both minimum and maximum limits
 dummy_dat_costeff <- data.frame(q025 = 0, q50 = 0, q975 = c(200, 30, 150, 4.5), costeff_labels = c("energy~(MJ/\"$\")", "greenhouse~gas~(kg~CO[2]/\"$\")", "land~(m^2/\"$\")", "water~(m^3/\"$\")"), intervention = NA)
@@ -336,7 +336,7 @@ p_pkgnetcostbyfood <- ggplot(pkg_netcost_byfood %>%
         axis.ticks.x = element_blank())
 
 # Dummy data for pkgimpactbyfood
-dummy_dat_pkgtotalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(10, 4, 4, 0.32), category_labels = c('energy~(PJ)', 'greenhouse~gas~(MT~CO[2])', 'land~(Mha)', 'water~(km^3)'), food = NA)
+dummy_dat_pkgtotalimpact <- data.frame(q025 = 0, q50 = 0, q975 = c(10, 4, 4, 0.32), category_labels = c('energy~(PJ)', 'greenhouse~gas~(Mt~CO[2])', 'land~(Mha)', 'water~(km^3)'), food = NA)
 
 p_pkgimpactbyfood <- ggplot(pkg_averted_byfood %>% filter(!food %in% 'misc'), aes(x = food, color = food, y = q50, ymin = q025, ymax = q975)) +
   facet_wrap(~ category_labels, scales = 'free_y', labeller = label_parsed) +
@@ -403,7 +403,7 @@ p_ghgaverted <- ggplot(all_ghg_table %>% mutate(intervention = str_wrap(interven
   geom_segment(aes(xend = intervention, y = q05, yend = q95), size = 2, alpha = 0.5) +
   geom_point(aes(y = q50), size = 2) +
   geom_errorbar(aes(ymin = q025, ymax = q975), width = 0.05) +
-  scale_y_continuous(name = parse(text = 'Potential~GHG~emissions~reduced~(MT~CO[2])'), limits = c(0, 5), expand = expansion(mult = 0.02)) +
+  scale_y_continuous(name = parse(text = 'Potential~GHG~emissions~reduced~(Mt~CO[2])'), limits = c(0, 5), expand = expansion(mult = 0.02)) +
   rti_colors
 
 p_wateraverted <- ggplot(all_h2o_table %>% mutate(intervention = str_wrap(intervention, width = 25)), aes(x = intervention, color = intervention)) +
